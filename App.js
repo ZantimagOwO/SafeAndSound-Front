@@ -2,9 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+        let texto = "CACA"
+        fetch("http://localhost:3000/").then((data) => {
+          texto = data.text();
+          console.log(texto);
+        });
+        
   return (
     <View style={styles.container}>
-      <Text>CACA</Text>
+      <Text>{texto}</Text>
       <StatusBar style="auto" />
     </View>
   );
