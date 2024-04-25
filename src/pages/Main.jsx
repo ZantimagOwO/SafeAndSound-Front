@@ -10,29 +10,50 @@ const Main = ({ navigation }) => {
             <MainHeader/>
             <View style={styles.grid}>
                 <MainPageButton
+                    style={styles.button}
                     icon={require('../../assets/icon.png')}
                     text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={() => navigation.navigate("Boton")}
                 />
                 <MainPageButton
                     icon={require('../../assets/icon.png')}
-                    text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Home")}
+                    text="Mis Protegidos y Protectores"
+                    onPress={() => navigation.navigate("ProtegidosProtectores")}
                 />
                 <MainPageButton
                     icon={require('../../assets/icon.png')}
-                    text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Home")}
+                    text="Información Legal"
+                    onPress={() => navigation.navigate("InformacionLegal")}
                 />
                 <MainPageButton
                     icon={require('../../assets/icon.png')}
-                    text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Home")}
+                    text="Agenda"
+                    onPress={() => navigation.navigate("Agenda")}
                 />
                 <MainPageButton
                     icon={require('../../assets/icon.png')}
-                    text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Home")}
+                    text="Supervivencia"
+                    onPress={() => navigation.navigate("Supervivencia")}
+                />
+                                <MainPageButton
+                    icon={require('../../assets/icon.png')}
+                    text="Wiki"
+                    onPress={() => navigation.navigate("Wiki")}
+                />
+                                <MainPageButton
+                    icon={require('../../assets/icon.png')}
+                    text="Centros de Salud cercanos"
+                    onPress={() => navigation.navigate("CentrosSalud")}
+                />
+                                <MainPageButton
+                    icon={require('../../assets/icon.png')}
+                    text="Medinator"
+                    onPress={() => navigation.navigate("Medinator")}
+                />
+                                <MainPageButton
+                    icon={require('../../assets/icon.png')}
+                    text="Información personal"
+                    onPress={() => navigation.navigate("InformacionPersonal")}
                 />
             </View>
         </View>
@@ -47,6 +68,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         padding: 10,
+    },
+    button: {
+        width: '20%', 
+        aspectRatio: 1, 
+        marginVertical: 10, 
+        wordWrap: 'wrap',
     }
 });
 

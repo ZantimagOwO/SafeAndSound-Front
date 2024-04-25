@@ -12,20 +12,30 @@ const MainPageButton = ({ icon, text, onPress }) => {
 
 const styles = StyleSheet.create({
     button: {
-        flexDirection: 'row',
+        width: '30%',
+        height: 150,
+        flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
         padding: 10,
-        borderRadius: 5,
         margin: 5,
+        borderRadius: 4,
+        justifyContent: 'center',
+        borderColor: '#68c699',
+        borderWidth: 1,
+
     },
     icon: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
+        width: 50,
+        height: 50,
+        margin: 10,
     },
     text: {
-        fontSize: 16,
+        color: '#68c699',
+        fontSize: 14,
+        textAlign: 'center',
+        flexShrink: 1,
+        flexWrap: 'wrap',
+        fontWeight: 'bold',
     },
 });
 
