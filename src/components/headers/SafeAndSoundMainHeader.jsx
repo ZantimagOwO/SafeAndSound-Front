@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const SafeAndSoundMainHeader = () => {
+const MainHeader = () => {
     return (
-        <View style={MainHeader.mainDiv}>
+        <View style={mainHeader.mainDiv}>
             <Text>Hola</Text>
         </View>
     );
 };
 
-const MainHeader = StyleSheet.create({
+const mainHeader = StyleSheet.create({
     mainDiv: {
         height: 78,
         backgroundColor: '#68C699',
@@ -30,4 +30,4 @@ const MainHeader = StyleSheet.create({
     }
 });
 
-export default SafeAndSoundMainHeader;
+export default MainHeader;
