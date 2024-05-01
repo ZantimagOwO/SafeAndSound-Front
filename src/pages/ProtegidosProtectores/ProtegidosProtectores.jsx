@@ -35,8 +35,9 @@ export default function ProtegidosProtectores({ navigation }) {
                 : styles.btnRenderUnselected,
             ]}
             onPress={renderProtegidos}
-          >
+          ><Text>
             Mis Protegidos
+          </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
@@ -47,7 +48,9 @@ export default function ProtegidosProtectores({ navigation }) {
             ]}
             onPress={renderProtectores}
           >
+            <Text>
             Mis Protectores
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
 
-    fontSize: "20px",
+    fontSize: 20,
     fontFamily: StyleConstants.font,
     fontWeight: "bold",
   },

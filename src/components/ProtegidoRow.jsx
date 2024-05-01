@@ -26,7 +26,7 @@ const protect = StyleSheet.create({
     justifyContent: "flex-start",
 
     border: "1px solid #68C699",
-    borderRadius: "5px",
+    borderRadius: 5,
   },
   protectedSwordIcon: {
     width: "10%",
@@ -37,7 +37,7 @@ const protect = StyleSheet.create({
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
-    fontSize: '20px',
+    fontSize: 20,
 
     marginLeft: '5vw',
   },

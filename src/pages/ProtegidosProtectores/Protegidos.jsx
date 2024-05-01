@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     text: {
         color: StyleConstants.mainColor,
         fontFamily: StyleConstants.font,
-        fontSize: '40px',
+        fontSize: 40,
 
         position: 'relative',
         left: '10%',
