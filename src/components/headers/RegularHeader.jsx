@@ -10,7 +10,7 @@ const RegularHeader = ({navigation}) => {
     return (
         <View style={regularHeader.espacio}>
             <View style={regularHeader.mainDiv}>
-                <TouchableOpacity onPress={()=>navigation.navigate("Main")}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Main')}>
                     <Image  source={require('../../../assets/Header/logo.png')} 
                             style={regularHeader.safeAndSoundLogo}/>
                 </TouchableOpacity>

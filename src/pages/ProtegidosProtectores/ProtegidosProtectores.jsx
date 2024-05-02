@@ -1,9 +1,9 @@
-import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import RegularHeader from "../../components/headers/RegularHeader";
-import StyleConstants from "../../StyleConstants";
-import Protegidos from "./Protegidos";
-import Protectores from "./Protectores";
+import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import RegularHeader from '../../components/headers/RegularHeader';
+import StyleConstants from '../../StyleConstants';
+import Protegidos from './Protegidos';
+import Protectores from './Protectores';
 
 export default function ProtegidosProtectores({ navigation }) {
   const [showProtegidos, setShowProtegidos] = useState('protegidos'); // Estado para controlar la visibilidad
@@ -16,7 +16,7 @@ export default function ProtegidosProtectores({ navigation }) {
 
   // Función para cambiar el estado y mostrar los protectores
   const renderProtectores = () => {
-    console.log("cargando protectores");
+    console.log('cargando protectores');
     setShowProtegidos('protectores');
   };
 
@@ -28,7 +28,7 @@ export default function ProtegidosProtectores({ navigation }) {
           <TouchableOpacity
             style={[
               styles.btnRender,
-              showProtegidos == "protegidos"
+              showProtegidos == 'protegidos'
                 ? styles.btnRenderSelected
                 : styles.btnRenderUnselected,
             ]}
@@ -40,7 +40,7 @@ export default function ProtegidosProtectores({ navigation }) {
           <TouchableOpacity
             style={[
               styles.btnRender,
-              showProtegidos == "protectores"
+              showProtegidos == 'protectores'
                 ? styles.btnRenderSelected
                 : styles.btnRenderUnselected,
             ]}
@@ -52,8 +52,8 @@ export default function ProtegidosProtectores({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <View id="body" style={styles.body}>
-          {showProtegidos == "protegidos" ? <Protegidos /> : <Protectores />}
+        <View id='body' style={styles.body}>
+          {showProtegidos == 'protegidos' ? <Protegidos /> : <Protectores />}
         </View>
       </View>
     </>
@@ -64,38 +64,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    position: "absolute",
-    top: "15%",
+    position: 'absolute',
+    top: '15%',
 
-    width: "100%",
-    height: "85%",
+    width: '100%',
+    height: '85%',
 
     backgroundColor: '#FFF'
   },
   btnContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
 
-    width: "100%",
-    height: "10vh",
+    width: '100%',
+    height: '10vh',
   },
   btnRender: {
-    width: "50%",
-    height: "100%",
-    display: "flex",
+    width: '50%',
+    height: '100%',
+    display: 'flex',
 
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
 
     fontSize: 20,
     fontFamily: StyleConstants.font,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   btnRenderSelected: {
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     color: StyleConstants.mainColor,
 
     borderWidth: 1,
@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
   },
   btnRenderUnselected: {
     backgroundColor: StyleConstants.mainColor,
-    color: "#FFF",
+    color: '#FFF',
   },
   body: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
 
     borderWidth: 1,
     borderColor: StyleConstants.mainColor,

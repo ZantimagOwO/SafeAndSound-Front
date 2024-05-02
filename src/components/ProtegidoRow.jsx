@@ -15,24 +15,24 @@ export default function ProtegidoRow({name, id}) {
 
 const protect = StyleSheet.create({
   row: {
-    height: "6vh",
-    width: "80%",
+    height: '6vh',
+    width: '80%',
 
-    marginTop: "5%",
+    marginTop: '5%',
 
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
 
-    border: "1px solid #68C699",
+    border: '1px solid #68C699',
     borderRadius: 5,
   },
   protectedSwordIcon: {
-    width: "10%",
-    height: "80%",
+    width: '10%',
+    height: '80%',
 
-    marginLeft: "5%",
+    marginLeft: '5%',
   },
   text: {
     color: StyleConstants.mainColor,
@@ -42,10 +42,10 @@ const protect = StyleSheet.create({
     marginLeft: '5vw',
   },
   protectedTrashIcon: {
-    width: "10%",
-    height: "80%",
+    width: '10%',
+    height: '80%',
 
-    marginLeft: "auto",
+    marginLeft: 'auto',
     marginRight: '5%'
   },
 });

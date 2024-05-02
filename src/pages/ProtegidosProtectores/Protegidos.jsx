@@ -8,13 +8,13 @@ export default function Protegidos() {
   return (
     <ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
       <View style={styles.protegidosList}>
-        <ProtegidoRow name="Protegido 1" id="1"></ProtegidoRow>
-        <ProtegidoRow name="Protegido 2" id="2"></ProtegidoRow>
-        <ProtegidoRow name="Protegido 3" id="3"></ProtegidoRow>
+        <ProtegidoRow name='Protegido 1' id='1'></ProtegidoRow>
+        <ProtegidoRow name='Protegido 2' id='2'></ProtegidoRow>
+        <ProtegidoRow name='Protegido 3' id='3'></ProtegidoRow>
       </View>
       <Text style={styles.text}>Solicitudes de protegido</Text>
       <View style={styles.protegidosList}>
-        <SolicitudProtegido name="ProtegidoNuevo" id="1"></SolicitudProtegido>
+        <SolicitudProtegido name='ProtegidoNuevo' id='1'></SolicitudProtegido>
       </View>
     </ScrollView>
   );

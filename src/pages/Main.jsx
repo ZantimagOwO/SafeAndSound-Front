@@ -13,48 +13,48 @@ const Main = ({ navigation }) => {
                 <MainPageButton
                     style={styles.button}
                     icon={require('../../assets/Main/ambulance.png')}
-                    text="Botón de emergencia"
-                    onPress={() => navigation.navigate("Boton")}
+                    text='Botón de emergencia'
+                    onPress={() => navigation.navigate('Boton')}
                 />
                 <MainPageButton
                     icon={require('../../assets/Main/shield.png')}
-                    text="Mis Protegidos y Protectores"
-                    onPress={() => navigation.navigate("ProtegidosProtectores")}
+                    text='Mis Protegidos y Protectores'
+                    onPress={() => navigation.navigate('ProtegidosProtectores')}
                 />
                 <MainPageButton
                     icon={require('../../assets/Main/legalinfo.png')}
-                    text="Información Legal"
-                    onPress={() => navigation.navigate("InformacionLegal")}
+                    text='Información Legal'
+                    onPress={() => navigation.navigate('InformacionLegal')}
                 />
                 <MainPageButton
                     icon={require('../../assets/Main/agenda.png')}
-                    text="Agenda"
-                    onPress={() => navigation.navigate("Agenda")}
+                    text='Agenda'
+                    onPress={() => navigation.navigate('Agenda')}
                 />
                 <MainPageButton
                     icon={require('../../assets/Main/extinguisher.png')}
-                    text="Guía de Supervivencia"
-                    onPress={() => navigation.navigate("Supervivencia")}
+                    text='Guía de Supervivencia'
+                    onPress={() => navigation.navigate('Supervivencia')}
                 />
                                 <MainPageButton
                     icon={require('../../assets/Main/wiki.png')}
-                    text="Wiki"
-                    onPress={() => navigation.navigate("Wiki")}
+                    text='Wiki'
+                    onPress={() => navigation.navigate('Wiki')}
                 />
                                 <MainPageButton
                     icon={require('../../assets/Main/closecenters.png')}
-                    text="Centros de Salud cercanos"
-                    onPress={() => navigation.navigate("CentrosSalud")}
+                    text='Centros de Salud cercanos'
+                    onPress={() => navigation.navigate('CentrosSalud')}
                 />
                                 <MainPageButton
                     icon={require('../../assets/Main/medinator.png')}
-                    text="Medinator"
-                    onPress={() => navigation.navigate("Medinator")}
+                    text='Medinator'
+                    onPress={() => navigation.navigate('Medinator')}
                 />
                                 <MainPageButton
                     icon={require('../../assets/Main/personalinfo.png')}
-                    text="Información personal"
-                    onPress={() => navigation.navigate("InformacionPersonal")}
+                    text='Información personal'
+                    onPress={() => navigation.navigate('InformacionPersonal')}
                 />
             </View>
         </View>

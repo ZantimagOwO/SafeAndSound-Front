@@ -1,17 +1,17 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Main from "./src/pages/Main";
-import Boton from "./src/pages/Boton";
-import ProtegidosProtectores from "./src/pages/ProtegidosProtectores/ProtegidosProtectores";
-import InformacionLegal from "./src/pages/InformacionLegal";
-import Agenda from "./src/pages/Agenda";
-import Supervivencia from "./src/pages/Supervivencia";
-import Wiki from "./src/pages/Wiki";
-import CentrosSalud from "./src/pages/CentrosSalud";
-import Medinator from "./src/pages/Medinator";
-import InformacionPersonal from "./src/pages/InformacionPersonal";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Main from './src/pages/Main';
+import Boton from './src/pages/Boton';
+import ProtegidosProtectores from './src/pages/ProtegidosProtectores/ProtegidosProtectores';
+import InformacionLegal from './src/pages/InformacionLegal';
+import Agenda from './src/pages/Agenda';
+import Supervivencia from './src/pages/Supervivencia';
+import Wiki from './src/pages/Wiki';
+import CentrosSalud from './src/pages/CentrosSalud';
+import Medinator from './src/pages/Medinator';
+import InformacionPersonal from './src/pages/InformacionPersonal';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ export default function App() {
 
     // async function loadFonts() {
     //   await Font.loadAsync({
-    //     Inter: require("./assets/fonts/Inter.ttf"), // Asegúrate de tener la ruta correcta
+    //     Inter: require('./assets/fonts/Inter.ttf'), // Asegúrate de tener la ruta correcta
     //   });
     //   setFontsLoaded(true);
     // }
@@ -40,22 +40,22 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="Main"
+          initialRouteName='Main'
         >
-          <Stack.Screen name="Main" component={Main} />
-          <Stack.Screen name="Boton" component={Boton} />
+          <Stack.Screen name='Main' component={Main} />
+          <Stack.Screen name='Boton' component={Boton} />
           <Stack.Screen
-            name="ProtegidosProtectores"
+            name='ProtegidosProtectores'
             component={ProtegidosProtectores}
           />
-          <Stack.Screen name="InformacionLegal" component={InformacionLegal} />
-          <Stack.Screen name="Agenda" component={Agenda} />
-          <Stack.Screen name="Supervivencia" component={Supervivencia} />
-          <Stack.Screen name="Wiki" component={Wiki} />
-          <Stack.Screen name="CentrosSalud" component={CentrosSalud} />
-          <Stack.Screen name="Medinator" component={Medinator} />
+          <Stack.Screen name='InformacionLegal' component={InformacionLegal} />
+          <Stack.Screen name='Agenda' component={Agenda} />
+          <Stack.Screen name='Supervivencia' component={Supervivencia} />
+          <Stack.Screen name='Wiki' component={Wiki} />
+          <Stack.Screen name='CentrosSalud' component={CentrosSalud} />
+          <Stack.Screen name='Medinator' component={Medinator} />
           <Stack.Screen
-            name="InformacionPersonal"
+            name='InformacionPersonal'
             component={InformacionPersonal}
           />
         </Stack.Navigator>
