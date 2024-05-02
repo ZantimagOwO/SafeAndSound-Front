@@ -1,8 +1,6 @@
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import Protected from "../../components/ProtegidoRow";
 import RegularHeader from "../../components/headers/RegularHeader";
-import { TouchableOpacity } from "react-native-web";
 import StyleConstants from "../../StyleConstants";
 import Protegidos from "./Protegidos";
 import Protectores from "./Protectores";
@@ -100,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     color: StyleConstants.mainColor,
 
-    borderWidth: '1px',
+    borderWidth: 1,
     borderColor: StyleConstants.mainColor,
     borderBottomColor: '#FFF'
   },
@@ -112,7 +110,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
 
-    borderWidth: '1px',
+    borderWidth: 1,
     borderColor: StyleConstants.mainColor,
     borderTopColor: '#FFF'
   },
