@@ -1,61 +1,34 @@
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import RegularHeader from '../../components/headers/RegularHeader';
 import StyleConstants from '../../StyleConstants';
-import Protegidos from './Protegidos';
-import Protectores from './Protectores';
+import ProtegidoRow from './ProtegidoRow';
+import AddProtector from './AddProtector';
+import ProtectorRow from './ProtectorRow';
 
 export default function ProtegidosProtectores({ navigation }) {
-  const [showProtegidos, setShowProtegidos] = useState('protegidos'); // Estado para controlar la visibilidad
-
-  // Función para cambiar el estado y mostrar los protegidos
-  const renderProtegidos = () => {
-    console.log('cargando protegidos')
-    setShowProtegidos('protegidos');
-  };
-
-  // Función para cambiar el estado y mostrar los protectores
-  const renderProtectores = () => {
-    console.log('cargando protectores');
-    setShowProtegidos('protectores');
-  };
 
   return (
     <>
       <RegularHeader navigation={navigation} />
-      <View style={styles.container}>
-        <View style={styles.btnContainer}>
-          <TouchableOpacity
-            style={[
-              styles.btnRender,
-              showProtegidos == 'protegidos'
-                ? styles.btnRenderSelected
-                : styles.btnRenderUnselected,
-            ]}
-            onPress={renderProtegidos}
-          ><Text>
-            Mis Protegidos
-          </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.btnRender,
-              showProtegidos == 'protectores'
-                ? styles.btnRenderSelected
-                : styles.btnRenderUnselected,
-            ]}
-            onPress={renderProtectores}
-          >
-            <Text>
-            Mis Protectores
-            </Text>
-          </TouchableOpacity>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
+        <View id="body" style={styles.body}>
+          <Text style={styles.text}>Mis protegidos</Text>
+          <View style={styles.list}>
+            <ProtegidoRow name="Protegido 1" id="1"></ProtegidoRow>
+            <ProtegidoRow name="Protegido 2" id="2"></ProtegidoRow>
+            <ProtegidoRow name="Protegido 3" id="3"></ProtegidoRow>
+          </View>
+          <Text style={styles.text}>Mis protectores</Text>
+          <View style={styles.list}>
+            <ProtectorRow name="Protectores 1" id="1"></ProtectorRow>
+          </View>
+          <Text style={styles.text}>Añadir protectores</Text>
+          <View stye={styles.list}>
+            <AddProtector name="nuevoProtector" id="nuevoProtector"/>
+          </View>
         </View>
-
-        <View id='body' style={styles.body}>
-          {showProtegidos == 'protegidos' ? <Protegidos /> : <Protectores />}
-        </View>
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -64,54 +37,52 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    position: 'absolute',
-    top: '15%',
+    position: "absolute",
+    top: "15%",
 
-    width: '100%',
-    height: '85%',
+    width: "100%",
+    height: "85%",
 
-    backgroundColor: '#FFF'
-  },
-  btnContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-
-    width: '100%',
-    height: '10vh',
-  },
-  btnRender: {
-    width: '50%',
-    height: '100%',
-    display: 'flex',
-
-    justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-
-    fontSize: 20,
-    fontFamily: StyleConstants.font,
-    fontWeight: 'bold',
-  },
-  btnRenderSelected: {
-    backgroundColor: '#FFF',
-    color: StyleConstants.mainColor,
-
-    borderWidth: 1,
-    borderColor: StyleConstants.mainColor,
-    borderBottomColor: '#FFF'
-  },
-  btnRenderUnselected: {
-    backgroundColor: StyleConstants.mainColor,
-    color: '#FFF',
+    backgroundColor: "#FFF",
   },
   body: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
 
     borderWidth: 1,
     borderColor: StyleConstants.mainColor,
-    borderTopColor: '#FFF'
+
+    display: "flex",
+    flexDirection: "column",
+  },
+  protegidos: {
+    width: "100%",
+    height: "50%",
+
+    top: "20%",
+  },
+  protectores: {
+    width: "100%",
+    height: "50%",
+  },
+  list: {
+    height: "auto",
+    width: "100%",
+
+    display: "flex",
+    position: "relative",
+    left: "10%",
+
+    marginBottom: "10%",
+  },
+  text: {
+    color: StyleConstants.mainColor,
+    fontFamily: StyleConstants.font,
+    fontSize: 40,
+
+    position: "relative",
+    left: "10%",
+
+    marginBottom: "2vh",
   },
 });

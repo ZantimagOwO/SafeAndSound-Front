@@ -1,12 +1,12 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import React from 'react'
-import StyleConstants from '../../StyleConstants';
+import { View, Text, StyleSheet, Image } from "react-native";
+import React from "react";
+import StyleConstants from "../../StyleConstants";
 
-export default function ProtectorRow({id, name}) {
+export default function ProtegidoRow({ name, id }) {
   return (
     <View style={protect.row} id={id}>
       <Image
-        source={require("../../../assets/Protectoresprotegidos/shield.png")}
+        source={require("../../../assets/Protectoresprotegidos/Sword.png")}
         style={protect.protectedSwordIcon}
         resizeMode="contain"
       />
