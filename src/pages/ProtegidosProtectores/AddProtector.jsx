@@ -17,10 +17,27 @@ export default function AddProtector({id, name}) {
 
 const styles = StyleSheet.create({
   row: {
+    height: 40,
+    width: "80%",
+
+    marginTop: "5%",
+
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+
+    borderWidth: 1,
+    borderColor: "#68C699",
+    borderRadius: 5,
   },
-  addImage: {},
+  addImage: {
+    width: "10%",
+    height: "60%",
+
+    marginRight: "2%",
+    marginLeft: "2%",
+  },
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,

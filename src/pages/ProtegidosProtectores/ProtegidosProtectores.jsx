@@ -12,7 +12,6 @@ export default function ProtegidosProtectores({ navigation }) {
     <>
       <RegularHeader navigation={navigation} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
-        <View id="body" style={styles.body}>
           <Text style={styles.text}>Mis protegidos</Text>
           <View style={styles.list}>
             <ProtegidoRow name="Protegido 1" id="1"></ProtegidoRow>
@@ -24,10 +23,9 @@ export default function ProtegidosProtectores({ navigation }) {
             <ProtectorRow name="Protectores 1" id="1"></ProtectorRow>
           </View>
           <Text style={styles.text}>Añadir protectores</Text>
-          <View stye={styles.list}>
+          <View style={styles.list}>
             <AddProtector name="nuevoProtector" id="nuevoProtector"/>
           </View>
-        </View>
       </ScrollView>
     </>
   );
@@ -35,35 +33,19 @@ export default function ProtegidosProtectores({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
     position: "absolute",
     top: "15%",
 
     width: "100%",
-    height: "85%",
+    height: "100%",
 
     backgroundColor: "#FFF",
-  },
-  body: {
-    width: "100%",
-    height: "100%",
 
     borderWidth: 1,
     borderColor: StyleConstants.mainColor,
 
     display: "flex",
     flexDirection: "column",
-  },
-  protegidos: {
-    width: "100%",
-    height: "50%",
-
-    top: "20%",
-  },
-  protectores: {
-    width: "100%",
-    height: "50%",
   },
   list: {
     height: "auto",
