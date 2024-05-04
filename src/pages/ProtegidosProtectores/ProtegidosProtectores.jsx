@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import RegularHeader from '../../components/headers/RegularHeader';
 import StyleConstants from '../../StyleConstants';
 import ProtegidoRow from './ProtegidoRow';
@@ -8,15 +8,29 @@ import ProtectorRow from './ProtectorRow';
 
 export default function ProtegidosProtectores({ navigation }) {
 
+  let [protegidos, setProtegidos] = useState([]);
+
+  const fetchProtegidos = useCallback(async () => {
+    const data = await fetch("http://localhost:3000/users/protected/1");
+    let res = await data.text();
+    setProtegidos(JSON.parse(res));
+  }, []);
+
+  useEffect(() => {
+    fetchProtegidos();
+  }, [fetchProtegidos]);
+
+  console.log(protegidos);
+
+
   return (
     <>
       <RegularHeader navigation={navigation} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
           <Text style={styles.text}>Mis protegidos</Text>
           <View style={styles.list}>
-            <ProtegidoRow name="Protegido 1" id="1"></ProtegidoRow>
-            <ProtegidoRow name="Protegido 2" id="2"></ProtegidoRow>
-            <ProtegidoRow name="Protegido 3" id="3"></ProtegidoRow>
+            {protegidos.map((protegido) => <ProtegidoRow key={protegido.Phone_ID} name={protegido.Phone} id={protegido.Phone_ID} />)
+            }
           </View>
           <Text style={styles.text}>Mis protectores</Text>
           <View style={styles.list}>
