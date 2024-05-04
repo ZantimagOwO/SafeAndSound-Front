@@ -12,6 +12,8 @@ import Wiki from './src/pages/Wiki';
 import CentrosSalud from './src/pages/CentrosSalud';
 import Medinator from './src/pages/Medinator';
 import InformacionPersonal from './src/pages/InformacionPersonal';
+import Login from './src/pages/Login-Signup/Login';
+import Signup from './src/pages/Login-Signup/Signup';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,8 @@ export default function App() {
           screenOptions={{ headerShown: false }}
           initialRouteName='Main'
         >
+          <Stack.Screen name='Login' component={Login} />
+          <Stack.Screen name='Signup' component={Signup} />
           <Stack.Screen name='Main' component={Main} />
           <Stack.Screen name='Boton' component={Boton} />
           <Stack.Screen

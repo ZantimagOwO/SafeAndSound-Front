@@ -5,11 +5,11 @@ import StyleConstants from "../../StyleConstants";
 export default function ProtegidoRow({ name, id }) {
   return (
     <View style={protect.row} id={id}>
-      <Image
+      {/* <Image
         source={require("../../../assets/Protectoresprotegidos/Sword.png")}
         style={protect.protectedSwordIcon}
         resizeMode="contain"
-      />
+      /> */}
       <Text style={protect.text}>{name}</Text>
       <Image
         source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}

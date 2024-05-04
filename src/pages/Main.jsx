@@ -56,6 +56,16 @@ const Main = ({ navigation }) => {
                     text='Información personal'
                     onPress={() => navigation.navigate('InformacionPersonal')}
                 />
+                <MainPageButton
+                    icon={require('../../assets/Main/personalinfo.png')}
+                    text='Login'
+                    onPress={() => navigation.navigate('Login')}
+                />
+                <MainPageButton
+                    icon={require('../../assets/Main/personalinfo.png')}
+                    text='Signup'
+                    onPress={() => navigation.navigate('Signup')}
+                />
             </View>
         </View>
     );
