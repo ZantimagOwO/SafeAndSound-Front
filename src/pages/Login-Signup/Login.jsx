@@ -1,17 +1,38 @@
 import {StyleSheet, View, Image, Text } from 'react-native'
 import Constants from 'expo-constants';
-import React from 'react'
+import React, { useState } from 'react'
 import InputLogin from './InputLogin'
 import Button from './Button'
 
 export default function Login({ navigation }) {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    fetch('http://localhost:3000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
+
   return (
     <View style={styles.body}>
       <View style={styles.espacio}></View>
       <Image source={require("../../../assets/login-signup/logoColor.png")} style={styles.logo}/>
       <Image source={require("../../../assets/login-signup/userIcon.png")} style={styles.userIcon}/>
-      <InputLogin icon={require("../../../assets/login-signup/userIcon.png")} label='Usuario'/>
-      <InputLogin icon={require("../../../assets/login-signup/lockIcon.png")} label='Contraseña'/>
+      <InputLogin icon={require("../../../assets/login-signup/userIcon.png")} label='Usuario' value={username} onChangeText={setUsername}/>
+      <InputLogin icon={require("../../../assets/login-signup/lockIcon.png")} label='Contraseña' value={password} onChangeText={setPassword}/>
       <View style={styles.margin}>
         <Text style={styles.textGrey}>¿Has olvidado tu contraseña?</Text>
         <Text style={styles.textBlue} onPress={console.log('Contraseña olvidada')}>   Click aquí</Text>
@@ -20,7 +41,7 @@ export default function Login({ navigation }) {
         <Text style={styles.textGrey}>¿No tienes una cuenta?</Text>
         <Text style={styles.textBlue} onPress={() => navigation.navigate('Signup')}>   Registrate aquí</Text>
       </View>
-      <Button text='Login' onPress={console.log('Login')}/>
+      <Button text='Login' onPress={handleLogin}/>
     </View>
   )
 }

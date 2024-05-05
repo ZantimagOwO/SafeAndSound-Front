@@ -7,11 +7,11 @@ export default function ProtegidoRow({ phone, id }) {
   const name = phonesToNames[phone];
   return (
     <View style={protect.row} id={id}>
-      {/* <Image
+      <Image
         source={require("../../../assets/Protectoresprotegidos/Sword.png")}
         style={protect.protectedSwordIcon}
         resizeMode="contain"
-      /> */}
+      />
       <Text style={protect.text}>{name}</Text>
       <Image
         source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}
