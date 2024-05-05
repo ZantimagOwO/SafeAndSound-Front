@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import StyleConstants from "../../StyleConstants";
+import { phonesToNames } from "../../MockContacts";
 
-export default function ProtegidoRow({ name, id }) {
+export default function ProtegidoRow({ phone, id }) {
+  const name = phonesToNames[phone];
   return (
     <View style={protect.row} id={id}>
       {/* <Image

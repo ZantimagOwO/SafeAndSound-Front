@@ -1,10 +1,11 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TextInput } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 import RegularHeader from '../../components/headers/RegularHeader';
 import StyleConstants from '../../StyleConstants';
 import ProtegidoRow from './ProtegidoRow';
 import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
+import contacts from '../../MockContacts';
 
 export default function ProtegidosProtectores({ navigation }) {
 
@@ -23,23 +24,69 @@ export default function ProtegidosProtectores({ navigation }) {
   console.log(protegidos);
 
 
+  let [protectores, setProtectores] = useState([]);
+
+  const fetchProtectores = useCallback(async () => {
+    const data = await fetch("http://localhost:3000/users/protectors/699121787");
+    let res = await data.text();
+    setProtectores(JSON.parse(res));
+  }, []);
+
+  useEffect(() => {
+    fetchProtectores();
+  }, [fetchProtectores]);
+
+  console.log(protectores)
+
+  const [textoBuscadorContactos, setBuscadorContactos] = useState('')
+
+  console.log(textoBuscadorContactos)
+
+  const contactos = contacts.filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
+
   return (
     <>
       <RegularHeader navigation={navigation} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
-          <Text style={styles.text}>Mis protegidos</Text>
+        <Text style={styles.text}>Mis protegidos</Text>
+        <View style={styles.list}>
+          {protegidos.map((protegido) => (
+            <ProtegidoRow
+              key={protegido.Phone_ID}
+              phone={protegido.Phone}
+              id={protegido.Phone_ID}
+            />
+          ))}
+        </View>
+        <Text style={styles.text}>Mis protectores</Text>
+        <View style={styles.list}>
+          {protectores.map((protectores) => (
+            <ProtectorRow
+              key={protectores.Phone_ID}
+              phone={protectores.Phone}
+              id={protectores.Phone_ID}
+            />
+          ))}
+        </View>
+        <Text style={styles.text}>Añadir protectores</Text>
+
+        <View style={styles.addContactContainer}>
+          <TextInput
+            onChangeText={setBuscadorContactos}
+            placeholder="Buscar contactos"
+            value={textoBuscadorContactos}
+            style={styles.textoBuscadorContactos}
+          />
           <View style={styles.list}>
-            {protegidos.map((protegido) => <ProtegidoRow key={protegido.Phone_ID} name={protegido.Phone} id={protegido.Phone_ID} />)
-            }
+            {contactos.map((contact) => (
+              <AddProtector
+                key={contact.id}
+                phone={contact.phones[0]}
+                id={contact.id}
+              />
+            ))}
           </View>
-          <Text style={styles.text}>Mis protectores</Text>
-          <View style={styles.list}>
-            <ProtectorRow name="Protectores 1" id="1"></ProtectorRow>
-          </View>
-          <Text style={styles.text}>Añadir protectores</Text>
-          <View style={styles.list}>
-            <AddProtector name="nuevoProtector" id="nuevoProtector"/>
-          </View>
+        </View>
       </ScrollView>
     </>
   );
@@ -81,4 +128,30 @@ const styles = StyleSheet.create({
 
     marginBottom: "2vh",
   },
+  textoBuscadorContactos: {
+    height: 40,
+    width: "80%",
+
+    marginTop: "5%",
+
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+
+    borderWidth: 1,
+    borderColor: "#68C699",
+    borderRadius: 5,
+
+    color: StyleConstants.mainColor,
+  },
+  addContactContainer: {
+    width: "100%",
+    height: "auto",
+
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    alignItems: "center",
+  }
 });

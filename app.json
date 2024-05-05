@@ -25,6 +25,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+        [
+          "expo-contacts",
+          {
+            "contactsPermission": "Allow Safe And Sound to access your contacts."
+          }
+        ]
+      ]
   }
 }

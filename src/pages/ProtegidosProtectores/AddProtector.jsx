@@ -1,10 +1,18 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Button } from 'react-native'
 import React from 'react'
 import StyleConstants from '../../StyleConstants';
+import { phonesToNames } from '../../MockContacts';
 
-export default function AddProtector({id, name}) {
+function insertProtector(phone){
+  
+}
+
+export default function AddProtector({id, phone}) {
+    const name = phonesToNames[phone];
+
   return (
     <View style={styles.row}>
+      <Button onPress={insertProtector(phone)}></Button>
       <Image
         source={require("../../../assets/Protectoresprotegidos/add.png")}
         style={styles.addImage}
