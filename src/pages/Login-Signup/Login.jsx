@@ -3,6 +3,7 @@ import Constants from 'expo-constants';
 import React, { useState } from 'react'
 import InputLogin from './InputLogin'
 import Button from './Button'
+import { serverIP } from '../../../config';
 
 export default function Login({ navigation }) {
 
@@ -10,16 +11,24 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    fetch('http://localhost:3000/users/login', {
+    fetch(`http://${serverIP}:3000/users/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
     })
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      if(data==0){
+        alert("Incorrecto")
+      }else{
+        navigation.navigate('Main');
+      }
     })
     .catch((error) => {
       console.error('Error:', error);

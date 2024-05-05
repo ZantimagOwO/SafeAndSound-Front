@@ -3,13 +3,14 @@ import Constants from 'expo-constants';
 import React from 'react'
 import { useState } from 'react';
 
-export default function Login({ label, icon }) {
+export default function inputLogin({ label, icon, onChangeText }) {
 
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <Image source={icon} style={styles.icon} />
-        <TextInput
+        <TextInput 
+          onChangeText={onChangeText}
           style={styles.inputStyle}
           placeholder={label}
           placeholderTextColor='#aaa'
