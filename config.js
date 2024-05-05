@@ -4,7 +4,7 @@ const configs = {
     santi: 'http://localhost:3000', 
   };
   
-  const activeConfig = 'mario'; 
+  const activeConfig = 'santi'; 
   
   export const serverIP = configs[activeConfig];
   
