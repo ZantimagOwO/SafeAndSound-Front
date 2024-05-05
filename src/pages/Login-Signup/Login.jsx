@@ -45,6 +45,7 @@ export default function Login({ navigation }) {
       <Image source={require("../../../assets/login-signup/userIcon.png")} style={styles.userIcon}/>
       <InputLogin icon={require("../../../assets/login-signup/userIcon.png")} label='Usuario' value={username} onChangeText={setUsername}/>
       <InputLogin icon={require("../../../assets/login-signup/lockIcon.png")} label='Contraseña' value={password} onChangeText={setPassword}/>
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <View style={styles.margin}>
         <Text style={styles.textGrey}>¿Has olvidado tu contraseña?</Text>
         <Text style={styles.textBlue} onPress={console.log('Contraseña olvidada')}>   Click aquí</Text>
@@ -100,5 +101,12 @@ const styles=StyleSheet.create({
   },
   textBlue: {
     color: '#00a3ff',
+  },
+  errorText: {
+    color: 'red',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontSize: 16,
+    marginTop: '5%',
   },
 })
