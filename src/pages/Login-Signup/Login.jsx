@@ -9,9 +9,10 @@ export default function Login({ navigation }) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = () => {
-    fetch(`http://${serverIP}:3000/users/login`, {
+    fetch(`${serverIP}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,13 +26,15 @@ export default function Login({ navigation }) {
     .then(data => {
       console.log('Success:', data);
       if(data==0){
-        alert("Incorrecto")
+        setError("Usuario o contraseña incorrectos");
       }else{
+        setError('');
         navigation.navigate('Main');
       }
     })
     .catch((error) => {
       console.error('Error:', error);
+      setError("Ha ocurrido un error al intentar conectar con el servidor.");
     });
   };
 
