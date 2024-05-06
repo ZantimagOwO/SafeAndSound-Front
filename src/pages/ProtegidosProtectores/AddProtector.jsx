@@ -1,23 +1,34 @@
-import { View, Text, Image, StyleSheet, Button } from 'react-native'
-import React from 'react'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+import React, { useCallback, useEffect } from 'react'
 import StyleConstants from '../../StyleConstants';
 import { phonesToNames } from '../../MockContacts';
+import { serverIP } from '../../../config';
 
-function insertProtector(phone){
-  
-}
 
 export default function AddProtector({id, phone}) {
+
+  const insertProtector = async () => {
+    const response = await fetch(serverIP + "/users/addProtector/1/" + phone, { method: 'POST' });
+  }
+
     const name = phonesToNames[phone];
 
   return (
     <View style={styles.row}>
-      <Button onPress={insertProtector(phone)}></Button>
-      <Image
-        source={require("../../../assets/Protectoresprotegidos/add.png")}
-        style={styles.addImage}
-        resizeMode="contain"
-      />
+      <TouchableOpacity onPress={insertProtector} style={styles.btn}>
+        <Image
+          source={require("../../../assets/Protectoresprotegidos/add.png")}
+          style={styles.addImage}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
       <Text style={styles.text}>{name}</Text>
     </View>
   );
@@ -39,16 +50,21 @@ const styles = StyleSheet.create({
     borderColor: "#68C699",
     borderRadius: 5,
   },
-  addImage: {
-    width: "10%",
-    height: "60%",
-
-    marginRight: "2%",
-    marginLeft: "2%",
-  },
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
     fontSize: 20,
   },
+  btn: {
+    width: "10%",
+    height: "80%",
+  },
+  addImage: {
+    position: "relative",
+    left: "center",
+    top: "center",
+
+    width: "100%",
+    height: "100%",
+  }
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TextInput, Image, TouchableOpacity } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 import RegularHeader from '../../components/headers/RegularHeader';
 import StyleConstants from '../../StyleConstants';
@@ -6,13 +6,14 @@ import ProtegidoRow from './ProtegidoRow';
 import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
 import contacts from '../../MockContacts';
+import { serverIP } from '../../../config';
 
 export default function ProtegidosProtectores({ navigation }) {
 
   let [protegidos, setProtegidos] = useState([]);
 
   const fetchProtegidos = useCallback(async () => {
-    const data = await fetch("http://localhost:3000/users/protected/1");
+    const data = await fetch(serverIP + "/users/protected/666970082");
     let res = await data.text();
     setProtegidos(JSON.parse(res));
   }, []);
@@ -27,7 +28,7 @@ export default function ProtegidosProtectores({ navigation }) {
   let [protectores, setProtectores] = useState([]);
 
   const fetchProtectores = useCallback(async () => {
-    const data = await fetch("http://localhost:3000/users/protectors/699121787");
+    const data = await fetch(serverIP + "/users/1/protectors");
     let res = await data.text();
     setProtectores(JSON.parse(res));
   }, []);
@@ -71,12 +72,20 @@ export default function ProtegidosProtectores({ navigation }) {
         <Text style={styles.text}>Añadir protectores</Text>
 
         <View style={styles.addContactContainer}>
-          <TextInput
-            onChangeText={setBuscadorContactos}
-            placeholder="Buscar contactos"
-            value={textoBuscadorContactos}
-            style={styles.textoBuscadorContactos}
-          />
+          <View style={styles.searchContainer}>
+            <Image
+              source={require("../../../assets/Search.png")}
+              style={styles.searchIcon}
+              resize={true}
+              resizeMode="contain"
+            />
+            <TextInput
+              onChangeText={setBuscadorContactos}
+              placeholder="Buscar contactos"
+              value={textoBuscadorContactos}
+              style={styles.searchText}
+            />
+          </View>
           <View style={styles.list}>
             {contactos.map((contact) => (
               <AddProtector
@@ -128,7 +137,20 @@ const styles = StyleSheet.create({
 
     marginBottom: "2vh",
   },
-  textoBuscadorContactos: {
+  addContactContainer: {
+    width: "100%",
+    height: "auto",
+
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    alignItems: "center",
+  },
+  searchContainer: {
+    borderWidth: 1,
+    borderColor: "#68C699",
+    borderRadius: 5,
+
     height: 40,
     width: "80%",
 
@@ -138,20 +160,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-
-    borderWidth: 1,
-    borderColor: "#68C699",
-    borderRadius: 5,
-
-    color: StyleConstants.mainColor,
   },
-  addContactContainer: {
-    width: "100%",
-    height: "auto",
+  searchText: {
+    color: StyleConstants.mainColor,
+    width: "90%",
+    height: "100%",
 
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "center",
-    alignItems: "center",
-  }
+    position: "relative",
+    left: "10%",
+  },
+  searchIcon: {
+    width: "10%",
+    height: "60%",
+
+    position: "absolute",
+  },
 });
