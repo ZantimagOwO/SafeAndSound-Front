@@ -53,8 +53,8 @@ export default function Login({ navigation }) {
       <View style={styles.espacio}></View>
       <Image source={require("../../../assets/login-signup/logoColor.png")} style={styles.logo}/>
       <Image source={require("../../../assets/login-signup/userIcon.png")} style={styles.userIcon}/>
-      <InputLogin icon={require("../../../assets/login-signup/userIcon.png")} label='Usuario' value={username} onChangeText={setUsername}/>
-      <InputLogin icon={require("../../../assets/login-signup/lockIcon.png")} label='Contraseña' value={password} onChangeText={setPassword}/>
+      <InputLogin icon={require("../../../assets/login-signup/userIcon.png")} label='Usuario' secureTextEntry={false} value={username} onChangeText={setUsername}/>
+      <InputLogin icon={require("../../../assets/login-signup/lockIcon.png")} label='Contraseña' secureTextEntry={true} value={password} onChangeText={setPassword}/>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <View style={styles.margin}>
         <Text style={styles.textGrey}>¿Has olvidado tu contraseña?</Text>

@@ -1,11 +1,10 @@
 import {StyleSheet, View, Text } from 'react-native'
 import React from 'react'
-import RegularHeader from '../components/headers/RegularHeader'
 
-export default function InformacionPersonal({navigation}) {
+export default function InputInformacionPersonal({navigation}) {
   return (
-    <View >
-      <RegularHeader navigation={navigation}/>
+    <View>
+      <Text>Hola</Text>
     </View>
   )
 }
@@ -23,3 +22,5 @@ const styles=StyleSheet.create({
     color: 'red',
   }
 })
+
+

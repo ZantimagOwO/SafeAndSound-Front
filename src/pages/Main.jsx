@@ -79,16 +79,11 @@ const Main = ({ navigation }) => {
                     text='Información personal'
                     onPress={() => navigation.navigate('InformacionPersonal')}
                 />
-                {/* <MainPageButton
+                 <MainPageButton
                     icon={require('../../assets/Main/personalinfo.png')}
-                    text='Login'
-                    onPress={() => navigation.navigate('Login')}
+                    text='InformacionInicial'
+                    onPress={() => navigation.navigate('InformacionInicial')}
                 />
-                <MainPageButton
-                    icon={require('../../assets/Main/personalinfo.png')}
-                    text='Signup'
-                    onPress={() => navigation.navigate('Signup')}
-                /> */}
             </View>
         </View>
     );

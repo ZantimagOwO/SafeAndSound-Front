@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import React from 'react'
 import { useState } from 'react';
 
-export default function inputLogin({ label, icon, onChangeText }) {
+export default function inputLogin({ label, icon, onChangeText, secureTextEntry }) {
 
   return (
     <View style={styles.container}>
@@ -14,6 +14,7 @@ export default function inputLogin({ label, icon, onChangeText }) {
           style={styles.inputStyle}
           placeholder={label}
           placeholderTextColor='#aaa'
+          secureTextEntry={secureTextEntry}
         />
       </View>
     </View>
@@ -23,7 +24,7 @@ export default function inputLogin({ label, icon, onChangeText }) {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 18,
-    marginVertical: 8,
+    marginVertical: 0,
   },
   iconContainer: {
     position: 'relative',
