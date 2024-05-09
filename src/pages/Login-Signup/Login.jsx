@@ -4,12 +4,21 @@ import React, { useState } from 'react'
 import InputLogin from './InputLogin'
 import Button from './Button'
 import { serverIP } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login({ navigation }) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const saveLogin = async (userToken) => {
+    try {
+      await AsyncStorage.setItem('user', userToken);
+    } catch (e) {
+      console.error('Error al guardar el token de login', e);
+    }
+  }
 
   const handleLogin = () => {
     fetch(`${serverIP}/users/login`, {
@@ -29,6 +38,7 @@ export default function Login({ navigation }) {
         setError("Usuario o contraseña incorrectos");
       }else{
         setError('');
+        saveLogin(data + " ");
         navigation.navigate('Main');
       }
     })

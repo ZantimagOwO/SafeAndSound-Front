@@ -51,12 +51,6 @@ const regularHeader = StyleSheet.create({
         height: 25,
         resizeMode: 'contain',
     },
-    optionsDropdown: {
-        height: 78,
-        backgroundColor: '#68C699',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
 });
 
 export default RegularHeader;

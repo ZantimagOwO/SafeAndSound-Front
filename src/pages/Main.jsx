@@ -2,13 +2,36 @@ import React from 'react';
 import MainHeader from '../components/headers/MainHeader';
 import Constants from 'expo-constants';
 import MainPageButton from '../components/buttons/MainPageButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, View } from 'react-native';
+import { useState, useEffect } from 'react';
 
 
 const Main = ({ navigation }) => {
+
+    const [user, setUser] = useState(false);
+
+    useEffect(() => {
+        const checkLogin = async () => {
+            try {
+                const usuarioToken = await AsyncStorage.getItem('user');
+                if (usuarioToken !== null) {
+                    setUser(true);
+                }else{
+                    navigation.navigate('Login')
+                }
+            } catch (e) {
+                console.error('Error al recuperar el token de login', e);
+            }
+        };
+
+        checkLogin();
+    }, []);
+
+
     return (
         <View style={styles.body}>
-            <MainHeader/>
+            <MainHeader navigation={navigation}/>
             <View style={styles.grid}>
                 <MainPageButton
                     style={styles.button}
@@ -56,7 +79,7 @@ const Main = ({ navigation }) => {
                     text='Información personal'
                     onPress={() => navigation.navigate('InformacionPersonal')}
                 />
-                <MainPageButton
+                {/* <MainPageButton
                     icon={require('../../assets/Main/personalinfo.png')}
                     text='Login'
                     onPress={() => navigation.navigate('Login')}
@@ -65,7 +88,7 @@ const Main = ({ navigation }) => {
                     icon={require('../../assets/Main/personalinfo.png')}
                     text='Signup'
                     onPress={() => navigation.navigate('Signup')}
-                />
+                /> */}
             </View>
         </View>
     );
