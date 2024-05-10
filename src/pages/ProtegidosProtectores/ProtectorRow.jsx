@@ -1,10 +1,19 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import StyleConstants from '../../StyleConstants';
 import { phonesToNames } from '../../MockContacts';
+import { serverIP } from '../../../config';
 
 export default function ProtectorRow({id, phone}) {
   const name = phonesToNames[phone];
+
+    const removeProtector = async (id) => {
+      const response = await fetch(
+        serverIP + "/users/removeProtector/1/" + phone,
+        { method: "DELETE" }
+      );
+    };
+
   return (
     <View style={protect.row} id={id}>
       <Image
@@ -13,11 +22,16 @@ export default function ProtectorRow({id, phone}) {
         resizeMode="contain"
       />
       <Text style={protect.text}>{name}</Text>
-      <Image
-        source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}
-        style={protect.protectedTrashIcon}
-        resizeMode="contain"
-      />
+      <TouchableOpacity
+        onPress={removeProtector}
+        style={protect.btn}
+      >
+        <Image
+          source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}
+          style={protect.protectedTrashIcon}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -51,10 +65,17 @@ const protect = StyleSheet.create({
     fontSize: 20,
   },
   protectedTrashIcon: {
+    position: "relative",
+    left: "center",
+    top: "center",
+
+    width: "100%",
+    height: "100%",
+  },
+  btn: {
     width: "10%",
     height: "80%",
 
-    marginLeft: "auto",
-    marginRight: "2%",
+    marginLeft: "auto"
   },
 });

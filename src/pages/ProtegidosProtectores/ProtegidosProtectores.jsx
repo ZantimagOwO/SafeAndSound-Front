@@ -24,7 +24,6 @@ export default function ProtegidosProtectores({ navigation }) {
 
   console.log(protegidos);
 
-
   let [protectores, setProtectores] = useState([]);
 
   const fetchProtectores = useCallback(async () => {
@@ -43,11 +42,21 @@ export default function ProtegidosProtectores({ navigation }) {
 
   console.log(textoBuscadorContactos)
 
-  const contactos = contacts.filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
+  let contactos = contacts.filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
+
+  // for(c in contactos){
+  //   for(p in protegidos){
+  //     if(c.phones.includes(p.Phone)){
+  //       contactos.remove(c)
+  //     }
+  //   }
+  // }
+
+  console.log("contactos: " + JSON.stringify(contactos))
 
   return (
     <>
-      <RegularHeader navigation={navigation} />
+      <RegularHeader navigation={navigation}/>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>

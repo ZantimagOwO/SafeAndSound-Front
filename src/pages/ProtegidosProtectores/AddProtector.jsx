@@ -14,12 +14,12 @@ import { serverIP } from '../../../config';
 
 export default function AddProtector({id, phone}) {
 
+  const name = phonesToNames[phone];
+
   const insertProtector = async () => {
     const response = await fetch(serverIP + "/users/addProtector/1/" + phone, { method: 'POST' });
   }
-
-    const name = phonesToNames[phone];
-
+  
   return (
     <View style={styles.row}>
       <TouchableOpacity onPress={insertProtector} style={styles.btn}>
