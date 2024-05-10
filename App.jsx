@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Main from './src/pages/Main';
@@ -15,6 +15,8 @@ import InformacionPersonal from './src/pages/InformacionPersonal';
 import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
+import { Linking } from "react-native";
+// import RNImmediatePhoneCall from "react-native-immediate-phone-call/";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,12 @@ export default function App() {
     // if (!fontsLoaded) {
     //   return <AppLoading />;
     // }
+
+    let phoneNumber = '34666970082'
+
+    const llamar = async () => {
+      RNImmediatePhoneCall.immediatePhoneCall(phoneNumber);
+    }
 
     
   return (
@@ -60,6 +68,12 @@ export default function App() {
           <Stack.Screen name='InformacionPersonal' component={InformacionPersonal}/>
         </Stack.Navigator>
       </NavigationContainer>
+
+      <TouchableOpacity onPress={llamar} style={styles.temp}>
+        <Text>
+        LLAMAR A SANTI
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -68,4 +82,8 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
   },
+  temp:{
+    position: "absolute",
+    top:50
+  }
 });

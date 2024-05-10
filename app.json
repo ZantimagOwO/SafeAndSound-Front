@@ -15,24 +15,39 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSContactsUsageDescription": "Allow Safe And Sound to access your contacts."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.CALL_PHONE"
+      ],
+      "package": "com.zantimago.SafeAndSound"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-        [
-          "expo-contacts",
-          {
-            "contactsPermission": "Allow Safe And Sound to access your contacts."
-          }
-        ]
-      ]
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow Safe And Sound to access your contacts."
+        }
+      ],
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8b73654c-eecc-490a-a691-029e80b1ef9a"
+      }
+    }
   }
 }
