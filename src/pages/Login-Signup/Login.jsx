@@ -13,7 +13,8 @@ export default function Login({ navigation }) {
 
   const saveLogin = async (userToken) => {
     try {
-      await AsyncStorage.setItem("user", userToken);
+      await AsyncStorage.setItem("userID", userToken.User_ID + "");
+      await AsyncStorage.setItem("userPhone", userToken.Phone.Phone + "");
     } catch (e) {
       console.error("Error al guardar el token de login", e);
     }
@@ -37,7 +38,7 @@ export default function Login({ navigation }) {
           setError("Usuario o contraseña incorrectos");
         } else {
           setError("");
-          saveLogin(data + "");
+          saveLogin(data);
           navigation.navigate("Main");
         }
       })

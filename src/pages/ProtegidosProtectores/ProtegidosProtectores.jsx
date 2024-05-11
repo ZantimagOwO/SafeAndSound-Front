@@ -7,13 +7,15 @@ import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
 import contacts from '../../MockContacts';
 import { serverIP } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProtegidosProtectores({ navigation }) {
 
   let [protegidos, setProtegidos] = useState([]);
 
   const fetchProtegidos = useCallback(async () => {
-    const data = await fetch(serverIP + "/users/protected/666970082");
+    const phone = await AsyncStorage.getItem('userPhone')
+    const data = await fetch(`${serverIP}/users/protected/${phone}`);
     let res = await data.text();
     setProtegidos(JSON.parse(res));
   }, []);
@@ -27,7 +29,8 @@ export default function ProtegidosProtectores({ navigation }) {
   let [protectores, setProtectores] = useState([]);
 
   const fetchProtectores = useCallback(async () => {
-    const data = await fetch(serverIP + "/users/1/protectors");
+    const user = await AsyncStorage.getItem("userID");
+    const data = await fetch(`${serverIP}/users/${user}/protectors`);
     let res = await data.text();
     setProtectores(JSON.parse(res));
   }, []);
@@ -39,8 +42,6 @@ export default function ProtegidosProtectores({ navigation }) {
   console.log(protectores)
 
   const [textoBuscadorContactos, setBuscadorContactos] = useState('')
-
-  console.log(textoBuscadorContactos)
 
   let contactos = contacts.filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
 

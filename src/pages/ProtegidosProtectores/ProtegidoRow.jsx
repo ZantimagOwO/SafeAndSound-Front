@@ -48,11 +48,11 @@ const protect = StyleSheet.create({
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
-    fontSize: 20,
+    fontSize: 15,
   },
   protectedTrashIcon: {
     width: "10%",
-    height: "80%",
+    height: "70%",
 
     marginLeft: "auto",
     marginRight: "2%",

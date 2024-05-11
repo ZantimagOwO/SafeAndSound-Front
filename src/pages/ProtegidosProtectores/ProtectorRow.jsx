@@ -8,8 +8,9 @@ export default function ProtectorRow({id, phone}) {
   const name = phonesToNames[phone];
 
     const removeProtector = async (id) => {
+    const user = await AsyncStorage.getItem("userID");
       const response = await fetch(
-        `${serverIP}/users/removeProtector/1/${phone}`,
+        `${serverIP}/users/removeProtector/${user}/${phone}`,
         { method: "DELETE" }
       );
     };
@@ -62,7 +63,7 @@ const protect = StyleSheet.create({
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
-    fontSize: 20,
+    fontSize: 15,
   },
   protectedTrashIcon: {
     position: "relative",
@@ -74,8 +75,9 @@ const protect = StyleSheet.create({
   },
   btn: {
     width: "10%",
-    height: "80%",
+    height: "70%",
 
-    marginLeft: "auto"
+    marginLeft: "auto",
+    marginRight: "2%",
   },
 });

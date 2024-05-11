@@ -6,22 +6,23 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import React, { useCallback, useEffect } from 'react'
-import StyleConstants from '../../StyleConstants';
-import { phonesToNames } from '../../MockContacts';
-import { serverIP } from '../../../config';
+import React, { useCallback, useEffect } from "react";
+import StyleConstants from "../../StyleConstants";
+import { phonesToNames } from "../../MockContacts";
+import { serverIP } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-export default function AddProtector({id, phone}) {
-
+export default function AddProtector({ id, phone }) {
   const name = phonesToNames[phone];
 
   const insertProtector = async () => {
-    console.log(AsyncStorage.getItem('user'))
-    const response = await fetch(`${serverIP}/users/addProtector/${AsyncStorage.getItem('user')}/${phone}`, { method: 'POST' });
-  }
-  
+    const user = await AsyncStorage.getItem("userID");
+    const response = await fetch(
+      `${serverIP}/users/addProtector/${user}/${phone}`,
+      { method: "POST" }
+    );
+  };
+
   return (
     <View style={styles.row}>
       <TouchableOpacity onPress={insertProtector} style={styles.btn}>
