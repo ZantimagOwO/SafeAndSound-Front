@@ -6,7 +6,7 @@ import { phonesToNames } from "../../MockContacts";
 export default function ProtegidoRow({ phone, id }) {
   const name = phonesToNames[phone];
   return (
-    <View style={protect.row} id={id}>
+    <View style={protect.row}>
       <Image
         source={require("../../../assets/Protectoresprotegidos/Sword.png")}
         style={protect.protectedSwordIcon}

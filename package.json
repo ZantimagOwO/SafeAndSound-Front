@@ -22,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.1",
+    "react-native-communications": "^2.2.1",
     "react-native-immediate-phone-call": "^2.0.0",
     "react-native-immersive": "^2.0.0",
     "react-native-phone-call": "^1.2.0",

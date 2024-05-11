@@ -56,7 +56,7 @@ export default function ProtegidosProtectores({ navigation }) {
 
   return (
     <>
-      <RegularHeader navigation={navigation}/>
+      <RegularHeader navigation={navigation} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>
@@ -79,7 +79,6 @@ export default function ProtegidosProtectores({ navigation }) {
           ))}
         </View>
         <Text style={styles.text}>Añadir protectores</Text>
-
         <View style={styles.addContactContainer}>
           <View style={styles.searchContainer}>
             <Image
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
-    fontSize: 40,
+    fontSize: 25,
 
     position: "relative",
     left: "10%",
@@ -181,7 +180,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     width: "10%",
     height: "60%",
-
-    position: "absolute",
+    position: "relative",
+    left: "10%",
   },
 });

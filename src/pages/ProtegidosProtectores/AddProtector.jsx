@@ -10,6 +10,7 @@ import React, { useCallback, useEffect } from 'react'
 import StyleConstants from '../../StyleConstants';
 import { phonesToNames } from '../../MockContacts';
 import { serverIP } from '../../../config';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export default function AddProtector({id, phone}) {
@@ -17,7 +18,8 @@ export default function AddProtector({id, phone}) {
   const name = phonesToNames[phone];
 
   const insertProtector = async () => {
-    const response = await fetch(serverIP + "/users/addProtector/1/" + phone, { method: 'POST' });
+    console.log(AsyncStorage.getItem('user'))
+    const response = await fetch(`${serverIP}/users/addProtector/${AsyncStorage.getItem('user')}/${phone}`, { method: 'POST' });
   }
   
   return (
@@ -53,11 +55,14 @@ const styles = StyleSheet.create({
   text: {
     color: StyleConstants.mainColor,
     fontFamily: StyleConstants.font,
-    fontSize: 20,
+    fontSize: 15,
+    marginLeft: "3%",
   },
   btn: {
     width: "10%",
-    height: "80%",
+    height: "60%",
+
+    marginLeft: "3%",
   },
   addImage: {
     position: "relative",
@@ -66,5 +71,5 @@ const styles = StyleSheet.create({
 
     width: "100%",
     height: "100%",
-  }
+  },
 });

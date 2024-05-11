@@ -37,7 +37,7 @@ export default function Login({ navigation }) {
           setError("Usuario o contraseña incorrectos");
         } else {
           setError("");
-          saveLogin(data + " ");
+          saveLogin(data + "");
           navigation.navigate("Main");
         }
       })

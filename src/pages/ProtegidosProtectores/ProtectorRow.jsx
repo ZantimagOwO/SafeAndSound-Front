@@ -9,13 +9,13 @@ export default function ProtectorRow({id, phone}) {
 
     const removeProtector = async (id) => {
       const response = await fetch(
-        serverIP + "/users/removeProtector/1/" + phone,
+        `${serverIP}/users/removeProtector/1/${phone}`,
         { method: "DELETE" }
       );
     };
 
   return (
-    <View style={protect.row} id={id}>
+    <View style={protect.row}>
       <Image
         source={require("../../../assets/Protectoresprotegidos/shield.png")}
         style={protect.protectedSwordIcon}
