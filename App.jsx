@@ -15,8 +15,7 @@ import InformacionPersonal from './src/pages/InformacionPersonal';
 import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
-import { Linking } from "react-native";
-// import RNImmediatePhoneCall from "react-native-immediate-phone-call/";
+import { Linking, NativeModules } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,7 +41,7 @@ export default function App() {
     let phoneNumber = '34666970082'
 
     const llamar = async () => {
-      RNImmediatePhoneCall.immediatePhoneCall(phoneNumber);
+      Linking.openURL(`tel:${phoneNumber}`)
     }
 
     
