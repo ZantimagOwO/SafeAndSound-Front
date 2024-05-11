@@ -4,7 +4,7 @@ const configs = {
   santi: "http://192.168.1.132:3000",
 };
   
-  const activeConfig = 'santi'; 
+  const activeConfig = 'mario'; 
   
   export const serverIP = configs[activeConfig];
   

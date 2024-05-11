@@ -6,19 +6,19 @@ import Button from './Button'
 
 export default function Signup({ navigation }) {
 
-  const [user, setUser] = useState('');
+  const [username, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
   const [error, setError] = useState('');
   
 
-  const handleLogin = () => {
+  const handleSignUp = () => {
     try {
       const hasLowerCase = password.match(/[a-z]/);
       const hasUpperCase = password.match(/[A-Z]/);
       const hasNumber = password.match(/\d/);
 
-      if(user.length === 0) {
+      if(username.length === 0) {
         setError("Rellena el usuario");
       }else if(password.length === 0) {
         setError("Rellena la contraseña");
@@ -28,13 +28,12 @@ export default function Signup({ navigation }) {
         setError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número");
       }else if(password !== passwordAgain) {
         setError("Las contraseñas no coinciden");
-      }else if(user.length < 5) {
+      }else if(username.length < 5) {
         setError("El usuario debe tener al menos 5 caracteres");
       }else{
         navigation.navigate('InformacionInicial', {
-          user: user,
+          username: username,
           password: password,
-          passwordAgain: passwordAgain,
         });
       }
     } catch (e) {
@@ -55,7 +54,7 @@ export default function Signup({ navigation }) {
         <Text style={styles.textGrey}>¿Ya tienes una cuenta?</Text>
         <Text style={styles.textBlue} onPress={() => navigation.navigate('Login')}>   Click aquí</Text>
       </View>
-      <Button text='Registrarse' onPress={handleLogin}/>
+      <Button text='Registrarse' onPress={handleSignUp}/>
     </View>
   )
 }

@@ -3,7 +3,7 @@ import Constants from "expo-constants";
 import React, { useState } from "react";
 import InputLogin from "./InputLogin";
 import Button from "./Button";
-
+import { serverIP } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({ navigation }) {
@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
   };
 
   const handleLogin = () => {
-    fetch(`http://192.168.1.132:3000/users/login`, {
+    fetch(`${serverIP}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

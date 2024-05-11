@@ -70,9 +70,9 @@ export default function App() {
       </NavigationContainer>
 
       <TouchableOpacity onPress={llamar} style={styles.temp}>
-        <Text>
+        {/* <Text>
         LLAMAR A SANTI
-        </Text>
+        </Text> */}
       </TouchableOpacity>
     </View>
   );
