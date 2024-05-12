@@ -79,7 +79,7 @@ const styles=StyleSheet.create({
   },
   userIcon: {
     resizeMode: 'contain',
-    height: 200,
+    height: 100,
     width: 200,
     marginLeft: 'auto',
     marginRight: 'auto',
