@@ -123,22 +123,22 @@ export default function InformacionInicial({navigation, route }) {
           <InputInformacionPersonal name={'Edad'} width={'40%'} height={50} value={edad} onChangeText={setEdad}/>
         </View>  
         <View style={styles.row2}>
-          <InputRadioButton onChange={setGrupoSanguineo} name={'Grupo sanguineo'} width={'45%'} initial={0} height={120} radio_props={radio_props = [
-    {label: 'A', value: 'A' },
-    {label: 'B', value: 'B' },
-    {label: 'AB', value: 'AB' },
-    {label: 'O', value: 'O' }
+          <InputRadioButton onChange={setGrupoSanguineo} initial={0} name={'Grupo sanguineo'} width={'45%'} height={120} radio_props={radio_props = [
+    {label: 'A', value: 0 },
+    {label: 'B', value: 1 },
+    {label: 'AB', value: 2 },
+    {label: 'O', value: 3 }
   ]}/>
           <InputRadioButton onChange={setRh} name={'Rh'} width={'35%'} height={80} initial={0} radio_props={radio_props = [
-    {label: 'Positivo', value: 1 },
-    {label: 'Negativo', value: 0 }
+    {label: 'Positivo', value: 0 },
+    {label: 'Negativo', value: 1 }
   ]}/>
         </View>
         <InputRadioButton onChange={setDiabetes} name={'Diabetes'} width={'80%'} height={120} initial={3} radio_props={radio_props = [
-    {label: 'Diabetes tipo 1', value: 1 },
-    {label: 'Diabetes tipo 2', value: 2 },
-    {label: 'Diabetes gestacional', value: 3 },
-    {label: 'Sin diabetes', value: 4 },
+    {label: 'Diabetes tipo 1', value: 0 },
+    {label: 'Diabetes tipo 2', value: 1 },
+    {label: 'Diabetes gestacional', value: 2 },
+    {label: 'Sin diabetes', value: 3 },
   ]}/>
         <InputArray name={'Alergias'} width={'80%'} height={50} placeholder={"Introduce alergia"} items={alergias} setItems={setAlergias}/>
         <InputArray name={'Otras afecciones graves'} width={'80%'} height={50} placeholder={"Introduce afección grave"} items={otrasAfecciones} setItems={setOtrasAfecciones}/>

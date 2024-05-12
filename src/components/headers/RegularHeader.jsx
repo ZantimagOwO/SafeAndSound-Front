@@ -44,7 +44,7 @@ const regularHeader = StyleSheet.create({
         marginTop: 10,
         height: 60,
         width: 90,
-        marginLeft: 20,
+        marginLeft: 25,
     },
     backImage: {
         marginTop: 8,

@@ -77,11 +77,6 @@ const Main = ({ navigation }) => {
           text="Información personal"
           onPress={() => navigation.navigate("InformacionPersonal")}
         />
-        <MainPageButton
-          icon={require("../../assets/Main/personalinfo.png")}
-          text="InformacionInicial"
-          onPress={() => navigation.navigate("InformacionInicial")}
-        />
       </View>
     </View>
   );

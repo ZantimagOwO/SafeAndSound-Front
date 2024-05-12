@@ -34,24 +34,27 @@ const mainHeader = StyleSheet.create({
         width: '100%',
     },
     mainDiv: {
+        width: '100%',
         flexWrap: 'wrap',
-        alignContent: 'space-between',
+        flexDirection: 'row',
         marginTop: Constants.statusBarHeight,
         elevation: 10,
         height: 78,
         backgroundColor: '#68C699',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        alignContent: 'center',
     },
     safeAndSoundLogo: {
+        marginTop: 10,
         height: 60,
         width: 90,
-        marginLeft: 20
+        marginLeft: 25,
     },
     logoutImage: {
-        marginRight: 25,
         height: 25,
         width: 30,
+        marginRight: 25,
         resizeMode: 'contain',
     },
 });

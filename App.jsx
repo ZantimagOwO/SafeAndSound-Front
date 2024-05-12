@@ -11,7 +11,7 @@ import Supervivencia from './src/pages/Supervivencia';
 import Wiki from './src/pages/Wiki';
 import CentrosSalud from './src/pages/CentrosSalud';
 import Medinator from './src/pages/Medinator';
-import InformacionPersonal from './src/pages/InformacionPersonal';
+import InformacionPersonal from './src/pages/InformacionPersonal/InformacionPersonal';
 import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
