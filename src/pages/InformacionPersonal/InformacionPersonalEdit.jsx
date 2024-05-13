@@ -12,7 +12,7 @@ export default function InformacionPersonalEdit({navigation}) {
 
 
 
-  const [nombre, setNombre] = useState('hola');
+  const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [telefono, setTelefono] = useState('');
   const [dni, setDni] = useState('');
@@ -143,7 +143,7 @@ export default function InformacionPersonalEdit({navigation}) {
         <InputArray name={'Alergias'} width={'80%'} height={50} placeholder={"Introduce alergia"} items={alergias} setItems={setAlergias}/>
         <InputArray name={'Otras afecciones graves'} width={'80%'} height={50} placeholder={"Introduce afección grave"} items={otrasAfecciones} setItems={setOtrasAfecciones}/>
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        <Button text="Terminar registro" onPress={handleLogin}/>
+        <Button text="Guardar datos" onPress={handleLogin}/>
         <View style={styles.espacioBlanco}/>
       </View>
     </ScrollView>

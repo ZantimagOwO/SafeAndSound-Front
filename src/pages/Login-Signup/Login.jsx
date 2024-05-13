@@ -15,6 +15,8 @@ export default function Login({ navigation }) {
     try {
       await AsyncStorage.setItem("userID", userToken.User_ID + "");
       await AsyncStorage.setItem("userPhone", userToken.Phone.Phone + "");
+      const jsonValue = JSON.stringify(userToken);
+      await AsyncStorage.setItem('user', jsonValue);
     } catch (e) {
       console.error("Error al guardar el token de login", e);
     }

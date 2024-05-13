@@ -14,19 +14,34 @@ export default function InformacionPersonal({navigation}) {
   }
 
   const [personalInfo, setPersonalInfo] = useState({
-    nombre: '',
-    apellidos: '',
-    dni: '',
-    edad: '',
-    grupoSanguineo: '',
-    diabetes: '',
-    alergias: [],
-    otrasAfecciones: []
+    Ailments: [],
+    Alergies: [],
+    Bloof_Type: null,
+    DNI: '',
+    Name: '',
+    Password: '',
+    Phone: null,
+    Surname: '',
+    User_ID: 0,
+    Username: '',
   });
 
   useEffect(() => {
+    const loadUserInfo = async () => {
+      try {
+        const jsonString = await AsyncStorage.getItem('user');
+        if (jsonString !== null) {
+          const userData = JSON.parse(jsonString);
+          setPersonalInfo(userData);
+          console.log(personalInfo)
+        }
+      } catch (e) {
+        console.error('Error al leer los datos de AsyncStorage', e);
+      }
+    };
 
-  });
+    loadUserInfo();
+  }, []);
 
   return (
     <View >
@@ -37,7 +52,7 @@ export default function InformacionPersonal({navigation}) {
       <View style={styles.flexStart}>
         <View style={styles.row}>
           <Text style={styles.green}>Nombre: </Text>
-          <Text>adsfa</Text>
+          <Text>{personalInfo.Name}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>Apellidos: </Text>

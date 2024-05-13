@@ -16,7 +16,9 @@ export default function InformacionInicial({navigation, route }) {
   const [apellidos, setApellidos] = useState('');
   const [telefono, setTelefono] = useState('');
   const [dni, setDni] = useState('');
-  const [edad, setEdad] = useState('');
+  const [dia, setDia] = useState(0);
+  const [mes, setMes] = useState(0);
+  const [anyo, setAnyo] = useState(0);
   const [grupoSanguineo, setGrupoSanguineo] = useState(0);
   const [rh, setRh] = useState(0);
   const [diabetes, setDiabetes] = useState(3);
@@ -24,6 +26,19 @@ export default function InformacionInicial({navigation, route }) {
   const [otrasAfecciones, setOtrasAfecciones] = useState([]);
 
   const [error, setError] = useState("");
+
+  const validarDia = (dia) => {
+    return dia >= 1 && dia <= 31;
+  };
+  
+  const validarMes = (mes) => {
+    return mes >= 1 && mes <= 12;
+  };
+  
+  const validarAno = (anyo) => {
+    const currentYear = new Date().getFullYear();
+    return anyo >= 1900 && anyo <= currentYear;
+  };
 
   const validarTelefono = (telefono) => {
     return /^\d{8}$/.test(telefono);
@@ -51,6 +66,11 @@ export default function InformacionInicial({navigation, route }) {
   
     if (!validarDNI(dni.trim())) {
       setError('El DNI debe tener 8 dígitos seguidos de una letra.');
+      return;
+    }
+    
+    if (!validarDia(dia) || !validarMes(mes) || !validarAno(anyo)) {
+      setError('Por favor, introduce una fecha de nacimiento válida.');
       return;
     }
 
@@ -117,11 +137,16 @@ export default function InformacionInicial({navigation, route }) {
       <View style={styles.column}>
         <InputInformacionPersonal name={'Nombre'} width={'80%'} height={50} value={nombre} onChangeText={setNombre}/>
         <InputInformacionPersonal name={'Apellidos'} width={'80%'} height={50} value={apellidos} onChangeText={setApellidos}/>
-        <InputInformacionPersonal name={'Teléfono'} width={'80%'} height={50} value={telefono} onChangeText={setTelefono}/>
         <View style={styles.row}>
+          <InputInformacionPersonal name={'Teléfono'} width={'40%'} height={50} value={telefono} onChangeText={setTelefono}/>
           <InputInformacionPersonal name={'DNI'} width={'40%'} height={50} value={dni} onChangeText={setDni}/>
-          <InputInformacionPersonal name={'Edad'} width={'40%'} height={50} value={edad} onChangeText={setEdad}/>
         </View>  
+        <Text style={styles.fecha}>Fecha de nacimiento</Text>
+        <View style={styles.row}>
+          <InputInformacionPersonal name={'Día'} width={'20%'} height={50} value={dia} onChangeText={setDia}/>
+          <InputInformacionPersonal name={'Mes'} width={'20%'} height={50} value={mes} onChangeText={setMes}/>
+          <InputInformacionPersonal name={'Año'} width={'35%'} height={50} value={anyo} onChangeText={setAnyo}/>
+        </View> 
         <View style={styles.row2}>
           <InputRadioButton onChange={setGrupoSanguineo} initial={0} name={'Grupo sanguineo'} width={'45%'} height={120} radio_props={radio_props = [
     {label: 'A', value: 0 },
@@ -130,8 +155,8 @@ export default function InformacionInicial({navigation, route }) {
     {label: 'O', value: 3 }
   ]}/>
           <InputRadioButton onChange={setRh} name={'Rh'} width={'35%'} height={80} initial={0} radio_props={radio_props = [
-    {label: 'Positivo', value: 0 },
-    {label: 'Negativo', value: 1 }
+    {label: 'Negativo', value: 0 },
+    {label: 'Positivo', value: 1 }
   ]}/>
         </View>
         <InputRadioButton onChange={setDiabetes} name={'Diabetes'} width={'80%'} height={120} initial={3} radio_props={radio_props = [
@@ -182,6 +207,10 @@ const styles=StyleSheet.create({
   },
   espacioBlanco: {
     height: 60
+},
+fecha: {
+  color: '#68C699',
+  fontSize: 18
 },
 errorText: {
   color: 'red',
