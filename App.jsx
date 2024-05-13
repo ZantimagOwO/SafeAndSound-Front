@@ -12,6 +12,7 @@ import Wiki from './src/pages/Wiki';
 import CentrosSalud from './src/pages/CentrosSalud';
 import Medinator from './src/pages/Medinator';
 import InformacionPersonal from './src/pages/InformacionPersonal/InformacionPersonal';
+import InformacionPersonalEdit from './src/pages/InformacionPersonal/InformacionPersonalEdit';
 import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
@@ -65,6 +66,7 @@ export default function App() {
           <Stack.Screen name='CentrosSalud' component={CentrosSalud} />
           <Stack.Screen name='Medinator' component={Medinator} />
           <Stack.Screen name='InformacionPersonal' component={InformacionPersonal}/>
+          <Stack.Screen name='InformacionPersonalEdit' component={InformacionPersonalEdit}/>
         </Stack.Navigator>
       </NavigationContainer>
 

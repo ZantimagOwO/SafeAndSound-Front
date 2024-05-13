@@ -1,7 +1,7 @@
 import {StyleSheet, View, Text, TextInput } from 'react-native'
 import React, {useState} from 'react'
 
-export default function InputInformacionPersonal({navigation, width, height, name, onChangeText, setValue}) {
+export default function InputInformacionPersonal({navigation, width, height, name, onChangeText, setValue, value}) {
 
 
   return (
@@ -10,7 +10,7 @@ export default function InputInformacionPersonal({navigation, width, height, nam
         <TextInput 
             onChangeText={onChangeText}
             style={styles.inputStyle}
-            value={setValue}
+            value={value}
           />
       </View>
       <View style={styles.overlay}>

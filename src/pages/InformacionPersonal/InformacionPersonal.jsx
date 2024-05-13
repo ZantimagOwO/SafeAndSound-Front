@@ -73,7 +73,7 @@ export default function InformacionPersonal({navigation}) {
           </View>
         </View>
       </View>
-      <Button text="Editar" onPress={handleEdit}/>
+      <Button text="Editar" onPress={() => navigation.navigate("InformacionPersonalEdit")}/>
     </View>
   )
 }
