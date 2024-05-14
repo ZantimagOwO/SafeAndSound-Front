@@ -12,8 +12,7 @@ import { phonesToNames } from "../../MockContacts";
 import { serverIP } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function AddProtector({ id, phone }) {
-  const name = phonesToNames[phone];
+export default function AddProtector({ id, phone, name }) {
 
   const insertProtector = async () => {
     const user = await AsyncStorage.getItem("userID");

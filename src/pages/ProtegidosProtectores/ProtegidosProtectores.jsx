@@ -5,7 +5,6 @@ import StyleConstants from '../../StyleConstants';
 import ProtegidoRow from './ProtegidoRow';
 import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
-import contacts from '../../MockContacts';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -14,8 +13,8 @@ export default function ProtegidosProtectores({ navigation }) {
   let [protegidos, setProtegidos] = useState([]);
 
   const fetchProtegidos = useCallback(async () => {
-    const phone = await AsyncStorage.getItem('userPhone')
-    const data = await fetch(`${serverIP}/users/protected/${phone}`);
+    const user_id = await AsyncStorage.getItem('userID')
+    const data = await fetch(`${serverIP}/users/protected/${user_id}`);
     let res = await data.text();
     setProtegidos(JSON.parse(res));
   }, []);
@@ -23,8 +22,6 @@ export default function ProtegidosProtectores({ navigation }) {
   useEffect(() => {
     fetchProtegidos();
   }, [fetchProtegidos]);
-
-  console.log(protegidos);
 
   let [protectores, setProtectores] = useState([]);
 
@@ -39,26 +36,35 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtectores();
   }, [fetchProtectores]);
 
-  console.log(protectores)
-
   const [textoBuscadorContactos, setBuscadorContactos] = useState('')
 
-  let contactos = contacts.filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
+  let [contactos, setContactos] = useState([])
 
-  // for(c in contactos){
-  //   for(p in protegidos){
-  //     if(c.phones.includes(p.Phone)){
-  //       contactos.remove(c)
-  //     }
-  //   }
-  // }
+  const cargarContactos = async () => {
+    let contacts = await AsyncStorage.getItem('contacts')
+    
+    let d = JSON.parse(contacts).filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
+    
+    setContactos(d)
+  }
 
-  console.log("contactos: " + JSON.stringify(contactos))
+  useEffect(() => {
+    cargarContactos();
+  }, [cargarContactos]);
+
+  const handleBuscar = (texto) => {
+    setBuscadorContactos(texto)
+    cargarContactos()
+  }
 
   return (
-    <>
+    <View style={styles.body}>
       <RegularHeader navigation={navigation} />
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={true}>
+      <ScrollView
+        style={styles.container}
+        showsVerticalScrollIndicator={true}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>
           {protegidos.map((protegido) => (
@@ -99,18 +105,24 @@ export default function ProtegidosProtectores({ navigation }) {
             {contactos.map((contact) => (
               <AddProtector
                 key={contact.id}
-                phone={contact.phones[0]}
+                phone={contact.phoneNumbers[0].number}
                 id={contact.id}
+                name={contact.name}
               />
             ))}
+            <Text style={styles.text}>-----</Text>
+            <Text style={styles.text}>-----</Text>
           </View>
         </View>
       </ScrollView>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  body: {
+    flex: 1
+  },
   container: {
     position: "absolute",
     top: "15%",
@@ -125,6 +137,8 @@ const styles = StyleSheet.create({
 
     display: "flex",
     flexDirection: "column",
+
+    marginBottom: 45,
   },
   list: {
     height: "auto",

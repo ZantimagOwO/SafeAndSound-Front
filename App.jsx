@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -17,6 +17,9 @@ import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
 import { Linking, NativeModules } from "react-native";
+import * as Contacts from "expo-contacts";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -39,11 +42,18 @@ export default function App() {
     //   return <AppLoading />;
     // }
 
-    let phoneNumber = '34666970082'
 
-    const llamar = async () => {
-      Linking.openURL(`tel:${phoneNumber}`)
-    }
+    useEffect(() => {
+      (async () => {
+        const { status } = await Contacts.requestPermissionsAsync();
+        if (status === "granted") {
+          const contacts = await Contacts.getContactsAsync({
+            fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers]});
+
+          AsyncStorage.setItem('contacts', JSON.stringify(contacts["data"]))
+        }
+      })();
+    }, []);
 
     
   return (
@@ -69,12 +79,6 @@ export default function App() {
           <Stack.Screen name='InformacionPersonalEdit' component={InformacionPersonalEdit}/>
         </Stack.Navigator>
       </NavigationContainer>
-
-      <TouchableOpacity onPress={llamar} style={styles.temp}>
-        {/* <Text>
-        LLAMAR A SANTI
-        </Text> */}
-      </TouchableOpacity>
     </View>
   );
 }

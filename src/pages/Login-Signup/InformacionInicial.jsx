@@ -48,14 +48,24 @@ export default function InformacionInicial({navigation, route }) {
     return /^\d{8}[a-zA-Z]$/.test(dni);
   };
   
-  const validarCamposRequeridos = ({ nombre, apellidos, telefono, dni, edad }) => {
-    return nombre && apellidos && telefono && dni && edad;
+  const validarCamposRequeridos = ({ nombre, apellidos, telefono, dni, dia, mes, anyo }) => {
+    return nombre && apellidos && telefono && dni && dia && mes && anyo;
   };
 
   const handleLogin = () => {
 
-    if (!validarCamposRequeridos({ nombre, apellidos, telefono, dni, edad })) {
-      setError('Por favor, completa todos los campos requeridos.');
+    if (
+      !validarCamposRequeridos({
+        nombre,
+        apellidos,
+        telefono,
+        dni,
+        dia,
+        mes,
+        anyo,
+      })
+    ) {
+      setError("Por favor, completa todos los campos requeridos.");
       return;
     }
   
@@ -70,7 +80,7 @@ export default function InformacionInicial({navigation, route }) {
     }
     
     if (!validarDia(dia) || !validarMes(mes) || !validarAno(anyo)) {
-      setError('Por favor, introduce una fecha de nacimiento válida.');
+      setError('Por favor, introduce una fecha de imiento válida.');
       return;
     }
 
@@ -93,18 +103,21 @@ export default function InformacionInicial({navigation, route }) {
   // }
 
     const requestBody = {
-    "DNI": dni.trim(),
-    "Username": username,
-    "Name": nombre,
-    "Surname": apellidos,
-    "Password": password,
-    "Phone":  telefono,
-    "Ailments": otrasAfecciones,
-    "Alergies": alergias,
-    "RH": rh,
-    "Blood_Group": grupoSanguineo,
-    "Diabetes": diabetes
-  }
+      DNI: dni.trim(),
+      Username: username,
+      Name: nombre,
+      Surname: apellidos,
+      Password: password,
+      Phone: telefono,
+      Ailments: otrasAfecciones,
+      Alergies: alergias,
+      RH: rh,
+      Blood_Group: grupoSanguineo,
+      Diabetes: diabetes + 1,
+      dia: dia,
+      mes: mes,
+      anyo: anyo
+    };
     
 
     fetch(`${serverIP}/users/`, {
