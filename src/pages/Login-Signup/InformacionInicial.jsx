@@ -7,6 +7,7 @@ import InputRadioButton from '../../components/inputs/InputRadioButton';
 import InputArray from '../../components/inputs/InputArray';
 import Button from './Button';
 import { serverIP } from "../../../config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function InformacionInicial({navigation, route }) {
 
@@ -16,8 +17,8 @@ export default function InformacionInicial({navigation, route }) {
   const [apellidos, setApellidos] = useState('');
   const [telefono, setTelefono] = useState('');
   const [dni, setDni] = useState('');
-  const [dia, setDia] = useState(0);
-  const [mes, setMes] = useState(0);
+  const [dia, setDia] = useState('');
+  const [mes, setMes] = useState('');
   const [anyo, setAnyo] = useState(0);
   const [grupoSanguineo, setGrupoSanguineo] = useState(0);
   const [rh, setRh] = useState(0);
@@ -53,6 +54,10 @@ export default function InformacionInicial({navigation, route }) {
   };
 
   const handleLogin = () => {
+
+    const diaNum = parseInt(dia, 10);
+    const mesNum = parseInt(mes, 10);
+    const anyoNum = parseInt(anyo, 10);
 
     if (
       !validarCamposRequeridos({
@@ -114,9 +119,9 @@ export default function InformacionInicial({navigation, route }) {
       RH: rh,
       Blood_Group: grupoSanguineo,
       Diabetes: diabetes + 1,
-      dia: dia,
-      mes: mes,
-      anyo: anyo
+      dia: diaNum,
+      mes: mesNum,
+      anyo: anyoNum,
     };
     
 
