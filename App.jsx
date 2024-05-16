@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Main from './src/pages/Main';
-import Boton from './src/pages/Boton';
+import Boton from './src/pages/BotonEmergencia/Boton';
 import ProtegidosProtectores from './src/pages/ProtegidosProtectores/ProtegidosProtectores';
 import InformacionLegal from './src/pages/InformacionLegal';
 import Agenda from './src/pages/Agenda';

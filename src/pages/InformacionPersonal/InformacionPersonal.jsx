@@ -24,6 +24,10 @@ export default function InformacionPersonal({navigation}) {
     Surname: '',
     User_ID: 0,
     Username: '',
+    Diabetes: 0,
+    anyoNac: 0,
+    diaNac: 0,
+    mesNac: 0,
   });
 
   useEffect(() => {
@@ -33,8 +37,9 @@ export default function InformacionPersonal({navigation}) {
         if (jsonString !== null) {
           const userData = JSON.parse(jsonString);
           setPersonalInfo(userData);
-          console.log(personalInfo)
         }
+        console.log(personalInfo)
+        console.log(JSON.parse(await AsyncStorage.getItem('user')))
       } catch (e) {
         console.error('Error al leer los datos de AsyncStorage', e);
       }
@@ -56,13 +61,15 @@ export default function InformacionPersonal({navigation}) {
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>Apellidos: </Text>
-          <Text>asdfa</Text>
+          <Text>{personalInfo.Surname}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>DNI: </Text>
-          <Text>asdf</Text>
-          <Text style={styles.green}>Edad: </Text>
-          <Text>28</Text>
+          <Text>{personalInfo.DNI}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.green}>Fecha de nacimiento: </Text>
+          <Text>{personalInfo.diaNac}/{personalInfo.mesNac}/{personalInfo.anyoNac}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>Grupo Sanguíneo: </Text>

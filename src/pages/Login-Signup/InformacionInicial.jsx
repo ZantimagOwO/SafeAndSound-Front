@@ -41,7 +41,7 @@ export default function InformacionInicial({navigation, route }) {
   };
 
   const validarTelefono = (telefono) => {
-    return /^\d{8}$/.test(telefono);
+    return /^\d{9}$/.test(telefono);
   };
   
   const validarDNI = (dni) => {
@@ -70,7 +70,7 @@ export default function InformacionInicial({navigation, route }) {
     }
   
     if (!validarTelefono(telefono)) {
-      setError('El teléfono debe tener exactamente 8 dígitos.');
+      setError('El teléfono debe tener exactamente 9 dígitos.');
       return;
     }
   
@@ -128,21 +128,50 @@ export default function InformacionInicial({navigation, route }) {
       body: JSON.stringify(requestBody),
     })
       .then((data) => {
-        console.log("Success:", data);
-        if (data == 0) {
-          setError("Usuario o contraseña incorrectos");
-        } else {
-          setError("");
-          // saveLogin(data);
-          navigation.navigate("Main");
-        }
+        console.log("Respuesta signup:", data);
+        fetchData();
+        navigation.navigate("Main");
       })
       .catch((error) => {
         console.error("Error:", error);
         setError("Ha ocurrido un error al intentar conectar con el servidor.");
       });
-    console.log(requestBody)
   };
+
+  const saveInfo = async (userToken) => {
+    try {
+      await AsyncStorage.setItem("userID", userToken.User_ID + "");
+      await AsyncStorage.setItem("userPhone", userToken.Phone.Phone + "");
+      const jsonValue = JSON.stringify(userToken);
+      await AsyncStorage.setItem('user', jsonValue);
+    } catch (e) {
+      console.error("Error al guardar el token de login", e);
+    }
+  };
+
+  const fetchData = () => {
+
+    fetch(`${serverIP}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        saveInfo(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setError("Ha ocurrido un error al intentar conectar con el servidor.");
+      });
+
+  }
 
   return (
     <ScrollView style={styles.body}>
