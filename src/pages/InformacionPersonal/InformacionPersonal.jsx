@@ -10,13 +10,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function InformacionPersonal({navigation}) {
 
   const handleEdit = () => {
-    navigation.navigate('InformacionPersonalEdit')
+    navigation.navigate('InformacionPersonalEdit', {personalInfo});
   }
 
   const [personalInfo, setPersonalInfo] = useState({
     Ailments: [],
     Alergies: [],
-    Bloof_Type: null,
+    Blood_Type: null,
     DNI: '',
     Name: '',
     Password: '',
@@ -24,11 +24,27 @@ export default function InformacionPersonal({navigation}) {
     Surname: '',
     User_ID: 0,
     Username: '',
-    Diabetes: 0,
+    Diabetes: null,
     anyoNac: 0,
     diaNac: 0,
     mesNac: 0,
   });
+
+  const getRHText = (rh) => {
+    if(rh ===  true){
+      return "Positivo";
+    }else{
+      return "Negativo";
+    }
+  };
+
+  const getDiabetesText = (diabetes) => {
+    if (diabetes === null || diabetes === '{}') {
+      return "Sin diabetes";
+    }else{
+      return diabetes.Diabetes;
+    }
+  };
 
   useEffect(() => {
     const loadUserInfo = async () => {
@@ -46,9 +62,12 @@ export default function InformacionPersonal({navigation}) {
     };
 
     loadUserInfo();
+
+    
   }, []);
 
   return (
+    
     <View >
       <RegularHeader navigation={navigation}/>
       <View>
@@ -73,29 +92,30 @@ export default function InformacionPersonal({navigation}) {
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>Grupo Sanguíneo: </Text>
-          <Text>AB Negativo</Text>
+          <Text> {personalInfo.Blood_Type ? `${personalInfo.Blood_Type.Blood_Group} ${getRHText(personalInfo.Blood_Type.RH)}` : "Sin información"}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.green}>Diabetes: </Text>
-          <Text>Sin diabetes</Text>
+          <Text>{getDiabetesText(personalInfo.Diabetes)}</Text>
         </View>
         <View>
           <Text style={styles.green}>Alergias: </Text>
           <View style={styles.array}>
-            <Text>- Alergia 1</Text>
-            <Text>- Alergia 2</Text>
-            <Text>- Alergia 3</Text>
+          {personalInfo.Alergies.map((alergia, index) => (
+              <Text key={index}>- {alergia.Alergy}</Text>
+            ))}
           </View>
         </View>
         <View>
           <Text style={styles.green}>Otras afecciones graves: </Text>
           <View style={styles.array}>
-            <Text>- Asma</Text>
-            <Text>- Epilepsia</Text>
+          {personalInfo.Ailments.map((afeccion, index) => (
+              <Text key={index}>- {afeccion.Ailment}</Text>
+            ))}
           </View>
         </View>
       </View>
-      <Button text="Editar" onPress={() => navigation.navigate("InformacionPersonalEdit")}/>
+      <Button text="Editar" onPress={handleEdit}/>
     </View>
   )
 }
