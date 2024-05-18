@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import MyButtonView from './MyButtonView';
+import CreateButtonView from './CreateButtonView';
 
 export default function Boton({ navigation }) {
 
@@ -24,7 +25,7 @@ export default function Boton({ navigation }) {
       case 'view3':
         return <Text style={styles.viewText}>Contenido del View 3</Text>;
       case 'icon':
-        return <Text style={styles.viewText}>Vista creacion</Text>;
+        return <CreateButtonView></CreateButtonView>;
       default:
         return <Text style={styles.noButtonMessage}>No tienes ningún botón por el momento</Text>;
     }
@@ -56,6 +57,9 @@ export default function Boton({ navigation }) {
           <TouchableOpacity onPress={() => setActiveView('icon')} style={[styles.icon, getIconStyle()]}>
             <Image source={require('../../../assets/Protectoresprotegidos/add.png')} />
           </TouchableOpacity>
+          <View style={styles.padreLinea}>
+            <View style={styles.linea} />
+          </View>
         </View>
       </View>
       <View style={styles.dynamicView}>
@@ -118,27 +122,34 @@ const styles = StyleSheet.create({
   },
   activeButton: {
     backgroundColor: '#fff',
-    borderColor: '#68c699',
+    borderBottomColor: '#fff',
+    borderTopColor: '#68c699',
+    borderRightColor: '#68c699',
+    borderLeftColor: '#68c699',
     borderWidth: 1,
     fontSize: 16,
   },
   inactiveButtonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+
   },
   activeButtonText: {
     color: '#68c699',
     fontSize: 16,
-    fontWeight: 'bold',
+
   },
   inactiveIcon: {
-    borderColor: 'transparent',
-    borderWidth: 0,
+    borderColor: '#68c699',
+    borderWidth: 1,
+    borderStyle: 'solid',
   },
   activeIcon: {
-    borderColor: '#68c699',
-    borderWidth: 2,
+    borderBottomColor: '#fff',
+    borderTopColor: '#68c699',
+    borderRightColor: '#68c699',
+    borderLeftColor: '#68c699',
+    borderWidth: 1,
   },
   viewText: {
     fontSize: 18,
@@ -146,5 +157,19 @@ const styles = StyleSheet.create({
   },
   colorWhite: {
     color: 'white',
+  },
+  padreLinea: {
+    height: 40,
+    width: '100%',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    // borderColor: 'red',
+    // borderWidth: 1,
+    // borderStyle: 'solid',
+  },
+  linea: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#68c699',
   },
 });

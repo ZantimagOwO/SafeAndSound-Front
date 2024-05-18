@@ -11,6 +11,7 @@ export default function InputInformacionPersonal({navigation, width, height, nam
             onChangeText={onChangeText}
             style={styles.inputStyle}
             value={value}
+            multiline={true}
           />
       </View>
       <View style={styles.overlay}>
@@ -49,6 +50,7 @@ const styles=StyleSheet.create({
     left: 10,
   },
   overlayText: {
+    fontSize: 14,
     paddingRight: 10,
     paddingLeft: 10,
     color: '#68C699'

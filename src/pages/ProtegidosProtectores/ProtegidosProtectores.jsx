@@ -10,7 +10,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProtegidosProtectores({ navigation }) {
 
-  let [protegidos, setProtegidos] = useState([]);
+  const [protegidos, setProtegidos] = useState([]);
+  const [protectores, setProtectores] = useState([]);
+  const [textoBuscadorContactos, setBuscadorContactos] = useState('');
+  const [contactos, setContactos] = useState([]);
+  
 
   const fetchProtegidos = useCallback(async () => {
     const user_id = await AsyncStorage.getItem('userID')
@@ -23,7 +27,7 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtegidos();
   }, [fetchProtegidos]);
 
-  let [protectores, setProtectores] = useState([]);
+
 
   const fetchProtectores = useCallback(async () => {
     const user = await AsyncStorage.getItem("userID");
@@ -36,9 +40,7 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtectores();
   }, [fetchProtectores]);
 
-  const [textoBuscadorContactos, setBuscadorContactos] = useState('')
 
-  let [contactos, setContactos] = useState([])
 
   const cargarContactos = async () => {
     let contacts = await AsyncStorage.getItem('contacts')
@@ -67,23 +69,31 @@ export default function ProtegidosProtectores({ navigation }) {
       >
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>
-          {protegidos.map((protegido) => (
-            <ProtegidoRow
-              key={protegido.Phone_ID}
-              phone={protegido.Phone}
-              id={protegido.Phone_ID}
-            />
-          ))}
+        {Array.isArray(protegidos) && protegidos.length > 0 ? (
+            protegidos.map((protegido) => (
+              <ProtegidoRow
+                key={protegido.Phone_ID}
+                phone={protegido.Phone}
+                id={protegido.Phone_ID}
+              />
+            ))
+          ) : (
+            <Text>No tienes protegidos aún.</Text>
+          )}
         </View>
         <Text style={styles.text}>Mis protectores</Text>
         <View style={styles.list}>
-          {protectores.map((protectores) => (
-            <ProtectorRow
-              key={protectores.Phone_ID}
-              phone={protectores.Phone}
-              id={protectores.Phone_ID}
-            />
-          ))}
+        {Array.isArray(protectores) && protectores.length > 0 ? (
+            protectores.map((protector) => (
+              <ProtectorRow
+                key={protector.Phone_ID}
+                phone={protector.Phone}
+                id={protector.Phone_ID}
+              />
+            ))
+          ) : (
+            <Text>No tienes protectores aún.</Text>
+          )}
         </View>
         <Text style={styles.text}>Añadir protectores</Text>
         <View style={styles.addContactContainer}>

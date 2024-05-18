@@ -84,6 +84,7 @@ const styles=StyleSheet.create({
     left: 10,
   },
   overlayText: {
+    fontSize: 14,
     paddingRight: 10,
     paddingLeft: 10,
     color: '#68C699'

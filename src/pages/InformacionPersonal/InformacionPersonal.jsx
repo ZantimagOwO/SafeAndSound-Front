@@ -68,7 +68,7 @@ export default function InformacionPersonal({navigation}) {
 
   return (
     
-    <View >
+    <View style={styles.container}>
       <RegularHeader navigation={navigation}/>
       <View>
         <Text style={styles.center}>INFORMACIÓN PERSONAL</Text>
@@ -121,6 +121,10 @@ export default function InformacionPersonal({navigation}) {
 }
 
 const styles=StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    height: '100%',
+  },
   center: {
     marginTop: Constants.statusBarHeight+60,
     fontSize: 20,
