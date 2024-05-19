@@ -36,6 +36,7 @@ export default function MyButtonView({ name, number, numberMessage, protectorMes
           </View>
         ))}
       </View>
+      <View style={styles.finalSpace}></View>
     </View>
   );
 }
@@ -98,4 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 10,
   },
+  finalSpace: {
+    height: 80,
+  }
 });

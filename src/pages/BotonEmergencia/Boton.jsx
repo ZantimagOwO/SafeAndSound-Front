@@ -140,9 +140,11 @@ const styles = StyleSheet.create({
 
   },
   inactiveIcon: {
-    borderColor: '#68c699',
-    borderWidth: 1,
-    borderStyle: 'solid',
+    borderTopColor: '#fff',
+    borderLeftColor: '#fff',
+    borderRightColor: '#fff',
+    borderBottomColor: '#68c699', 
+    borderWidth: 2,
   },
   activeIcon: {
     borderBottomColor: '#fff',
