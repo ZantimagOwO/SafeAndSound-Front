@@ -42,7 +42,8 @@
           "contactsPermission": "Allow Safe And Sound to access your contacts."
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-build-properties"
     ],
     "extra": {
       "eas": {
