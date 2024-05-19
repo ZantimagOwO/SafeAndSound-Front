@@ -37,9 +37,9 @@ export default function CreateButtonView() {
     const userID = await AsyncStorage.getItem("userID");
 
     const requestBody = {
-      userID,
-      nombre,
-      telefono,
+      userID: parseInt(userID),
+      nombreBoton: nombre,
+      telefonoEmergencia: telefono,
       mensajeEmergenciaNumero,
       mensajeEmergenciaProtectores,
       selectedColor,
@@ -49,7 +49,7 @@ export default function CreateButtonView() {
     console.log(requestBody)
 
     try {
-      const response = await fetch(`${serverIP}/users/create-button`, {
+      const response = await fetch(`${serverIP}/button/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
