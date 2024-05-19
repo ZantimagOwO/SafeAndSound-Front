@@ -1,8 +1,12 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputInformacionPersonal from '../../components/inputs/InputInformacionPersonal';
+import { serverIP } from '../../../config';
+import ProtectorListCheck from './ProtectorListCheck';
+import Button from '../Login-Signup/Button';
 
 export default function CreateButtonView() {
 
@@ -11,12 +15,63 @@ export default function CreateButtonView() {
   const [mensajeEmergenciaNumero, setMensajeEmergenciaNumero] = useState('');
   const [mensajeEmergenciaProtectores, setMensajeEmergenciaProtectores] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
+  const [protectores, setProtectores] = useState([]);
+  const [selectedProtectores, setSelectedProtectores] = useState({});
 
   const colors = [
     '#BF392B', '#DC6154', '#9B59B6', '#A23BCD', '#2A80B9',
     '#F1C40E', '#3FCC71', '#34AE60', '#31A084', '#3498DB',
     '#F39C13', '#D35400', '#95A5A6', '#34495E', '#000000'
   ];
+
+  const fetchProtectores = useCallback(async () => {
+    const user = await AsyncStorage.getItem("userID");
+    const data = await fetch(`${serverIP}/users/${user}/protectors`);
+    let res = await data.text();
+    console.log(res)
+    setProtectores(JSON.parse(res));
+  }, []);
+
+  const handleCreateButton = useCallback(async () => {
+
+    const userID = await AsyncStorage.getItem("userID");
+
+    const requestBody = {
+      userID,
+      nombre,
+      telefono,
+      mensajeEmergenciaNumero,
+      mensajeEmergenciaProtectores,
+      selectedColor,
+      protectores: getSelectedProtectores()
+    };
+
+    console.log(requestBody)
+
+    try {
+      const response = await fetch(`${serverIP}/users/create-button`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Button created successfully:', result);
+      } else {
+        console.error('Failed to create button:', result);
+      }
+    } catch (error) {
+      console.error('Error creating button:', error);
+    }
+  }, [nombre, telefono, mensajeEmergenciaNumero, mensajeEmergenciaProtectores, selectedColor, selectedProtectores]);
+
+
+  useEffect(() => {
+    fetchProtectores();
+  }, [fetchProtectores]);
 
   const renderColorGrid = () => {
     return colors.map((color, index) => (
@@ -27,6 +82,20 @@ export default function CreateButtonView() {
       </TouchableOpacity>
     ));
   };
+
+  const handleSelectProtector = (id, isSelected) => {
+    setSelectedProtectores(prevState => ({
+      ...prevState,
+      [id]: isSelected
+    }));
+  };
+
+  const getSelectedProtectores = () => {
+    return Object.keys(selectedProtectores)
+    .filter(key => selectedProtectores[key])
+    .map(key => parseInt(key));
+  };
+
 
   return (
     <View style={styles.body}>
@@ -50,9 +119,25 @@ export default function CreateButtonView() {
           <View style={styles.colorRow}>{renderColorGrid().slice(10, 15)}</View>
         </View>
       </View>
-      <View style={styles.column}>
+      <View style={styles.column2}>
         <Text style={styles.green}>Tus Protectores:  </Text>
+        <View style={styles.list}>
+        {Array.isArray(protectores) && protectores.length > 0 ? (
+            protectores.map((protector) => (
+              <ProtectorListCheck
+                key={protector.Phone_ID}
+                phone={protector.Phone}
+                id={protector.Phone_ID}
+                onSelect={handleSelectProtector}
+              />
+            ))
+          ) : (
+            <Text>No tienes protectores aún.</Text>
+          )}
+        </View>
       </View>
+      <Button text="Crear Botón" onPress={handleCreateButton}></Button>
+      <View style={styles.finalSpace}></View>
     </View>
   );
 }
@@ -126,5 +211,15 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
+  list: {
+    height: "auto",
+    width: "100%",
+    display: "flex",
+    position: "relative",
+    marginBottom: "10%",
+  },
+  finalSpace: {
+    height: 80,
+  }
   
 });
