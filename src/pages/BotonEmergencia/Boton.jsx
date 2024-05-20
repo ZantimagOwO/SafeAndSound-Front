@@ -1,34 +1,39 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import MyButtonView from './MyButtonView';
 import CreateButtonView from './CreateButtonView';
+import { serverIP } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Boton({ navigation }) {
 
   const [activeView, setActiveView] = useState('');
 
+  const [botones, setBotones] = useState([]);
+
+  const fetchButtons = useCallback(async () => {
+    const id = await AsyncStorage.getItem('userID')
+    const resp = await fetch(`${serverIP}/button/user/${id}`, { method: "GET" });
+    console.log('fetchedButtons: ' + resp)
+    setBotones(resp)
+  }, [])
+
+  useEffect(() => {
+    fetchButtons();
+  }, [fetchButtons]);
+
   const renderActiveView = () => {
-    switch (activeView) {
-      case 'view1':
+        let btn = activeView;
         return <MyButtonView 
-        name="SOS" 
-        number="112" 
-        numberMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-        protectorMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-        color="green"
-        protectors={[{"ProtectorName":"Protector 1", "ProtectorID":"1"}, {"ProtectorName":"Protector 2", "ProtectorID":"2"}]}
+        name={btn.name} 
+        number={btn.number}
+        numberMessage={btn.numberMessage} 
+        protectorMessage={btn.protectorMessage}
+        color={btn.color}
+        protectors={btn.protectors}
         ></MyButtonView>
-      case 'view2':
-        return <Text style={styles.viewText}>Contenido del View 2</Text>;
-      case 'view3':
-        return <Text style={styles.viewText}>Contenido del View 3</Text>;
-      case 'icon':
-        return <CreateButtonView></CreateButtonView>;
-      default:
-        return <Text style={styles.noButtonMessage}>No tienes ningún botón por el momento</Text>;
-    }
   };
 
   const getButtonStyle = (view) => {
@@ -48,12 +53,11 @@ export default function Boton({ navigation }) {
       <RegularHeader navigation={navigation} />
       <View style={styles.buttonContainer}>
         <View style={styles.buttonHeader}>
-          <TouchableOpacity onPress={() => setActiveView('view1')} style={[styles.button, getButtonStyle('view1')]}>
-            <Text style={getTextStyle('view1')}>Boton 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setActiveView('view2')} style={[styles.button, getButtonStyle('view2')]}>
-            <Text style={getTextStyle('view2')}>Boton 2</Text>
-          </TouchableOpacity>
+          {
+            botones.map((btn) => {
+              return <TouchableOpacity onPress={() => setActiveView(btn)} style={[styles.button, getButtonStyle(btn)]}></TouchableOpacity>
+            })
+          }
           <TouchableOpacity onPress={() => setActiveView('icon')} style={[styles.icon, getIconStyle()]}>
             <Image source={require('../../../assets/Protectoresprotegidos/add.png')} />
           </TouchableOpacity>
