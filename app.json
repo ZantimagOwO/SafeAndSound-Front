@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "jsc",
     "name": "SafeAndSound",
     "slug": "SafeAndSound",
     "version": "1.0.0",

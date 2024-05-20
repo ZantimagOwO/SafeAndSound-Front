@@ -1,9 +1,9 @@
-# # OSX
-# #
+# OSX
+#
 .DS_Store
 
-# # Android/IntelliJ
-# #
+# Android/IntelliJ
+#
 build/
 .idea
 .gradle
@@ -12,5 +12,5 @@ local.properties
 *.hprof
 .cxx/
 
-# # Bundle artifacts
+# Bundle artifacts
 *.jsbundle
