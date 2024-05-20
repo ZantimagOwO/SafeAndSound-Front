@@ -1,9 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
-<<<<<<< HEAD
 import React, { useEffect, useState, useCallback } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> parent of 2877542 (Boton fetch (WIP))
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import MyButtonView from './MyButtonView';
