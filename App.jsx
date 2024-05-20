@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Main from './src/pages/Main';
@@ -19,9 +19,11 @@ import Signup from './src/pages/Login-Signup/Signup';
 import { Linking, NativeModules } from "react-native";
 import * as Contacts from "expo-contacts";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { registerRootComponent } from "expo";
 
 const Stack = createNativeStackNavigator();
+
+AppRegistry.registerComponent("main", () => App);
 
 export default function App() {
 
@@ -92,3 +94,5 @@ const styles = StyleSheet.create({
     top:50
   }
 });
+
+registerRootComponent(App);
