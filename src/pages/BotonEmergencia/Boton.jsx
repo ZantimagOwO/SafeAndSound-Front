@@ -30,16 +30,14 @@ export default function Boton({ navigation }) {
     }
     
     let btn = activeView;
-    return (
-      <MyButtonView
-        name={btn.Button_Name}
-        number={btn.Button_Tlf}
-        numberMessage={btn.Emergency_Message}
-        protectorMessage={btn.Protector_Message}
-        color={btn.Color}
-        protectors={btn.Phones}
-      ></MyButtonView>
-    );
+    return <MyButtonView 
+    name={btn.name} 
+    number={btn.number}
+    numberMessage={btn.numberMessage} 
+    protectorMessage={btn.protectorMessage}
+    color={btn.color}
+    protectors={btn.protectors}
+    ></MyButtonView>
   };
 
   const getButtonStyle = (view) => {
