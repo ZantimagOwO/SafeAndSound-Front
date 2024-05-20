@@ -2,8 +2,9 @@ import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'rea
 import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
+import { phonesToNames } from '../../MockContacts';
 
-export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, protectors = [] }) {
+export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, phones = [] }) {
 
   return (
     <View style={styles.body}>
@@ -29,11 +30,11 @@ export default function MyButtonView({ name, number, numberMessage, protectorMes
       </View>
       <View style={styles.column}>
         <Text style={styles.green}>Tus Protectores:  </Text>
-        {protectors.length > 0 ? (
-          protectors.map(protector => (
-            <View key={protector.ProtectorID} style={styles.protectorContainer}>
+        {phones.length > 0 ? (
+          phones.map((phone, index) => (
+            <View key={index} style={styles.protectorContainer}>
               <Image source={require('../../../assets/Protectoresprotegidos/shield.png')} style={styles.protectorIcon} />
-              <Text style={styles.protectorName}>{protector.ProtectorName}</Text>
+              <Text style={styles.protectorName}>{phonesToNames[phone] || 'Unknown'}</Text>
             </View>
           ))
         ) : (
