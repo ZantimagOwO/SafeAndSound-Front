@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import MyButtonView from './MyButtonView';
@@ -10,7 +10,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Boton({ navigation }) {
 
   const [activeView, setActiveView] = useState('');
-
   const [botones, setBotones] = useState([]);
 
   const fetchButtons = useCallback(async () => {
@@ -25,6 +24,7 @@ export default function Boton({ navigation }) {
   }, [fetchButtons]);
 
   const renderActiveView = () => {
+
     if(activeView == 'icon'){
       return <CreateButtonView></CreateButtonView>;
     }
@@ -59,10 +59,16 @@ export default function Boton({ navigation }) {
       <RegularHeader navigation={navigation} />
       <View style={styles.buttonContainer}>
         <View style={styles.buttonHeader}>
-          {
-            botones.map((btn) => {
-              return <TouchableOpacity onPress={() => setActiveView(btn)} style={[styles.button, getButtonStyle(btn)]}></TouchableOpacity>
-            })
+         {
+            botones && botones.length > 0 ? (
+              botones.map((btn) => (
+                <TouchableOpacity key={btn.ButtonID} onPress={() => setActiveView(btn)} style={[styles.button, getButtonStyle(btn)]}>
+                  <Text style={getTextStyle(btn)}>{btn.Button_Name}</Text>
+                </TouchableOpacity>
+              ))
+            ) : (
+              <Text style={styles.noButtonMessage}>No tienes botones disponibles</Text>
+            )
           }
           <TouchableOpacity onPress={() => setActiveView('icon')} style={[styles.icon, getIconStyle()]}>
             <Image source={require('../../../assets/Protectoresprotegidos/add.png')} />

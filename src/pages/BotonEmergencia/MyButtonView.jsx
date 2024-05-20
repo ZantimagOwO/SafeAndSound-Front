@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 
-export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, protectors }) {
+export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, protectors = [] }) {
 
   return (
     <View style={styles.body}>
@@ -29,12 +29,16 @@ export default function MyButtonView({ name, number, numberMessage, protectorMes
       </View>
       <View style={styles.column}>
         <Text style={styles.green}>Tus Protectores:  </Text>
-        {protectors.map(protector => (
-          <View key={protector.ProtectorID} style={styles.protectorContainer}>
-            <Image source={require('../../../assets/Protectoresprotegidos/shield.png')} style={styles.protectorIcon}/>
-            <Text style={styles.protectorName}>{protector.ProtectorName}</Text>
-          </View>
-        ))}
+        {protectors.length > 0 ? (
+          protectors.map(protector => (
+            <View key={protector.ProtectorID} style={styles.protectorContainer}>
+              <Image source={require('../../../assets/Protectoresprotegidos/shield.png')} style={styles.protectorIcon} />
+              <Text style={styles.protectorName}>{protector.ProtectorName}</Text>
+            </View>
+          ))
+        ) : (
+          <Text style={styles.grey}>No tienes protectores asociados</Text>
+        )}
       </View>
       <View style={styles.finalSpace}></View>
     </View>
