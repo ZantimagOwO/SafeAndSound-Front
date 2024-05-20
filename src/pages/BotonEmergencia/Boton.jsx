@@ -24,15 +24,19 @@ export default function Boton({ navigation }) {
   }, [fetchButtons]);
 
   const renderActiveView = () => {
-        let btn = activeView;
-        return <MyButtonView 
-        name={btn.name} 
-        number={btn.number}
-        numberMessage={btn.numberMessage} 
-        protectorMessage={btn.protectorMessage}
-        color={btn.color}
-        protectors={btn.protectors}
-        ></MyButtonView>
+    if(activeView == 'icon'){
+      return <CreateButtonView></CreateButtonView>;
+    }
+    
+    let btn = activeView;
+    return <MyButtonView 
+    name={btn.name} 
+    number={btn.number}
+    numberMessage={btn.numberMessage} 
+    protectorMessage={btn.protectorMessage}
+    color={btn.color}
+    protectors={btn.protectors}
+    ></MyButtonView>
   };
 
   const getButtonStyle = (view) => {
