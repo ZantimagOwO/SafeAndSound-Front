@@ -4,30 +4,43 @@ import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import MyButtonView from './MyButtonView';
 import CreateButtonView from './CreateButtonView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { serverIP } from '../../../config';
 
 export default function Boton({ navigation }) {
 
   const [activeView, setActiveView] = useState('');
+  const [botones, setBotones] = useState([]);
+
+  const fetchButtons = useCallback(async () => {
+    const id = await AsyncStorage.getItem('userID')
+    const resp = await fetch(`${serverIP}/button/user/${id}`, { method: "GET" });
+    const data = await resp.json();
+    console.log('FetchedButtons: ' , data)
+    console.log(data[1].Phones)
+    setBotones(data)
+  }, [])
+
+  useEffect(() => {
+    fetchButtons();
+  }, [fetchButtons]);
 
   const renderActiveView = () => {
-    switch (activeView) {
-      case 'view1':
-        return <MyButtonView 
-        name="SOS" 
-        number="112" 
-        numberMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-        protectorMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-        color="green"
-        protectors={[{"ProtectorName":"Protector 1", "ProtectorID":"1"}, {"ProtectorName":"Protector 2", "ProtectorID":"2"}]}
-        ></MyButtonView>
-      case 'view2':
-        return <Text style={styles.viewText}>Contenido del View 2</Text>;
-      case 'view3':
-        return <Text style={styles.viewText}>Contenido del View 3</Text>;
-      case 'icon':
-        return <CreateButtonView></CreateButtonView>;
-      default:
-        return <Text style={styles.noButtonMessage}>No tienes ningún botón por el momento</Text>;
+    if (activeView === 'icon') {
+      return <CreateButtonView navigation={navigation} />;
+    } else if (activeView && typeof activeView === 'object') {
+      return (
+        <MyButtonView
+          name={activeView.Button_Name}
+          number={activeView.Button_Tlf}
+          numberMessage={activeView.Emergency_Message}
+          protectorMessage={activeView.Protector_Message}
+          color={activeView.Color}
+          phones={activeView.Phones.map(phone => phone.ProtectorPhone)}
+        />
+      );
+    } else {
+      return <Text style={styles.noButtonMessage}>No tienes ningún botón por el momento</Text>;
     }
   };
 
@@ -48,12 +61,21 @@ export default function Boton({ navigation }) {
       <RegularHeader navigation={navigation} />
       <View style={styles.buttonContainer}>
         <View style={styles.buttonHeader}>
-          <TouchableOpacity onPress={() => setActiveView('view1')} style={[styles.button, getButtonStyle('view1')]}>
-            <Text style={getTextStyle('view1')}>Boton 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setActiveView('view2')} style={[styles.button, getButtonStyle('view2')]}>
-            <Text style={getTextStyle('view2')}>Boton 2</Text>
-          </TouchableOpacity>
+        {
+            botones.length > 0 ? (
+              botones.map((btn) => (
+                <TouchableOpacity 
+                  key={btn.Button_ID} 
+                  onPress={() => setActiveView(btn)} 
+                  style={[styles.button, getButtonStyle(btn)]}
+                >
+                  <Text style={getTextStyle(btn)}>{btn.Button_Name}</Text>
+                </TouchableOpacity>
+              ))
+            ) : (
+              <Text style={styles.noButtonMessage}>No tienes botones disponibles</Text>
+            )
+          }
           <TouchableOpacity onPress={() => setActiveView('icon')} style={[styles.icon, getIconStyle()]}>
             <Image source={require('../../../assets/Protectoresprotegidos/add.png')} />
           </TouchableOpacity>
@@ -94,7 +116,7 @@ const styles = StyleSheet.create({
   button: {
     color: '#fff',
     flexDirection: 'row',
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 15,
     backgroundColor: '#68c699',
     alignItems: 'center',
