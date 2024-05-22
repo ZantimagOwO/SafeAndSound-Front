@@ -1,7 +1,7 @@
 {
   "name": "safeandsound",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "App.jsx",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
@@ -12,7 +12,7 @@
     "build-assets": "index.bat",
     "bundle-android": "react-native bundle --platform android --dev false --entry-file App.jsx --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "run-android": "npx expo run:android",
-    "build-android": "npm run config && npm run prebuild-clean && npm run build-assets && npm run bundle-android && npm run run-android"
+    "build-android": "npm run build-assets && npm run bundle-android && npm run run-android"
   },
   "dependencies": {
     "@expo/metro-config": "^0.18.4",
@@ -35,6 +35,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.1",
+    "react-native-android-widget": "^0.14.0",
     "react-native-communications": "^2.2.1",
     "react-native-contacts": "^7.0.8",
     "react-native-immersive": "^2.0.0",
