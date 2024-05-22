@@ -26,12 +26,10 @@ import {
 } from "react-native-android-widget";
 import { HelloWidgetPreviewScreen } from './src/widget/Widgetpreview';
 import { widgetTaskHandler } from './src/widget/widget-task-handler';
+import SharedGroupPreferences from "react-native-shared-group-preferences";
 
 const Stack = createNativeStackNavigator();
-
-AppRegistry.registerComponent("main", () => App);
-registerRootComponent(App)
-registerWidgetTaskHandler(widgetTaskHandler);
+const SharedStorage = NativeModules.SharedStorage;
 
 export default function App() {
 
