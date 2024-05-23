@@ -1,35 +1,8 @@
-import React, { useEffect } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Main from "./src/pages/Main";
-import Boton from "./src/pages/BotonEmergencia/Boton";
+import { Stack } from "expo-router";
 import ProtegidosProtectores from "./src/pages/ProtegidosProtectores/ProtegidosProtectores";
-import InformacionLegal from "./src/pages/InformacionLegal";
-import Agenda from "./src/pages/Agenda";
-import Supervivencia from "./src/pages/Supervivencia";
-import Wiki from "./src/pages/Wiki";
-import CentrosSalud from "./src/pages/CentrosSalud";
-import Medinator from "./src/pages/Medinator";
-import InformacionPersonal from "./src/pages/InformacionPersonal/InformacionPersonal";
-import InformacionPersonalEdit from "./src/pages/InformacionPersonal/InformacionPersonalEdit";
-import InformacionInicial from "./src/pages/Login-Signup/InformacionInicial";
-import Login from "./src/pages/Login-Signup/Login";
-import Signup from "./src/pages/Login-Signup/Signup";
-import { Linking, NativeModules } from "react-native";
-//import * as Contacts from "expo-contacts";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
-import { registerRootComponent } from "expo";
+import { View } from "react-native-reanimated/lib/typescript/Animated";
 
-const Stack = createNativeStackNavigator();
-
-export default function Index() {
+export default function RootLayout() {
   return (
     <View style={styles.body}>
       <NavigationContainer>
@@ -68,13 +41,3 @@ export default function Index() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-  },
-  temp: {
-    position: "absolute",
-    top: 50,
-  },
-});
