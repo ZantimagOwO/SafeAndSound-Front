@@ -1,64 +1,36 @@
 {
   "expo": {
-    "jsEngine": "jsc",
     "name": "SafeAndSound",
     "slug": "SafeAndSound",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSContactsUsageDescription": "Allow Safe And Sound to access your contacts."
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "permissions": [
-        "android.permission.READ_CONTACTS",
-        "android.permission.WRITE_CONTACTS",
-        "android.permission.CALL_PHONE"
-      ],
-      "package": "com.zantimago.SafeAndSound"
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      [
-        "expo-contacts",
-        {
-          "contactsPermission": "Allow Safe And Sound to access your contacts."
-        }
-      ],
-      "expo-font",
-      [
-        "expo-build-properties",
-        {
-          "android" : {
-            "usesCleartextTraffic": true
-          }
-        }
-
-      ]
-      
+      "expo-router"
     ],
-    "extra": {
-      "eas": {
-        "projectId": "8b73654c-eecc-490a-a691-029e80b1ef9a"
-      }
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
