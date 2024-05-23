@@ -1,1 +1,0 @@
-set EXPO_NO_GIT_STATUS=1

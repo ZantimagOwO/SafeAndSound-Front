@@ -8,7 +8,7 @@ import { serverIP } from '../../../config';
 import ProtectorListCheck from './ProtectorListCheck';
 import Button from '../Login-Signup/Button';
 
-export default function CreateButtonView({navigation}) {
+export default function CreateButtonView() {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -49,7 +49,7 @@ export default function CreateButtonView({navigation}) {
     console.log(requestBody)
 
     try {
-      const response = await fetch(`${serverIP}/button`, {
+      const response = await fetch(`${serverIP}/button/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -60,7 +60,6 @@ export default function CreateButtonView({navigation}) {
       const result = await response.json();
       if (response.ok) {
         console.log('Button created successfully:', result);
-        navigation.navigate("Main");
       } else {
         console.error('Failed to create button:', result);
       }
