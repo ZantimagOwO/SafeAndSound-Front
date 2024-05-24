@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -17,7 +17,7 @@ import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
 import { Linking, NativeModules } from "react-native";
-import * as Contacts from "expo-contacts";
+// import * as Contacts from "expo-contacts";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { registerRootComponent } from "expo";
 
@@ -27,18 +27,18 @@ AppRegistry.registerComponent("main", () => App);
 
 export default function App() {
 
-    // const [fontsLoaded, setFontsLoaded] = useState(false);
+    const [fontsLoaded, setFontsLoaded] = useState(false);
 
-    // async function loadFonts() {
-    //   await Font.loadAsync({
-    //     Inter: require('./assets/fonts/Inter.ttf'), // Asegúrate de tener la ruta correcta
-    //   });
-    //   setFontsLoaded(true);
-    // }
+    async function loadFonts() {
+      await Font.loadAsync({
+        Inter: require('./assets/Fonts/Inter.ttf'), // Asegúrate de tener la ruta correcta
+      });
+      setFontsLoaded(true);
+    }
 
-    // useEffect(() => {
-    //   loadFonts();
-    // }, []);
+    useEffect(() => {
+      loadFonts();
+    }, []);
 
     // if (!fontsLoaded) {
     //   return <AppLoading />;

@@ -5,6 +5,10 @@ import MainPageButton from "../components/buttons/MainPageButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
+import { registerRootComponent } from 'expo';
+import App from '../../App';
+
+registerRootComponent(App);
 
 const Main = ({ navigation }) => {
   const [user, setUser] = useState(false);

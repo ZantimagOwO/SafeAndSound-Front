@@ -1,6 +1,6 @@
 {
   "expo": {
-    "jsEngine": "jsc",
+    "jsEngine": "hermes",
     "name": "SafeAndSound",
     "slug": "SafeAndSound",
     "version": "1.0.0",
@@ -12,48 +12,31 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "infoPlist": {
-        "NSContactsUsageDescription": "Allow Safe And Sound to access your contacts."
-      }
+      "jsEngine": "jsc"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "android.permission.READ_CONTACTS",
-        "android.permission.WRITE_CONTACTS",
-        "android.permission.CALL_PHONE"
-      ],
       "package": "com.zantimago.SafeAndSound"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-contacts",
-        {
-          "contactsPermission": "Allow Safe And Sound to access your contacts."
-        }
-      ],
       "expo-font",
       [
         "expo-build-properties",
         {
-          "android" : {
+          "android": {
             "usesCleartextTraffic": true
           }
         }
-
       ]
-      
     ],
     "extra": {
       "eas": {
