@@ -27,18 +27,18 @@ AppRegistry.registerComponent("main", () => App);
 
 export default function App() {
 
-    const [fontsLoaded, setFontsLoaded] = useState(false);
+    // const [fontsLoaded, setFontsLoaded] = useState(false);
 
-    async function loadFonts() {
-      await Font.loadAsync({
-        Inter: require('./assets/Fonts/Inter.ttf'), // Asegúrate de tener la ruta correcta
-      });
-      setFontsLoaded(true);
-    }
+    // async function loadFonts() {
+    //   await Font.loadAsync({
+    //     Inter: require('./assets/Fonts/Inter.ttf'), // Asegúrate de tener la ruta correcta
+    //   });
+    //   setFontsLoaded(true);
+    // }
 
-    useEffect(() => {
-      loadFonts();
-    }, []);
+    // useEffect(() => {
+    //   loadFonts();
+    // }, []);
 
     // if (!fontsLoaded) {
     //   return <AppLoading />;
