@@ -11,11 +11,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function InformacionPersonalEdit({navigation, route }) {
 
-  const { personalInfo } = route.params;
+  const { personalInfo } = route.params || {};
 
-  console.log(personalInfo.Diabetes.Diabetes_ID)
-  console.log(personalInfo.Alergies)
+  if (!personalInfo) {
+    return <Text>Error: Información personal no encontrada o incompleta.</Text>;
+  }
 
+  console.log("holalaaaaaaa", personalInfo)
   const bloodGroupMap = {
     'A': 0,
     'B': 1,
@@ -32,7 +34,7 @@ export default function InformacionPersonalEdit({navigation, route }) {
   const [anyo, setAnyo] = useState(personalInfo.anyoNac.toString() || '');
   const [grupoSanguineo, setGrupoSanguineo] = useState(bloodGroupMap[personalInfo.Blood_Type?.Blood_Group] || 0);
   const [rh, setRh] = useState(personalInfo.Blood_Type?.RH ? 1 : 0);
-  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes.Diabetes_ID !== null ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
+  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes !== null ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
   const [alergias, setAlergias] = useState(personalInfo.Alergies.map(alergia => alergia.Alergy) || []);
   const [otrasAfecciones, setOtrasAfecciones] = useState(personalInfo.Ailments.map(ailment => ailment.Ailment) || []);
 
@@ -119,10 +121,8 @@ export default function InformacionPersonalEdit({navigation, route }) {
 
     const requestBody = {
       DNI: dni.trim(),
-      Username: username,
       Name: nombre,
       Surname: apellidos,
-      Password: password,
       Phone: telefono,
       Ailments: otrasAfecciones,
       Alergies: alergias,
@@ -225,7 +225,7 @@ export default function InformacionPersonalEdit({navigation, route }) {
         <InputArray name={'Alergias'} width={'80%'} height={50} placeholder={"Introduce alergia"} items={alergias} setItems={setAlergias}/>
         <InputArray name={'Otras afecciones graves'} width={'80%'} height={50} placeholder={"Introduce afección grave"} items={otrasAfecciones} setItems={setOtrasAfecciones}/>
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        <Button text="Terminar registro" onPress={handleLogin}/>
+        <Button text="Editar información" onPress={handleLogin}/>
         <View style={styles.espacioBlanco}/>
       </View>
     </ScrollView>
