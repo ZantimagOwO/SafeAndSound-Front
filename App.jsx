@@ -89,7 +89,7 @@ registerRootComponent(App);
 
 export const cargarContactos = async () => {
 
-        const { status } = await Contacts.requestPermissionsAsync();
+      const { status } = await Contacts.requestPermissionsAsync();
 
       if (status === "granted") {
         const data = (
@@ -115,8 +115,6 @@ export const cargarContactos = async () => {
         // Crear un nuevo objeto ordenado
         const sortedDictionary = Object.fromEntries(entries);
 
-        console.log("CONTACTS: " + JSON.stringify(sortedDictionary));
-
-        AsyncStorage.setItem("phonesToNames", JSON.stringify(contacts));
+        AsyncStorage.setItem("contacts", JSON.stringify(sortedDictionary));
       }
 }

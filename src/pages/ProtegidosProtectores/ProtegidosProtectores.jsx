@@ -7,12 +7,13 @@ import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { contacts } from '../../../App';
+// import { contacts } from '../../../App';
 
 export default function ProtegidosProtectores({ navigation }) {
 
   const [protegidos, setProtegidos] = useState([]);
   const [protectores, setProtectores] = useState([]);
+  const [contactos, setContactos] = useState({});
   const [textoBuscadorContactos, setBuscadorContactos] = useState('');
   
 
@@ -27,7 +28,14 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtegidos();
   }, [fetchProtegidos]);
 
+  const getContactsAsync = useCallback(async () => {
+    let t = await AsyncStorage.getItem("contacts");
+    setContactos(JSON.parse(t));
+  })
 
+  useEffect(() => {
+    getContactsAsync()
+  })
 
   const fetchProtectores = useCallback(async () => {
     const user = await AsyncStorage.getItem("userID");
@@ -96,7 +104,7 @@ export default function ProtegidosProtectores({ navigation }) {
             />
           </View>
           <View style={styles.list}>
-            {Object.entries(contacts).map(([phone, name]) => (
+            {Object.entries(contactos).map(([phone, name]) => (
               <AddProtector
                 key={phone}
                 phone={phone}

@@ -22,10 +22,10 @@ export default function AddProtector({phone, name, setProtectores, protectores }
 
     Linking.openURL(`sms:666970082?body=${msg}`)
 
-    const response = await fetch(
-      `${serverIP}/users/addProtector/${user}/${phone}`,
-      { method: "POST" }
-    );
+    // const response = await fetch(
+    //   `${serverIP}/users/addProtector/${user}/${phone}`,
+    //   { method: "POST" }
+    // );
   };
 
   return (
