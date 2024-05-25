@@ -16,9 +16,12 @@ export default function AddProtector({phone, name, setProtectores, protectores }
 
   const insertProtector = async () => {
 
-    Linking.openURL()
-
     const user = await AsyncStorage.getItem("userID");
+    
+    let msg = `Hola! Me gustaría tenrte como protector en caso de emergencia usando Safe and Sound! Si te parece bien, abre este link: ${serverIP}/users/addProtector/${user}/${phone}`
+
+    Linking.openURL(`sms:666970082?body=${msg}`)
+
     const response = await fetch(
       `${serverIP}/users/addProtector/${user}/${phone}`,
       { method: "POST" }

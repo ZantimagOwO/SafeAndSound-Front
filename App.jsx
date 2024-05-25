@@ -92,16 +92,30 @@ export const cargarContactos = async () => {
         const { status } = await Contacts.requestPermissionsAsync();
 
       if (status === "granted") {
-        const data = (await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.Name],
-        })).data;
+        const data = (
+          await Contacts.getContactsAsync({
+            fields: [
+              Contacts.Fields.PhoneNumbers,
+              Contacts.Fields.Name
+            ],
+            sort: "firstName",
+          })
+        ).data;
 
         data.forEach(c => {
-          let phon = c.phoneNumbers[0].number
+          let phon = c.phoneNumbers[0].number.replace(/\s+/g, "");
           contacts[phon] = c.name;
         })
 
-        console.log("CONTACTS: " + JSON.stringify(contacts));
+        const entries = Object.entries(contacts);
+
+        // Ordenar la matriz por los valores (nombres)
+        entries.sort((a, b) => a[1].localeCompare(b[1]));
+
+        // Crear un nuevo objeto ordenado
+        const sortedDictionary = Object.fromEntries(entries);
+
+        console.log("CONTACTS: " + JSON.stringify(sortedDictionary));
 
         AsyncStorage.setItem("phonesToNames", JSON.stringify(contacts));
       }
