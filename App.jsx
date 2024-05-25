@@ -17,7 +17,7 @@ import InformacionInicial from './src/pages/Login-Signup/InformacionInicial';
 import Login from './src/pages/Login-Signup/Login';
 import Signup from './src/pages/Login-Signup/Signup';
 import { Linking, NativeModules } from "react-native";
-// import * as Contacts from "expo-contacts";
+import * as Contacts from "expo-contacts";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { registerRootComponent } from "expo";
 
@@ -43,7 +43,6 @@ export default function App() {
     // if (!fontsLoaded) {
     //   return <AppLoading />;
     // }
-
 
     useEffect(() => {
       (async () => {
