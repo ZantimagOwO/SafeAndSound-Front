@@ -48,14 +48,10 @@ export default function ProtegidosProtectores({ navigation }) {
   return (
     <View style={styles.body}>
       <RegularHeader navigation={navigation} />
-      <ScrollView
-        style={styles.container}
-        // showsVerticalScrollIndicator={true}
-        // contentContainerStyle={{ flexGrow: 1 }}
-      >
+      <ScrollView style={styles.container}>
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>
-        {Array.isArray(protegidos) && protegidos.length > 0 ? (
+          {Array.isArray(protegidos) && protegidos.length > 0 ? (
             protegidos.map((protegido) => (
               <ProtegidoRow
                 key={protegido.Phone_ID}
@@ -69,12 +65,14 @@ export default function ProtegidosProtectores({ navigation }) {
         </View>
         <Text style={styles.text}>Mis protectores</Text>
         <View style={styles.list}>
-        {Array.isArray(protectores) && protectores.length > 0 ? (
+          {Array.isArray(protectores) && protectores.length > 0 ? (
             protectores.map((protector) => (
               <ProtectorRow
                 key={protector.Phone_ID}
                 phone={protector.Phone}
                 id={protector.Phone_ID}
+                setProtectores={setProtectores}
+                protectores={protectores}
               />
             ))
           ) : (
@@ -98,16 +96,16 @@ export default function ProtegidosProtectores({ navigation }) {
             />
           </View>
           <View style={styles.list}>
-            {
-            Object.entries(contacts).map(([phone, name]) => (
+            {Object.entries(contacts).map(([phone, name]) => (
               <AddProtector
                 key={phone}
                 phone={phone}
                 id={phone}
                 name={name}
+                setProtectores={setProtectores}
+                protectores={protectores}
               />
-            ))
-            }
+            ))}
             <Text style={styles.text}>-----</Text>
             <Text style={styles.text}>-----</Text>
           </View>

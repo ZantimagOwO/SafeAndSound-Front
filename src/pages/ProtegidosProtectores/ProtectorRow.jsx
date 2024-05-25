@@ -5,16 +5,21 @@ import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { contacts } from '../../../App';
 
-export default function ProtectorRow({ id, phone, protectores, setProtectores}) {
-  let name = contacts[phone] || phone
+export default function ProtectorRow({ id, phone, protectores, setProtectores }) {
+  let name = contacts[phone] || phone;
 
   const removeProtector = async (id) => {
+
+    setProtectores((protectores) =>
+      protectores.filter((protector) => protector.Phone !== phone)
+    );
+
     const user = await AsyncStorage.getItem("userID");
     const response = await fetch(
       `${serverIP}/users/removeProtector/${user}/${phone}`,
       { method: "DELETE" }
     );
-    setProtectores(response);
+
   };
 
   return (

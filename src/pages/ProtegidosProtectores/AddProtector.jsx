@@ -5,16 +5,19 @@ import {
   StyleSheet,
   Button,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import React, { useCallback, useEffect } from "react";
 import StyleConstants from "../../StyleConstants";
-import { phonesToNames } from "../../MockContacts";
 import { serverIP } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function AddProtector({phone, name }) {
+export default function AddProtector({phone, name, setProtectores, protectores }) {
 
   const insertProtector = async () => {
+
+    Linking.openURL()
+
     const user = await AsyncStorage.getItem("userID");
     const response = await fetch(
       `${serverIP}/users/addProtector/${user}/${phone}`,
