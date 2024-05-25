@@ -68,21 +68,17 @@ export default function Boton({ navigation }) {
     <ScrollView style={styles.body}>
       <RegularHeader navigation={navigation} />
       <View style={styles.buttonContainer}>
-        <View style={styles.buttonHeader}>
+      <View style={styles.buttonHeader}>
         {
-            botones.length > 0 ? (
-              botones.map((btn) => (
-                <TouchableOpacity 
-                  key={btn.Button_ID} 
-                  onPress={() => setActiveView(btn)} 
-                  style={[styles.button, getButtonStyle(btn)]}
-                >
-                  <Text style={getTextStyle(btn)}>{btn.Button_Name}</Text>
-                </TouchableOpacity>
-              ))
-            ) : (
-              <Text style={styles.noButtonMessage}>No tienes botones disponibles</Text>
-            )
+            botones.length > 0 && botones.map((btn) => (
+              <TouchableOpacity 
+                key={btn.Button_ID} 
+                onPress={() => setActiveView(btn)} 
+                style={[styles.button, getButtonStyle(btn)]}
+              >
+                <Text style={getTextStyle(btn)}>{btn.Button_Name}</Text>
+              </TouchableOpacity>
+            ))
           }
           <TouchableOpacity onPress={() => setActiveView('icon')} style={[styles.icon, getIconStyle()]}>
             <Image source={require('../../../assets/Protectoresprotegidos/add.png')} />

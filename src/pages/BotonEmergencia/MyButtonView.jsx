@@ -45,7 +45,6 @@ export default function MyButtonView({setReload,id, name, number, numberMessage,
               const text = await response.text();
               data = text ? JSON.parse(text) : {};
             } catch (error) {
-              console.error('La respuesta no es JSON:', error);
               data = null;
             }
             Alert.alert('Botón eliminado');
