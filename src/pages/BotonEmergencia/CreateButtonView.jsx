@@ -8,7 +8,7 @@ import { serverIP } from '../../../config';
 import ProtectorListCheck from './ProtectorListCheck';
 import Button from '../Login-Signup/Button';
 
-export default function CreateButtonView({navigation}) {
+export default function CreateButtonView({navigation, setReload}) {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -60,7 +60,7 @@ export default function CreateButtonView({navigation}) {
       const result = await response.json();
       if (response.ok) {
         console.log('Button created successfully:', result);
-        navigation.navigate("Main");
+        setReload(prev => !prev);
       } else {
         console.error('Failed to create button:', result);
       }

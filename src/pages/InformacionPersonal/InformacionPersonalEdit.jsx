@@ -17,7 +17,6 @@ export default function InformacionPersonalEdit({navigation, route }) {
     return <Text>Error: Información personal no encontrada o incompleta.</Text>;
   }
 
-  console.log("holalaaaaaaa", personalInfo)
   const bloodGroupMap = {
     'A': 0,
     'B': 1,

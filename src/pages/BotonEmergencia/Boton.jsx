@@ -11,6 +11,7 @@ export default function Boton({ navigation }) {
 
   const [activeView, setActiveView] = useState('');
   const [botones, setBotones] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const fetchButtons = useCallback(async () => {
     const id = await AsyncStorage.getItem('userID')
@@ -18,18 +19,26 @@ export default function Boton({ navigation }) {
     const data = await resp.json();
     console.log('FetchedButtons: ' , data)
     setBotones(data)
+    if (data.length > 0) {
+      setActiveView(data[0]); 
+    } else {
+      setActiveView(null); 
+    }
   }, [])
 
   useEffect(() => {
     fetchButtons();
-  }, [fetchButtons]);
+  }, [fetchButtons, reload]);
 
   const renderActiveView = () => {
     if (activeView === 'icon') {
-      return <CreateButtonView navigation={navigation} />;
+      return <CreateButtonView navigation={navigation} setReload={setReload}/>;
     } else if (activeView && typeof activeView === 'object') {
       return (
         <MyButtonView
+          setReload={setReload}
+          navigation={navigation}
+          id={activeView.Button_ID}
           name={activeView.Button_Name}
           number={activeView.Button_Tlf}
           numberMessage={activeView.Emergency_Message}

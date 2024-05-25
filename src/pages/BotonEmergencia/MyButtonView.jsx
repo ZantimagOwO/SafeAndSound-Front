@@ -1,10 +1,66 @@
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, Alert} from 'react-native';
 import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import { contacts } from '../../../App';
+import { phonesToNames } from '../../MockContacts';
+import Button from '../Login-Signup/Button';
+import { serverIP } from '../../../config';
 
-export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, phones = [] }) {
+export default function MyButtonView({setReload,id, name, number, numberMessage, protectorMessage, color, phones = [] }) {
+
+  const handleEdit = () => {
+    Alert.alert('Editar', 'Funcionalidad de edición aún no implementada.');
+    // Aquí puedes añadir la lógica para editar, como abrir un modal de edición
+  };
+
+  const handleDelete =  () => {
+
+
+
+    Alert.alert(
+      'Eliminar',
+      '¿Estás seguro de que quieres eliminar este contacto?',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          onPress: async () => {
+            try {
+            const response = await fetch(`${serverIP}/button/${id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+
+            if (!response.ok) {
+              throw new Error('Error en la eliminación');
+            }
+            let data;
+            try {
+              const text = await response.text();
+              data = text ? JSON.parse(text) : {};
+            } catch (error) {
+              console.error('La respuesta no es JSON:', error);
+              data = null;
+            }
+            Alert.alert('Botón eliminado');
+            setReload(prev => !prev);
+            } catch (error) {
+              console.error("Error:", error);
+              Alert.alert("Error", "Ha ocurrido un error al intentar conectar con el servidor.");
+            }
+          },
+          style: 'destructive',
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
   console.log("Protectores de este boton: " + phones);
 
@@ -42,6 +98,10 @@ export default function MyButtonView({ name, number, numberMessage, protectorMes
         ) : (
           <Text style={styles.grey}>No tienes protectores asociados</Text>
         )}
+        <View style={styles.column}>
+          <Button onPress={handleEdit} text="Editar"></Button>
+          <Button onPress={handleDelete} text="Eliminar"></Button>
+        </View>
       </View>
       <View style={styles.finalSpace}></View>
     </View>
@@ -108,5 +168,5 @@ const styles = StyleSheet.create({
   },
   finalSpace: {
     height: 80,
-  }
+  },
 });
