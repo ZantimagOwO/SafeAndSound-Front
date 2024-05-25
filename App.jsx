@@ -25,6 +25,8 @@ const Stack = createNativeStackNavigator();
 
 AppRegistry.registerComponent("main", () => App);
 
+export let contacts = {}
+
 export default function App() {
 
     // const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -44,17 +46,6 @@ export default function App() {
     //   return <AppLoading />;
     // }
 
-    useEffect(() => {
-      (async () => {
-        const { status } = await Contacts.requestPermissionsAsync();
-        if (status === "granted") {
-          const contacts = await Contacts.getContactsAsync({
-            fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers]});
-
-          AsyncStorage.setItem('contacts', JSON.stringify(contacts["data"]))
-        }
-      })();
-    }, []);
 
     
   return (
@@ -95,3 +86,23 @@ const styles = StyleSheet.create({
 });
 
 registerRootComponent(App);
+
+export const cargarContactos = async () => {
+
+        const { status } = await Contacts.requestPermissionsAsync();
+
+      if (status === "granted") {
+        const data = (await Contacts.getContactsAsync({
+          fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.Name],
+        })).data;
+
+        data.forEach(c => {
+          let phon = c.phoneNumbers[0].number
+          contacts[phon] = c.name;
+        })
+
+        console.log("CONTACTS: " + JSON.stringify(contacts));
+
+        AsyncStorage.setItem("phonesToNames", JSON.stringify(contacts));
+      }
+}

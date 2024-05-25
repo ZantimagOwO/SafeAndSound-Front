@@ -5,6 +5,8 @@ import InputLogin from "./InputLogin";
 import Button from "./Button";
 import { serverIP } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Contacts from "expo-contacts";
+import { cargarContactos } from "../../../App";
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState("");
@@ -17,6 +19,8 @@ export default function Login({ navigation }) {
       await AsyncStorage.setItem("userPhone", userToken.Phone.Phone + "");
       const jsonValue = JSON.stringify(userToken);
       await AsyncStorage.setItem('user', jsonValue);
+
+      cargarContactos()
     } catch (e) {
       console.error("Error al guardar el token de login", e);
     }

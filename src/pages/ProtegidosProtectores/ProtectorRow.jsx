@@ -1,19 +1,21 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import StyleConstants from '../../StyleConstants';
-import { phonesToNames } from '../../MockContacts';
 import { serverIP } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { contacts } from '../../../App';
 
-export default function ProtectorRow({id, phone}) {
-  const name = phonesToNames[phone];
+export default function ProtectorRow({ id, phone, protectores, setProtectores}) {
+  let name = contacts[phone] || phone
 
-    const removeProtector = async (id) => {
+  const removeProtector = async (id) => {
     const user = await AsyncStorage.getItem("userID");
-      const response = await fetch(
-        `${serverIP}/users/removeProtector/${user}/${phone}`,
-        { method: "DELETE" }
-      );
-    };
+    const response = await fetch(
+      `${serverIP}/users/removeProtector/${user}/${phone}`,
+      { method: "DELETE" }
+    );
+    setProtectores(response);
+  };
 
   return (
     <View style={protect.row}>
@@ -23,10 +25,7 @@ export default function ProtectorRow({id, phone}) {
         resizeMode="contain"
       />
       <Text style={protect.text}>{name}</Text>
-      <TouchableOpacity
-        onPress={removeProtector}
-        style={protect.btn}
-      >
+      <TouchableOpacity onPress={removeProtector} style={protect.btn}>
         <Image
           source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}
           style={protect.protectedTrashIcon}

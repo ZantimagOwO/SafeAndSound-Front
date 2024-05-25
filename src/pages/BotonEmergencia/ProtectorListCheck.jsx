@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import StyleConstants from '../../StyleConstants';
-import { phonesToNames } from '../../MockContacts';
 import { serverIP } from '../../../config';
+import { contacts } from '../../../App';
 
 export default function ProtectorListCheck({id, phone, onSelect }) {
   const [isSelected, setIsSelected] = useState(false);
-  const name = phonesToNames[phone];
+  const name = contacts[phone];
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);

@@ -7,13 +7,13 @@ import AddProtector from './AddProtector';
 import ProtectorRow from './ProtectorRow';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { contacts } from '../../../App';
 
 export default function ProtegidosProtectores({ navigation }) {
 
   const [protegidos, setProtegidos] = useState([]);
   const [protectores, setProtectores] = useState([]);
   const [textoBuscadorContactos, setBuscadorContactos] = useState('');
-  const [contactos, setContactos] = useState([]);
   
 
   const fetchProtegidos = useCallback(async () => {
@@ -40,20 +40,6 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtectores();
   }, [fetchProtectores]);
 
-
-
-  const cargarContactos = async () => {
-    let contacts = await AsyncStorage.getItem('contacts')
-    
-    let d = JSON.parse(contacts).filter(contact => contact.name.toLowerCase().includes(textoBuscadorContactos.toLowerCase()))
-    
-    setContactos(d)
-  }
-
-  useEffect(() => {
-    cargarContactos();
-  }, [cargarContactos]);
-
   const handleBuscar = (texto) => {
     setBuscadorContactos(texto)
     cargarContactos()
@@ -64,8 +50,8 @@ export default function ProtegidosProtectores({ navigation }) {
       <RegularHeader navigation={navigation} />
       <ScrollView
         style={styles.container}
-        showsVerticalScrollIndicator={true}
-        contentContainerStyle={{ flexGrow: 1 }}
+        // showsVerticalScrollIndicator={true}
+        // contentContainerStyle={{ flexGrow: 1 }}
       >
         <Text style={styles.text}>Mis protegidos</Text>
         <View style={styles.list}>
@@ -112,14 +98,16 @@ export default function ProtegidosProtectores({ navigation }) {
             />
           </View>
           <View style={styles.list}>
-            {contactos.map((contact) => (
+            {
+            Object.entries(contacts).map(([phone, name]) => (
               <AddProtector
-                key={contact.id}
-                phone={contact.phoneNumbers[0].number}
-                id={contact.id}
-                name={contact.name}
+                key={phone}
+                phone={phone}
+                id={phone}
+                name={name}
               />
-            ))}
+            ))
+            }
             <Text style={styles.text}>-----</Text>
             <Text style={styles.text}>-----</Text>
           </View>

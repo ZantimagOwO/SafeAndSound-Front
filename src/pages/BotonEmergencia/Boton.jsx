@@ -17,7 +17,6 @@ export default function Boton({ navigation }) {
     const resp = await fetch(`${serverIP}/button/user/${id}`, { method: "GET" });
     const data = await resp.json();
     console.log('FetchedButtons: ' , data)
-    console.log(data[1].Phones)
     setBotones(data)
   }, [])
 
@@ -104,9 +103,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    // borderColor: '#68c699',
-    // borderWidth: 1,
-    // borderStyle: 'solid',
   },
   noButtonMessage: {
     color: 'red',
@@ -187,9 +183,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    // borderColor: 'red',
-    // borderWidth: 1,
-    // borderStyle: 'solid',
   },
   linea: {
     width: '100%',

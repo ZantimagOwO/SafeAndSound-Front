@@ -2,9 +2,11 @@ import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'rea
 import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
-import { phonesToNames } from '../../MockContacts';
+import { contacts } from '../../../App';
 
 export default function MyButtonView({ name, number, numberMessage, protectorMessage, color, phones = [] }) {
+
+  console.log("Protectores de este boton: " + phones);
 
   return (
     <View style={styles.body}>
@@ -34,7 +36,7 @@ export default function MyButtonView({ name, number, numberMessage, protectorMes
           phones.map((phone, index) => (
             <View key={index} style={styles.protectorContainer}>
               <Image source={require('../../../assets/Protectoresprotegidos/shield.png')} style={styles.protectorIcon} />
-              <Text style={styles.protectorName}>{phonesToNames[phone] || 'Unknown'}</Text>
+              <Text style={styles.protectorName}>{contacts[phone] || phone}</Text>
             </View>
           ))
         ) : (
