@@ -58,37 +58,31 @@ const Main = ({ navigation }) => {
           mode="off"
           icon={require("../../assets/Main/legalinfo.png")}
           text="Información Legal"
-          onPress={() => navigation.navigate("InformacionLegal")}
         />
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/agenda.png")}
           text="Agenda"
-          onPress={() => navigation.navigate("Agenda")}
         />
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/extinguisher.png")}
           text="Guía de Supervivencia"
-          onPress={() => navigation.navigate("Supervivencia")}
         />
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/wiki.png")}
           text="Wiki"
-          onPress={() => navigation.navigate("Wiki")}
         />
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/closecenters.png")}
           text="Centros de Salud cercanos"
-          onPress={() => navigation.navigate("CentrosSalud")}
         />
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/medinator.png")}
           text="Medinator"
-          onPress={() => navigation.navigate("Medinator")}
         />
         <MainPageButton
           mode="on"
