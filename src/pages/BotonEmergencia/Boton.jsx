@@ -12,6 +12,7 @@ export default function Boton({ navigation }) {
   const [activeView, setActiveView] = useState('');
   const [botones, setBotones] = useState([]);
   const [reload, setReload] = useState(false);
+  const [editButtonData, setEditButtonData] = useState(null);
 
   const fetchButtons = useCallback(async () => {
     const id = await AsyncStorage.getItem('userID')
@@ -31,8 +32,10 @@ export default function Boton({ navigation }) {
   }, [fetchButtons, reload]);
 
   const renderActiveView = () => {
-    if (activeView === 'icon') {
-      return <CreateButtonView navigation={navigation} setReload={setReload}/>;
+    if (editButtonData) {
+      return <CreateButtonView navigation={navigation} setReload={setReload} editData={editButtonData} setEditButtonData={setEditButtonData} buttonName="Editar Botón"/>; 
+    } else if (activeView === 'icon') {
+      return <CreateButtonView navigation={navigation} setReload={setReload} buttonName="Crear Botón" />;
     } else if (activeView && typeof activeView === 'object') {
       return (
         <MyButtonView
@@ -44,7 +47,8 @@ export default function Boton({ navigation }) {
           numberMessage={activeView.Emergency_Message}
           protectorMessage={activeView.Protector_Message}
           color={activeView.Color}
-          phones={activeView.Phones.map(phone => phone.ProtectorPhone)}
+          phones={activeView.Phones.map(phone => phone.Phone)}
+          setEditButtonData={setEditButtonData}
         />
       );
     } else {

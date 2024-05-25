@@ -7,17 +7,25 @@ import { phonesToNames } from '../../MockContacts';
 import Button from '../Login-Signup/Button';
 import { serverIP } from '../../../config';
 
-export default function MyButtonView({setReload,id, name, number, numberMessage, protectorMessage, color, phones = [] }) {
+export default function MyButtonView({setReload,id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData }) {
+
+  console.log("MyButtonView initial: ",phones)
 
   const handleEdit = () => {
-    Alert.alert('Editar', 'Funcionalidad de edición aún no implementada.');
-    // Aquí puedes añadir la lógica para editar, como abrir un modal de edición
+    const editData = {
+      id,
+      name,
+      number,
+      numberMessage,
+      protectorMessage,
+      color,
+      phones
+    };
+    console.log(editData);
+    setEditButtonData(editData);
   };
 
   const handleDelete =  () => {
-
-
-
     Alert.alert(
       'Eliminar',
       '¿Estás seguro de que quieres eliminar este contacto?',

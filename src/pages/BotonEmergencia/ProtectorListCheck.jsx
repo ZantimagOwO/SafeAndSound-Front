@@ -1,17 +1,21 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import StyleConstants from '../../StyleConstants';
 import { serverIP } from '../../../config';
 import { contacts } from '../../../App';
 
-export default function ProtectorListCheck({id, phone, onSelect }) {
-  const [isSelected, setIsSelected] = useState(false);
+export default function ProtectorListCheck({id, phone, onSelect, isSelected: initialIsSelected }) {
+  const [isSelected, setIsSelected] = useState(initialIsSelected || false);
   const name = contacts[phone];
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);
     onSelect(id, !isSelected);
   };
+
+  useEffect(() => {
+    setIsSelected(initialIsSelected);
+  }, [initialIsSelected]);
 
   return (
     <View style={[protect.row, isSelected && protect.selectedRow]}>

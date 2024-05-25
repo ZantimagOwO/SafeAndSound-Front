@@ -8,7 +8,7 @@ import { serverIP } from '../../../config';
 import ProtectorListCheck from './ProtectorListCheck';
 import Button from '../Login-Signup/Button';
 
-export default function CreateButtonView({navigation, setReload}) {
+export default function CreateButtonView({navigation, setReload, editData, setEditButtonData, buttonName}) {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -17,6 +17,21 @@ export default function CreateButtonView({navigation, setReload}) {
   const [selectedColor, setSelectedColor] = useState('');
   const [protectores, setProtectores] = useState([]);
   const [selectedProtectores, setSelectedProtectores] = useState({});
+
+  useEffect(() => {
+    if (editData) {
+      setNombre(editData.name);
+      setTelefono(editData.number);
+      setMensajeEmergenciaNumero(editData.numberMessage);
+      setMensajeEmergenciaProtectores(editData.protectorMessage);
+      setSelectedColor(editData.color);
+      const initialSelectedProtectores = {};
+      editData.phones.forEach(phone => {
+        initialSelectedProtectores[phone] = true;
+      });
+      setSelectedProtectores(initialSelectedProtectores);
+    }
+  }, [editData]);
 
   const colors = [
     '#BF392B', '#DC6154', '#9B59B6', '#A23BCD', '#2A80B9',
@@ -31,6 +46,43 @@ export default function CreateButtonView({navigation, setReload}) {
     console.log(res)
     setProtectores(JSON.parse(res));
   }, []);
+
+  const handleEditButton = useCallback(async () => {
+
+    const requestBody = {
+      buttonID: editData.id,
+      nombreBoton: nombre,
+      telefonoEmergencia: telefono,
+      mensajeEmergenciaNumero,
+      mensajeEmergenciaProtectores,
+      selectedColor,
+      protectores: getSelectedProtectores()
+    };
+
+    console.log("Request body editButton", requestBody);
+
+    try {
+      const response = await fetch(`${serverIP}/button`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Button updated successfully:', result);
+        setReload(prev => !prev);
+        setEditButtonData(null);
+      } else {
+        console.error('Failed to update button:', result);
+      }
+    } catch (error) {
+      console.error('Error updating button:', error);
+    }
+  }, [editData, nombre, telefono, mensajeEmergenciaNumero, mensajeEmergenciaProtectores, selectedColor, selectedProtectores]);
+
 
   const handleCreateButton = useCallback(async () => {
 
@@ -61,6 +113,9 @@ export default function CreateButtonView({navigation, setReload}) {
       if (response.ok) {
         console.log('Button created successfully:', result);
         setReload(prev => !prev);
+        if (setEditButtonData) {
+          setEditButtonData(null); 
+        }
       } else {
         console.error('Failed to create button:', result);
       }
@@ -130,6 +185,7 @@ export default function CreateButtonView({navigation, setReload}) {
                 phone={protector.Phone}
                 id={protector.Phone_ID}
                 onSelect={handleSelectProtector}
+                isSelected={selectedProtectores[protector.Phone] || false}
               />
             ))
           ) : (
@@ -137,7 +193,7 @@ export default function CreateButtonView({navigation, setReload}) {
           )}
         </View>
       </View>
-      <Button text="Crear Botón" onPress={handleCreateButton}></Button>
+      <Button text={buttonName} onPress={editData ? handleEditButton : handleCreateButton}></Button>
       <View style={styles.finalSpace}></View>
     </View>
   );
