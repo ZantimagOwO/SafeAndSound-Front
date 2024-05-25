@@ -1,11 +1,26 @@
 import React from 'react';
 import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 
-const MainPageButton = ({ icon, text, onPress }) => {
+const MainPageButton = ({ icon, text, onPress, mode }) => {
+    const isOn = mode === 'on';
+
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Image source={icon} style={styles.icon}/>
-            <Text style={styles.text}>{text}</Text>
+        <TouchableOpacity
+            style={[
+                styles.button,
+                { borderColor: isOn ? '#68c699' : 'gray' }
+            ]}
+            onPress={onPress}
+        >
+            <Image source={icon} style={styles.icon} />
+            <Text
+                style={[
+                    styles.text,
+                    { color: isOn ? '#68c699' : 'gray' }
+                ]}
+            >
+                {text}
+            </Text>
         </TouchableOpacity>
     );
 };
@@ -20,9 +35,7 @@ const styles = StyleSheet.create({
         margin: 5,
         borderRadius: 4,
         justifyContent: 'center',
-        borderColor: '#68c699',
         borderWidth: 1,
-
     },
     icon: {
         marginTop: 20,
@@ -32,15 +45,12 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     text: {
-        color: '#68c699',
-        // borderColor: '#68c699',
-        // borderWidth: 1,
         fontSize: 14,
         textAlign: 'center',
         textAlignVertical: 'bottom',
         flex: 1,
         fontWeight: 'bold',
-        marginBottom: 5
+        marginBottom: 5,
     },
 });
 

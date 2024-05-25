@@ -5,6 +5,6 @@ const configs = {
   AWS: "http://myeventz.es:3000",
 };
 
-const activeConfig = 'santi'; 
+const activeConfig = 'mario'; 
 
 export const serverIP = configs[activeConfig];
