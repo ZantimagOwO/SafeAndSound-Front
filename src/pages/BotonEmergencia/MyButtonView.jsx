@@ -212,6 +212,6 @@ const styles = StyleSheet.create({
     width: 40,
     resizeMode: 'contain',
     position: 'absolute',
-    left: 200,
+    left: 100,
   },
 });
