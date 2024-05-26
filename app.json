@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.zantimago.SafeAndSound"
+      "package": "com.zantimago.SafeAndSound",
+      "jsEngine": "jsc"
     },
     "web": {
       "favicon": "./assets/favicon.png"

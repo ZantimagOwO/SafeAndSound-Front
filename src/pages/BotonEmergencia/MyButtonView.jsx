@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 import { contacts } from '../../../App';
-import { phonesToNames } from '../../MockContacts';
 import Button from '../Login-Signup/Button';
 import { serverIP } from '../../../config';
 
