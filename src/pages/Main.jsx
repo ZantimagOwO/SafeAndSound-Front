@@ -6,10 +6,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
 import { registerRootComponent } from 'expo';
-import App from '../../App';
 import * as Contacts from "expo-contacts";
 
-registerRootComponent(App);
 
 const Main = ({ navigation }) => {
   const [user, setUser] = useState(false);
@@ -19,9 +17,7 @@ const Main = ({ navigation }) => {
 
       AsyncStorage.clear()
       console.log("AsyncStorage borradowo")
-
       
-
       try {
         const usuarioToken = await AsyncStorage.getItem("userID");
         console.log("User ID: " + usuarioToken)

@@ -24,6 +24,7 @@ import { registerRootComponent } from "expo";
 const Stack = createNativeStackNavigator();
 
 AppRegistry.registerComponent("main", () => App);
+registerRootComponent(App);
 
 export let contacts = {}
 
@@ -103,18 +104,16 @@ export const cargarContactos = async () => {
         ).data;
 
         data.forEach(c => {
-          let phon = c.phoneNumbers[0].number.replace(/\s+/g, "");
+          let phon = c.phoneNumbers[0].number.replace(/\s+/g, "")
           contacts[phon] = c.name;
         })
 
-        const entries = Object.entries(contacts);
+        // const entries = Object.entries(contacts);
 
-        // Ordenar la matriz por los valores (nombres)
-        entries.sort((a, b) => a[1].localeCompare(b[1]));
+        // entries.sort((a, b) => a[1].localeCompare(b[1]));
 
-        // Crear un nuevo objeto ordenado
-        const sortedDictionary = Object.fromEntries(entries);
+        // const sortedDictionary = Object.fromEntries(entries);
 
-        AsyncStorage.setItem("contacts", JSON.stringify(sortedDictionary));
+        AsyncStorage.setItem("contacts", JSON.stringify(contacts));
       }
 }
