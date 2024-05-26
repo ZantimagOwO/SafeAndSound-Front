@@ -39,7 +39,7 @@ export default function InformacionPersonal({navigation}) {
   };
 
   const getDiabetesText = (diabetes) => {
-    if (diabetes === null || diabetes === '{}') {
+    if (diabetes === null || diabetes === '{}' ||diabetes === undefined) {
       return "Sin diabetes";
     }else{
       return diabetes.Diabetes;

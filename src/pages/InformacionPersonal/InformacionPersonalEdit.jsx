@@ -33,7 +33,7 @@ export default function InformacionPersonalEdit({navigation, route }) {
   const [anyo, setAnyo] = useState(personalInfo.anyoNac.toString() || '');
   const [grupoSanguineo, setGrupoSanguineo] = useState(bloodGroupMap[personalInfo.Blood_Type?.Blood_Group] || 0);
   const [rh, setRh] = useState(personalInfo.Blood_Type?.RH ? 1 : 0);
-  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes !== null ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
+  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
   const [alergias, setAlergias] = useState(personalInfo.Alergies.map(alergia => alergia.Alergy) || []);
   const [otrasAfecciones, setOtrasAfecciones] = useState(personalInfo.Ailments.map(ailment => ailment.Ailment) || []);
 
@@ -135,15 +135,16 @@ export default function InformacionPersonalEdit({navigation, route }) {
     
 
     fetch(`${serverIP}/users/`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(requestBody),
     })
+      .then((response) => response.json())
       .then((data) => {
         console.log("Respuesta signup:", data);
-        fetchData();
+        saveInfo(data);
         navigation.navigate("Main");
       })
       .catch((error) => {
@@ -163,27 +164,32 @@ export default function InformacionPersonalEdit({navigation, route }) {
     }
   };
 
-  const fetchData = () => {
+  const fetchData = async () => {
 
-    fetch(`${serverIP}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        saveInfo(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setError("Ha ocurrido un error al intentar conectar con el servidor.");
-      });
+    let d = await AsyncStorage.getItem('user');
+    console.log(d)
+    saveInfo(JSON.parse(d))
+    
+
+    // fetch(`${serverIP}/users/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     saveInfo(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //     setError("Ha ocurrido un error al intentar conectar con el servidor.");
+    //   });
 
   }
 
