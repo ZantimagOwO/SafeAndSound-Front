@@ -104,15 +104,11 @@ export const cargarContactos = async () => {
         ).data;
 
         data.forEach(c => {
-          let phon = c.phoneNumbers[0].number.replace(/\s+/g, "")
+          let phon = c.phoneNumbers[0].number.replace(/\s+/g, "").replace("+", "")
           contacts[phon] = c.name;
         })
 
-        // const entries = Object.entries(contacts);
-
-        // entries.sort((a, b) => a[1].localeCompare(b[1]));
-
-        // const sortedDictionary = Object.fromEntries(entries);
+        console.log(contacts)
 
         AsyncStorage.setItem("contacts", JSON.stringify(contacts));
       }

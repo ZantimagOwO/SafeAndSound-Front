@@ -205,10 +205,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     marginLeft: 'auto',
-
-    // borderColor: '#68c699',
-    // borderWidth: 1,
-    // borderStyle: 'solid',
   },
   row: {
     marginTop: 5,

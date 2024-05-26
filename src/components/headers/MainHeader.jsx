@@ -18,7 +18,7 @@ const MainHeader = ({navigation}) => {
         <View style={mainHeader.espacio}>
             <View style={mainHeader.mainDiv}>
                 <Image source={require('../../../assets/Header/logo.png')} style={mainHeader.safeAndSoundLogo}/>
-                <TouchableOpacity onPress={()=> logout()}>
+                <TouchableOpacity onPress={()=> logout()} style={mainHeader.imageContainer}>
                     <Image  source={require('../../../assets/Header/logout.png')} 
                             style={mainHeader.logoutImage}/>
                 </TouchableOpacity>
@@ -50,6 +50,10 @@ const mainHeader = StyleSheet.create({
         height: 60,
         width: 90,
         marginLeft: 25,
+    },
+    imageContainer: {
+        width: 50,
+        height: 50
     },
     logoutImage: {
         height: 25,

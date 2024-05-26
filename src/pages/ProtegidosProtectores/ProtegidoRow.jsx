@@ -14,11 +14,6 @@ export default function ProtegidoRow({ phone, id }) {
         resizeMode="contain"
       />
       <Text style={protect.text}>{name}</Text>
-      <Image
-        source={require("../../../assets/Protectoresprotegidos/Trashcan.png")}
-        style={protect.protectedTrashIcon}
-        resizeMode="contain"
-      />
     </View>
   );
 }
