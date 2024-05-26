@@ -47,12 +47,14 @@ const styles = StyleSheet.create({
         // borderColor: 'red',
     },
     text: {
-        fontSize: 14,
+        fontSize: 12,
         textAlign: 'center',
         textAlignVertical: 'bottom',
         flex: 1,
         fontWeight: 'bold',
         marginBottom: 5,
+        flexWrap: 'wrap',
+        
         // borderWidth: 1,
         // borderColor: 'red',
     },

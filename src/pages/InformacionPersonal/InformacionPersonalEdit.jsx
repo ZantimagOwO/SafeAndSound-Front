@@ -197,20 +197,20 @@ export default function InformacionPersonalEdit({navigation, route }) {
     <ScrollView style={styles.body}>
       <RegularHeader navigation={navigation}/>
       <View style={styles.column}>
-        <InputInformacionPersonal name={'Nombre'} width={'80%'} height={50} value={nombre} onChangeText={setNombre}/>
-        <InputInformacionPersonal name={'Apellidos'} width={'80%'} height={50} value={apellidos} onChangeText={setApellidos}/>
+        <InputInformacionPersonal name={'Nombre'} width={'90%'} height={50} value={nombre} onChangeText={setNombre}/>
+        <InputInformacionPersonal name={'Apellidos'} width={'90%'} height={50} value={apellidos} onChangeText={setApellidos}/>
         <View style={styles.row}>
-          <InputInformacionPersonal name={'Teléfono'} width={'40%'} height={50} value={telefono} onChangeText={setTelefono}/>
-          <InputInformacionPersonal name={'DNI'} width={'40%'} height={50} value={dni} onChangeText={setDni}/>
+          <InputInformacionPersonal name={'Teléfono'} width={'45%'} height={50} value={telefono} onChangeText={setTelefono}/>
+          <InputInformacionPersonal name={'DNI'} width={'45%'} height={50} value={dni} onChangeText={setDni}/>
         </View>  
         <Text style={styles.fecha}>Fecha de nacimiento</Text>
         <View style={styles.row}>
-          <InputInformacionPersonal name={'Día'} width={'20%'} height={50} value={dia} onChangeText={setDia}/>
-          <InputInformacionPersonal name={'Mes'} width={'20%'} height={50} value={mes} onChangeText={setMes}/>
+          <InputInformacionPersonal name={'Día'} width={'25%'} height={50} value={dia} onChangeText={setDia}/>
+          <InputInformacionPersonal name={'Mes'} width={'25%'} height={50} value={mes} onChangeText={setMes}/>
           <InputInformacionPersonal name={'Año'} width={'35%'} height={50} value={anyo} onChangeText={setAnyo}/>
         </View> 
         <View style={styles.row2}>
-          <InputRadioButton onChange={setGrupoSanguineo} initial={grupoSanguineo} name={'Grupo sanguineo'} width={'45%'} height={120} radio_props={radio_props = [
+          <InputRadioButton onChange={setGrupoSanguineo} initial={grupoSanguineo} name={'Grupo sanguineo'} width={'45%'} height={160} radio_props={radio_props = [
     {label: 'A', value: 0 },
     {label: 'B', value: 1 },
     {label: 'AB', value: 2 },
@@ -241,6 +241,7 @@ const styles=StyleSheet.create({
     body: {
         backgroundColor: '#fff',
         height: '100%',
+        width: "100%"
     },
     column: {
         marginTop: Constants.statusBarHeight+50,
