@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         height: 150,
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 5,
+        padding: 2,
         margin: 5,
         borderRadius: 4,
         justifyContent: 'center',
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         height: 60,
         resizeMode: 'contain',
         margin: 10,
+        // borderWidth: 1,
+        // borderColor: 'red',
     },
     text: {
         fontSize: 14,
@@ -51,6 +53,8 @@ const styles = StyleSheet.create({
         flex: 1,
         fontWeight: 'bold',
         marginBottom: 5,
+        // borderWidth: 1,
+        // borderColor: 'red',
     },
 });
 
