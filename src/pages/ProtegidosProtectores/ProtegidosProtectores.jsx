@@ -65,6 +65,7 @@ export default function ProtegidosProtectores({ navigation }) {
                 key={protegido.Phone_ID}
                 phone={protegido.Phone}
                 id={protegido.Phone_ID}
+                name={contactos[protegido.Phone] || protegido.Phone}
               />
             ))
           ) : (
@@ -79,6 +80,7 @@ export default function ProtegidosProtectores({ navigation }) {
                 key={protector.Phone_ID}
                 phone={protector.Phone}
                 id={protector.Phone_ID}
+                name={contactos[protector.Phone] || protector.Phone}
                 setProtectores={setProtectores}
                 protectores={protectores}
               />

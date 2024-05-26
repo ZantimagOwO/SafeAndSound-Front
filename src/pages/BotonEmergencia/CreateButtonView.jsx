@@ -18,6 +18,16 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
   const [protectores, setProtectores] = useState([]);
   const [selectedProtectores, setSelectedProtectores] = useState({});
 
+  let contacts = {}
+
+    const getContactsAsync = useCallback(async () => {
+      contacts = await AsyncStorage.getItem("contacts");
+    });
+
+    useEffect(() => {
+      getContactsAsync();
+    });
+
   useEffect(() => {
     if (editData) {
       setNombre(editData.name);
@@ -184,6 +194,7 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
                 key={protector.Phone_ID}
                 phone={protector.Phone}
                 id={protector.Phone_ID}
+                name={contacts[protector.Phone] || protector.Phone}
                 onSelect={handleSelectProtector}
                 isSelected={selectedProtectores[protector.Phone] || false}
               />
