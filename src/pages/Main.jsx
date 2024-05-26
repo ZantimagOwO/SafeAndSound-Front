@@ -17,6 +17,8 @@ const Main = ({ navigation }) => {
 
       AsyncStorage.clear()
       console.log("AsyncStorage borradowo")
+
+      cargarContactos()
       
       try {
         const usuarioToken = await AsyncStorage.getItem("userID");
@@ -113,3 +115,27 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+
+export const cargarContactos = async () => {
+  const { status } = await Contacts.requestPermissionsAsync();
+
+  let contacts = {};
+
+  if (status === "granted") {
+    const data = (
+      await Contacts.getContactsAsync({
+        fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.Name],
+        sort: "firstName",
+      })
+    ).data;
+
+    data.forEach((c) => {
+      let phon = c.phoneNumbers[0].number.replace(/\s+/g, "").replace("+", "");
+      contacts[phon] = c.name;
+    });
+
+    console.log(contacts);
+
+    AsyncStorage.setItem("contacts", JSON.stringify(contacts));
+  }
+};

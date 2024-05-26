@@ -1,14 +1,25 @@
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, Alert} from 'react-native';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
-import { contacts } from '../../../App';
 import Button from '../Login-Signup/Button';
 import { serverIP } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MyButtonView({setReload,id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData }) {
 
-  console.log("MyButtonView initial: ",phones)
+  console.log("MyButtonView initial: ", phones)
+
+  const [contacts, setContactos] = useState({});
+
+  const getContactsAsync = useCallback(async () => {
+    let t = await AsyncStorage.getItem("contacts");
+    setContactos(JSON.parse(t));
+  }, []);
+
+  useEffect(() => {
+    getContactsAsync();
+  }, [getContactsAsync]);
 
   const handleEdit = () => {
     const editData = {

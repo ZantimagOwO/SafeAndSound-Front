@@ -1,11 +1,23 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import StyleConstants from '../../StyleConstants';
 import { serverIP } from '../../../config';
-import { contacts } from '../../../App';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProtectorListCheck({id, phone, onSelect, isSelected: initialIsSelected }) {
   const [isSelected, setIsSelected] = useState(initialIsSelected || false);
+
+  const [contacts, setContactos] = useState({});
+
+  const getContactsAsync = useCallback(async () => {
+    let t = await AsyncStorage.getItem("contacts");
+    setContactos(JSON.parse(t));
+  }, []);
+
+  useEffect(() => {
+    getContactsAsync();
+  }, [getContactsAsync]);
+
   const name = contacts[phone];
 
   const toggleSelection = () => {

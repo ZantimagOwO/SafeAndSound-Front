@@ -3,10 +3,8 @@ import React from 'react'
 import StyleConstants from '../../StyleConstants';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { contacts } from '../../../App';
 
-export default function ProtectorRow({ id, phone, protectores, setProtectores }) {
-  let name = contacts[phone] || phone;
+export default function ProtectorRow({ id, phone, name, protectores, setProtectores }) {
 
   const removeProtector = async (id) => {
 
