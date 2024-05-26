@@ -5,7 +5,10 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "bundle-js": "react-native bundle --platform android --dev false --entry-file App.jsx --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
+    "build-android": "npm run bundle-js && npx expo run:android"
+    
   },
   "dependencies": {
     "@expo/metro-config": "~0.18.1",
