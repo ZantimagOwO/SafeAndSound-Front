@@ -10,16 +10,16 @@ export default function MyButtonView({setReload,id, name, number, numberMessage,
 
   console.log("MyButtonView initial: ", phones)
 
-  let contacts = {}
+  const [contacts, setContactos] = useState({});
 
-    const getContactsAsync = useCallback(async () => {
-      let t = await AsyncStorage.getItem("contacts");
-      contacts = JSON.parse(t);
-    });
+  const getContactsAsync = useCallback(async () => {
+    let t = await AsyncStorage.getItem("contacts");
+    setContactos(JSON.parse(t));
+  }, []);
 
-    useEffect(() => {
-      getContactsAsync();
-    });
+  useEffect(() => {
+    getContactsAsync();
+  }, [getContactsAsync]);
 
   const handleEdit = () => {
     const editData = {

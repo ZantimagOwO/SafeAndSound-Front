@@ -31,11 +31,11 @@ export default function ProtegidosProtectores({ navigation }) {
   const getContactsAsync = useCallback(async () => {
     let t = await AsyncStorage.getItem("contacts");
     setContactos(JSON.parse(t));
-  })
+  }, []);
 
   useEffect(() => {
-    getContactsAsync()
-  })
+    getContactsAsync();
+  }, [getContactsAsync]);
 
   const fetchProtectores = useCallback(async () => {
     const user = await AsyncStorage.getItem("userID");

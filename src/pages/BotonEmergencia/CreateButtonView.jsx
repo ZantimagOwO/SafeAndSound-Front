@@ -18,15 +18,16 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
   const [protectores, setProtectores] = useState([]);
   const [selectedProtectores, setSelectedProtectores] = useState({});
 
-  let contacts = {}
+  const [contacts, setContactos] = useState({});
 
-    const getContactsAsync = useCallback(async () => {
-      contacts = await AsyncStorage.getItem("contacts");
-    });
+  const getContactsAsync = useCallback(async () => {
+    let t = await AsyncStorage.getItem("contacts");
+    setContactos(JSON.parse(t));
+  }, []);
 
-    useEffect(() => {
-      getContactsAsync();
-    });
+  useEffect(() => {
+    getContactsAsync();
+  }, [getContactsAsync]);
 
   useEffect(() => {
     if (editData) {
