@@ -60,6 +60,8 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
 
   const handleEditButton = useCallback(async () => {
 
+    console.log("selectedProtectores: " + selectedProtectores)
+
     const requestBody = {
       buttonID: editData.id,
       nombreBoton: nombre,

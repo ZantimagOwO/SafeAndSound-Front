@@ -7,7 +7,7 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "bundle-js": "react-native bundle --platform android --dev false --entry-file App.jsx --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
-    "build-android": "npm run bundle-js && npx expo run:android"
+    "build-android": "deleteAPK.bat && npm run bundle-js && npx expo run:android"
     
   },
   "dependencies": {
