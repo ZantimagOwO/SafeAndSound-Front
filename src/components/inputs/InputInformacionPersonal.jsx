@@ -28,19 +28,19 @@ const styles=StyleSheet.create({
     position: 'relative',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginRight: 10,
-    marginLeft: 10
+    marginRight: 5,
+    marginLeft: 5
   },
   inputStyle: {
     width: '100%',
     height: '100%',
-    fontSize: 16,
+    fontSize: 15,
     color: 'black',
     borderWidth: 1,
     borderColor: '#68C699',
     borderRadius: 4,
     paddingRight: 10,
-    paddingLeft: 30,
+    paddingLeft: 15,
     textAlignVertical: 'center',
   },
   overlay: {

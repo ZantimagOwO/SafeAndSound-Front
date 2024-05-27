@@ -20,6 +20,8 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
 
   const [contacts, setContactos] = useState({});
 
+  console.log("editdata", editData)
+
   const getContactsAsync = useCallback(async () => {
     let t = await AsyncStorage.getItem("contacts");
     setContactos(JSON.parse(t));

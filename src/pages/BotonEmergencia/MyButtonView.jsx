@@ -6,7 +6,7 @@ import Button from '../Login-Signup/Button';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function MyButtonView({setReload,id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData }) {
+export default function MyButtonView({navigation, setReload, id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData }) {
 
   console.log("MyButtonView initial: ", phones)
 
@@ -79,6 +79,19 @@ export default function MyButtonView({setReload,id, name, number, numberMessage,
     );
   };
 
+  const handleViewButton = () => {
+    const buttonData = {
+      id,
+      name,
+      number,
+      numberMessage,
+      protectorMessage,
+      color,
+      phones
+    };
+    navigation.navigate("Preview", { buttonData })
+  };
+
   console.log("Protectores de este boton: " + phones);
 
   return (
@@ -86,6 +99,14 @@ export default function MyButtonView({setReload,id, name, number, numberMessage,
       <View style={styles.row}>
         <Text style={styles.green}>Nombre:  </Text>
         <Text style={styles.grey}>{name}</Text>
+        <TouchableOpacity onPress={handleViewButton}>
+          <View>
+            <Image
+              source={require('../../../assets/Main/play.png')}
+              style={styles.playIcon}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.row}>
         <Text style={styles.green}>Número:  </Text>
@@ -185,5 +206,12 @@ const styles = StyleSheet.create({
   },
   finalSpace: {
     height: 80,
+  },
+  playIcon: {
+    height: 40,
+    width: 40,
+    resizeMode: 'contain',
+    position: 'absolute',
+    left: 100,
   },
 });

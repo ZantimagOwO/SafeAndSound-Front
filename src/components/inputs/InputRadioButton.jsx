@@ -62,7 +62,8 @@ const styles=StyleSheet.create({
     marginTop: '5%',
     position: 'relative',
     marginRight: 10,
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 60
   },
   inputStyle: {
     width: '100%',
@@ -73,14 +74,14 @@ const styles=StyleSheet.create({
     borderColor: '#68C699',
     borderRadius: 4,
     paddingRight: 10,
-    paddingLeft: 10,
+    paddingTop: 10,
     justifyContent: 'center',
     alignItems: '',
   },
   overlay: {
     backgroundColor: '#fff',
     position: 'absolute',
-    top: -10,
+    top: -15,
     left: 10,
   },
   overlayText: {
@@ -90,9 +91,6 @@ const styles=StyleSheet.create({
     color: '#68C699'
   },
   radiobutton: {
-    // borderColor: 'red',
-    // borderStyle: 'solid',
-    // borderWidth: 2,
     transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
     color: '#68C699',
     fontcolor: '#68C699',

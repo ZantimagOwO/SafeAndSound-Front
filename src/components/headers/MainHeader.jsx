@@ -53,12 +53,14 @@ const mainHeader = StyleSheet.create({
     },
     imageContainer: {
         width: 50,
-        height: 50
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 25,
     },
     logoutImage: {
         height: 25,
         width: 30,
-        marginRight: 25,
         resizeMode: 'contain',
     },
 });

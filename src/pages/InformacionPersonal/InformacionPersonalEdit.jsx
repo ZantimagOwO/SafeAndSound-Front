@@ -33,7 +33,7 @@ export default function InformacionPersonalEdit({navigation, route }) {
   const [anyo, setAnyo] = useState(personalInfo.anyoNac.toString() || '');
   const [grupoSanguineo, setGrupoSanguineo] = useState(bloodGroupMap[personalInfo.Blood_Type?.Blood_Group] || 0);
   const [rh, setRh] = useState(personalInfo.Blood_Type?.RH ? 1 : 0);
-  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes !== null ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
+  const [diabetes, setDiabetes] = useState(personalInfo.Diabetes ? personalInfo.Diabetes.Diabetes_ID - 1 : 3);
   const [alergias, setAlergias] = useState(personalInfo.Alergies.map(alergia => alergia.Alergy) || []);
   const [otrasAfecciones, setOtrasAfecciones] = useState(personalInfo.Ailments.map(ailment => ailment.Ailment) || []);
 
@@ -135,15 +135,16 @@ export default function InformacionPersonalEdit({navigation, route }) {
     
 
     fetch(`${serverIP}/users/`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(requestBody),
     })
+      .then((response) => response.json())
       .then((data) => {
         console.log("Respuesta signup:", data);
-        fetchData();
+        saveInfo(data);
         navigation.navigate("Main");
       })
       .catch((error) => {
@@ -163,27 +164,32 @@ export default function InformacionPersonalEdit({navigation, route }) {
     }
   };
 
-  const fetchData = () => {
+  const fetchData = async () => {
 
-    fetch(`${serverIP}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        saveInfo(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setError("Ha ocurrido un error al intentar conectar con el servidor.");
-      });
+    let d = await AsyncStorage.getItem('user');
+    console.log(d)
+    saveInfo(JSON.parse(d))
+    
+
+    // fetch(`${serverIP}/users/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     saveInfo(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //     setError("Ha ocurrido un error al intentar conectar con el servidor.");
+    //   });
 
   }
 
@@ -191,20 +197,20 @@ export default function InformacionPersonalEdit({navigation, route }) {
     <ScrollView style={styles.body}>
       <RegularHeader navigation={navigation}/>
       <View style={styles.column}>
-        <InputInformacionPersonal name={'Nombre'} width={'80%'} height={50} value={nombre} onChangeText={setNombre}/>
-        <InputInformacionPersonal name={'Apellidos'} width={'80%'} height={50} value={apellidos} onChangeText={setApellidos}/>
+        <InputInformacionPersonal name={'Nombre'} width={'90%'} height={50} value={nombre} onChangeText={setNombre}/>
+        <InputInformacionPersonal name={'Apellidos'} width={'90%'} height={50} value={apellidos} onChangeText={setApellidos}/>
         <View style={styles.row}>
-          <InputInformacionPersonal name={'Teléfono'} width={'40%'} height={50} value={telefono} onChangeText={setTelefono}/>
-          <InputInformacionPersonal name={'DNI'} width={'40%'} height={50} value={dni} onChangeText={setDni}/>
+          <InputInformacionPersonal name={'Teléfono'} width={'45%'} height={50} value={telefono} onChangeText={setTelefono}/>
+          <InputInformacionPersonal name={'DNI'} width={'45%'} height={50} value={dni} onChangeText={setDni}/>
         </View>  
         <Text style={styles.fecha}>Fecha de nacimiento</Text>
         <View style={styles.row}>
-          <InputInformacionPersonal name={'Día'} width={'20%'} height={50} value={dia} onChangeText={setDia}/>
-          <InputInformacionPersonal name={'Mes'} width={'20%'} height={50} value={mes} onChangeText={setMes}/>
+          <InputInformacionPersonal name={'Día'} width={'25%'} height={50} value={dia} onChangeText={setDia}/>
+          <InputInformacionPersonal name={'Mes'} width={'25%'} height={50} value={mes} onChangeText={setMes}/>
           <InputInformacionPersonal name={'Año'} width={'35%'} height={50} value={anyo} onChangeText={setAnyo}/>
         </View> 
         <View style={styles.row2}>
-          <InputRadioButton onChange={setGrupoSanguineo} initial={grupoSanguineo} name={'Grupo sanguineo'} width={'45%'} height={120} radio_props={radio_props = [
+          <InputRadioButton onChange={setGrupoSanguineo} initial={grupoSanguineo} name={'Grupo sanguineo'} width={'45%'} height={160} radio_props={radio_props = [
     {label: 'A', value: 0 },
     {label: 'B', value: 1 },
     {label: 'AB', value: 2 },
@@ -235,6 +241,7 @@ const styles=StyleSheet.create({
     body: {
         backgroundColor: '#fff',
         height: '100%',
+        width: "100%"
     },
     column: {
         marginTop: Constants.statusBarHeight+50,

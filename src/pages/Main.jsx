@@ -15,8 +15,8 @@ const Main = ({ navigation }) => {
   useEffect(() => {
     const checkLogin = async () => {
 
-      AsyncStorage.clear()
-      console.log("AsyncStorage borradowo")
+      // AsyncStorage.clear()
+      // console.log("AsyncStorage borradowo")
 
       cargarContactos()
       
@@ -49,7 +49,7 @@ const Main = ({ navigation }) => {
         <MainPageButton
           mode="on"
           icon={require("../../assets/Main/shield.png")}
-          text="Mis Protegidos y Protectores"
+          text="Protegidos y Protectores"
           onPress={() => navigation.navigate("ProtegidosProtectores")}
         />
         <MainPageButton
@@ -65,7 +65,7 @@ const Main = ({ navigation }) => {
         <MainPageButton
           mode="off"
           icon={require("../../assets/Main/extinguisher.png")}
-          text="Guía de Supervivencia"
+          text="Guía de supervivencia"
         />
         <MainPageButton
           mode="off"
