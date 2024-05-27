@@ -23,7 +23,7 @@ public class CallActivity extends AppCompatActivity {
 
         Log.i("CallActivity - onCreate", "Entrando");
 
-        phoneNumber = "111-333-222-4"; // Número de teléfono a llamar
+        phoneNumber = "666970082"; // Número de teléfono a llamar
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             Log.i("CallActivity - onCreate", "NO SE TIENE PERMISO, PIDIENDO...");
