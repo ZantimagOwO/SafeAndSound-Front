@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { registerRootComponent } from 'expo';
 import * as Contacts from "expo-contacts";
 
-const sharedStorage = NativeModules.SharedStorageModule;
+const { SharedStorageModule } = NativeModules;
 
 const Main = ({ navigation }) => {
 
@@ -16,9 +16,21 @@ const Main = ({ navigation }) => {
 
   const guardarBoton = async () => {
     return new Promise((resolve, reject) => {
-      SharedPreferencesModule.savePhoneNumber(text, resolve, reject);
+      SharedStorageModule.saveButtonData(text, resolve);
     });
   }
+
+  const handleSave = async () => {
+    guardarBoton()
+      .then((message) => {
+        console.log(message);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  handleSave().then((message) => {console.log(message);})
 
 
   const [user, setUser] = useState(false);
