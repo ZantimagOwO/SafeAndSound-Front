@@ -6,19 +6,31 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 import androidx.core.app.ActivityCompat;
+
+import com.facebook.react.bridge.ReactMethod;
 
 import java.util.Arrays;
 
 public class Widget1 extends AppWidgetProvider {
 
     private static final String ACTION_CALL = "com.zantimago.SafeAndSound.ACTION_CALL";
+    private static final String SHARED_PREFS_NAME = "com.zantimago.SafeAndSound.PREFERENCES";
+    private static final String BUTTON_DATA = "button_data";
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
+//        CharSequence widgetText = context.getString(R.string.appwidget_text);
+
+        // Obtener una instancia de SharedPreferences
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+
+        // Leer el número de teléfono de SharedPreferences
+        String widgetText = sharedPreferences.getString(BUTTON_DATA, "DEFAULT sharedPreferences.getString");
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget1);
         views.setTextViewText(R.id.appwidget_text, widgetText);
 

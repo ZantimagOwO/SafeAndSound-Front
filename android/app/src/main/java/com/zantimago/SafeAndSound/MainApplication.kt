@@ -23,6 +23,8 @@ class MainApplication : Application(), ReactApplication {
           override fun getPackages(): List<ReactPackage> {
             // Packages that cannot be autolinked yet can be added manually here, for example:
             // packages.add(new MyReactNativePackage());
+            val packages = PackageList(this).packages.toMutableList()
+            packages.add(SharedStoragePackage())
             return PackageList(this).packages
           }
 

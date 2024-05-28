@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, TextInput, NativeModules } from 'react-native';
 import React, { useState, useCallback, useEffect } from 'react';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
@@ -21,6 +21,7 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
   const [contacts, setContactos] = useState({});
 
   console.log("editdata", editData)
+
 
   const getContactsAsync = useCallback(async () => {
     let t = await AsyncStorage.getItem("contacts");

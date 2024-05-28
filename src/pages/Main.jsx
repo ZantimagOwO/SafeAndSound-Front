@@ -3,13 +3,24 @@ import MainHeader from "../components/headers/MainHeader";
 import Constants from "expo-constants";
 import MainPageButton from "../components/buttons/MainPageButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { StyleSheet, View } from "react-native";
+import { NativeModules, StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
 import { registerRootComponent } from 'expo';
 import * as Contacts from "expo-contacts";
 
+const sharedStorage = NativeModules.SharedStorageModule;
 
 const Main = ({ navigation }) => {
+
+  const text = "Holis"
+
+  const guardarBoton = async () => {
+    return new Promise((resolve, reject) => {
+      SharedPreferencesModule.savePhoneNumber(text, resolve, reject);
+    });
+  }
+
+
   const [user, setUser] = useState(false);
 
   useEffect(() => {

@@ -3,6 +3,7 @@ package com.zantimago.SafeAndSound;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.facebook.react.bridge.ReactMethod;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -70,23 +72,6 @@ public class CallActivity extends AppCompatActivity {
     private void sendSMS() {
         Log.i("sendSMS", "Entrando...");
 
-        int latitud;
-        int altitud;
-
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-//                            altitud = location.getAltitude();
-//                            latitud = location.getLatitude();
-                        }
-                    }
-                });
-
-
-
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNumber, null, phoneNumberMsg, null, null);
 
@@ -128,4 +113,6 @@ public class CallActivity extends AppCompatActivity {
                 }
         }
     }
+
+
 }
