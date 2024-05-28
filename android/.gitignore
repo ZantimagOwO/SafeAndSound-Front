@@ -5,8 +5,8 @@
 # Android/IntelliJ
 #
 build/
-.idea
-.gradle
+ .idea
+# .gradle
 local.properties
 *.iml
 *.hprof
