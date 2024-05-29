@@ -13,11 +13,12 @@ import com.facebook.react.bridge.Callback;
 public class SharedStorageModule extends ReactContextBaseJavaModule {
 
     private static final String SHARED_PREFS_NAME = "com.zantimago.SafeAndSound.PREFERENCES";
+    public static final String NAME = "SharedStorageModule";
 
     @NonNull
     @Override
     public String getName() {
-        return "SharedStorageModule";
+        return NAME;
     }
 
     public SharedStorageModule(ReactApplicationContext reactContext) {

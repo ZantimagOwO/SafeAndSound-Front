@@ -16,6 +16,11 @@ export default function Login({ navigation }) {
     try {
       await AsyncStorage.setItem("userID", userToken.User_ID + "");
       await AsyncStorage.setItem("userPhone", userToken.Phone.Phone + "");
+      await AsyncStorage.setItem(
+        "buttons",
+        JSON.stringify(userToken.Buttons)
+      );
+      console.log("Buttons: " + JSON.stringify(userToken.Buttons));
       const jsonValue = JSON.stringify(userToken);
       await AsyncStorage.setItem('user', jsonValue);
     } catch (e) {

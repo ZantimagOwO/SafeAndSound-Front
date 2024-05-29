@@ -14,32 +14,12 @@ const Main = ({ navigation }) => {
 
   const text = "Holis"
 
-  const guardarBoton = async () => {
-    return new Promise((resolve, reject) => {
-      SharedStorageModule.saveButtonData(text, resolve);
-    });
-  }
-
-  const handleSave = async () => {
-    guardarBoton()
-      .then((message) => {
-        console.log(message);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  handleSave().then((message) => {console.log(message);})
-
+  AsyncStorage.setItem('default', text)
 
   const [user, setUser] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
-
-      // AsyncStorage.clear()
-      // console.log("AsyncStorage borradowo")
 
       cargarContactos()
       

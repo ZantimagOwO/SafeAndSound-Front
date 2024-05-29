@@ -7,14 +7,21 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 import androidx.core.app.ActivityCompat;
 
 import com.facebook.react.bridge.ReactMethod;
+import com.reactnativecommunity.asyncstorage.ReactDatabaseSupplier;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Widget1 extends AppWidgetProvider {
 
@@ -22,17 +29,14 @@ public class Widget1 extends AppWidgetProvider {
     private static final String SHARED_PREFS_NAME = "com.zantimago.SafeAndSound.PREFERENCES";
     private static final String BUTTON_DATA = "button_data";
 
+    private static ButtonData button = new ButtonData();
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-//        CharSequence widgetText = context.getString(R.string.appwidget_text);
 
-        // Obtener una instancia de SharedPreferences
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-
-        // Leer el número de teléfono de SharedPreferences
-        String widgetText = sharedPreferences.getString(BUTTON_DATA, "DEFAULT sharedPreferences.getString");
+        loadDatabase(context);
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget1);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
+        views.setTextViewText(R.id.appwidget_text, button.getText());
 
         // Set up the intent that starts the Phone Call
         Intent intent = new Intent(context, Widget1.class);
@@ -78,5 +82,17 @@ public class Widget1 extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
+    }
+
+    public static void loadDatabase(Context context){
+
+        AsyncStorageReader as = new AsyncStorageReader(context);
+
+        Log.i("AsyncStorage: ", as.getDataString());
+
+        JSONArray btnJSON = as.getAsArray("buttons");
+
+        Log.i("Buttons:", btnJSON.toString());
+
     }
 }

@@ -22,6 +22,19 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
 
   console.log("editdata", editData)
 
+  const reloadButtons = useCallback(async () => {
+    let userID = await AsyncStorage.getItem("userID");
+
+      await fetch(`${serverIP}/users/${userID}/buttons`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }}).then(res => res.json())
+        .then((res) => {
+          console.log("buttons:" + JSON.stringify(res));
+          AsyncStorage.setItem("buttons", JSON.parse(res))
+        })
+  }, [])
 
   const getContactsAsync = useCallback(async () => {
     let t = await AsyncStorage.getItem("contacts");
@@ -91,6 +104,7 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
         console.log('Button updated successfully:', result);
         setReload(prev => !prev);
         setEditButtonData(null);
+        reloadButtons()
       } else {
         console.error('Failed to update button:', result);
       }
@@ -132,12 +146,15 @@ export default function CreateButtonView({navigation, setReload, editData, setEd
         if (setEditButtonData) {
           setEditButtonData(null); 
         }
+        reloadButtons()
       } else {
         console.error('Failed to create button:', result);
       }
     } catch (error) {
       console.error('Error creating button:', error);
     }
+
+    reloadButtons()
   }, [nombre, telefono, mensajeEmergenciaNumero, mensajeEmergenciaProtectores, selectedColor, selectedProtectores]);
 
 
