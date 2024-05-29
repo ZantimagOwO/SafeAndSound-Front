@@ -22,6 +22,9 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class CallActivity extends AppCompatActivity {
@@ -29,10 +32,7 @@ public class CallActivity extends AppCompatActivity {
     private static final int REQUEST_CALL_PHONE = 1;
     private static final int REQUEST_SEND_SMS = 2;
     private static final int REQUEST_GPS = 3;
-    private String phoneNumber;
-    private String phoneNumberMsg;
-    private ArrayList<String> protectors = new ArrayList<>();
-    private String protectorsMsg;
+    private ButtonData buttonData;
 
     private FusedLocationProviderClient fusedLocationClient;
 
@@ -44,12 +44,12 @@ public class CallActivity extends AppCompatActivity {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        phoneNumber = "666970082"; // Número de teléfono a llamar
-        phoneNumberMsg = "Holis";
-
-        protectors.add("699121787");
-
-        protectorsMsg = "Hola estoy probando mi tfg";
+        try {
+            JSONObject btnJSON = new JSONObject(getIntent().getStringExtra("buttonData"));
+            buttonData = ButtonData.parseJSON(btnJSON);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         getPermissions();
         makePhoneCall();
@@ -59,12 +59,11 @@ public class CallActivity extends AppCompatActivity {
 
         Log.i("CallActivity - makePhoneCall", "Entrando");
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:" + phoneNumber));
+        callIntent.setData(Uri.parse("tel:" + buttonData.getPhoneNumber()));
         Log.i("CallActivity - makePhoneCall", "Se tienen permisos, haciendo mandando mensajes y llamando...");
         sendSMS();
         startActivity(callIntent);
         finish(); // Cierra la actividad después de iniciar la llamada
-
 
     }
 
@@ -73,12 +72,11 @@ public class CallActivity extends AppCompatActivity {
         Log.i("sendSMS", "Entrando...");
 
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(phoneNumber, null, phoneNumberMsg, null, null);
+        smsManager.sendTextMessage(buttonData.getPhoneNumber(), null, buttonData.getPhoneNumberMsg(), null, null);
 
-        for(String tel: protectors){
-            smsManager.sendTextMessage(tel, null, protectorsMsg, null, null);
+        for(String tel: buttonData.getProtectores()){
+            smsManager.sendTextMessage(tel, null, buttonData.getProtectorsMsg(), null, null);
         }
-
     }
 
     private void getPermissions(){

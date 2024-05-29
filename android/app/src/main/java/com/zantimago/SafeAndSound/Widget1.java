@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.shapes.Shape;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -18,6 +20,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.reactnativecommunity.asyncstorage.ReactDatabaseSupplier;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -26,14 +29,16 @@ import java.util.HashMap;
 public class Widget1 extends AppWidgetProvider {
 
     private static final String ACTION_CALL = "com.zantimago.SafeAndSound.ACTION_CALL";
-    private static final String SHARED_PREFS_NAME = "com.zantimago.SafeAndSound.PREFERENCES";
-    private static final String BUTTON_DATA = "button_data";
 
     private static ButtonData button = new ButtonData();
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
-        loadDatabase(context);
+        try {
+            loadDatabase(context);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget1);
         views.setTextViewText(R.id.appwidget_text, button.getText());
@@ -45,6 +50,7 @@ public class Widget1 extends AppWidgetProvider {
 
         // Register the onClickListener with the PendingIntent
         views.setOnClickPendingIntent(R.id.widget_container, pendingIntent);
+        views.setInt(R.id.widget_container, "setBackgroundColor", Color.parseColor(button.getColor()));
 
         Log.i("updateAppWidget", views.toString());
 
@@ -70,6 +76,7 @@ public class Widget1 extends AppWidgetProvider {
         if (ACTION_CALL.equals(intent.getAction())) {
             Intent callIntent = new Intent(context, CallActivity.class);
             callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            callIntent.putExtra("buttonData", button.toString());
             context.startActivity(callIntent);
         }
     }
@@ -84,15 +91,18 @@ public class Widget1 extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    public static void loadDatabase(Context context){
+    public static void loadDatabase(Context context) throws JSONException {
 
         AsyncStorageReader as = new AsyncStorageReader(context);
 
-        Log.i("AsyncStorage: ", as.getDataString());
+        JSONArray btnsJSON = as.getAsArray("buttons");
 
-        JSONArray btnJSON = as.getAsArray("buttons");
+        JSONObject btn = (JSONObject) btnsJSON.get(0);
 
-        Log.i("Buttons:", btnJSON.toString());
+        Log.i("Button:", btn.toString());
 
+        button = ButtonData.parseJSONFromRN(btn);
+
+        Log.i("ButtonData", button.toString());
     }
 }

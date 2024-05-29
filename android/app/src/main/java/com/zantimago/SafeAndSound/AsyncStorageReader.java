@@ -81,7 +81,7 @@ public class AsyncStorageReader {
 
     public JSONArray getAsArray(String key){
         try {
-            return new JSONArray(key);
+            return new JSONArray(data.get(key));
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
