@@ -2,7 +2,6 @@
     style="@style/Widget.SafeAndSound.AppWidget.Container"
     android:layout_width="200dp"
     android:layout_height="200dp"
-
     android:id="@+id/widget_container"
     android:theme="@style/Theme.SafeAndSound.AppWidgetContainer">
 
