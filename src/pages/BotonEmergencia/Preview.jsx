@@ -1,25 +1,27 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import * as Location from 'expo-location';
 import Constants from 'expo-constants';
 import RegularHeader from '../../components/headers/RegularHeader';
 
 export default function Preview({ navigation, route }) {
   const { buttonData } = route.params;
   const [fillOrder, setFillOrder] = useState(0);
-
+  const [location, setLocation] = useState(null);
 
   const sendMessages = () => {
     console.log('Enviando mensajes...');
   };
 
-  useEffect(() => {
-    if (fillOrder === 4) {
-      sendMessages();
-    }
-  }, [fillOrder]);
 
   const buttonShow = () => {
-    setFillOrder(prevOrder => (prevOrder + 1) % 5);
+    setFillOrder(prevOrder => {
+      const newOrder = (prevOrder + 1) % 5;
+      if (newOrder === 4) {
+        sendMessages();
+      }
+      return newOrder;
+    });
   };
 
   const getColor = (index) => {
@@ -28,6 +30,22 @@ export default function Preview({ navigation, route }) {
     }
     return 'grey';
   };
+
+  const getLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      Alert.alert('Permiso denegado', 'No se concedieron los permisos para acceder a la ubicación');
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location);
+    console.log(location);
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   return (
     <View style={styles.body}>
