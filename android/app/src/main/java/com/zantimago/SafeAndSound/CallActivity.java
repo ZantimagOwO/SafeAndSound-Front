@@ -71,6 +71,26 @@ public class CallActivity extends AppCompatActivity {
     private void sendSMS() {
         Log.i("sendSMS", "Entrando...");
 
+        String medMsg = "Soy del grupo sanguíneo " + buttonData.getBloodGroup();
+
+        if(!buttonData.getDiabetes().isEmpty()){
+            String diab = buttonData.getDiabetes().equals("3")? "gestacional" : buttonData.getDiabetes();
+            medMsg += "\n Tengo diabetes de tipo " + diab;
+        }
+
+        String alergiesStr = buttonData.getAlergies().toString();
+        if(!alergiesStr.equals("[]")){
+            medMsg += "\nTengo estas alergias: " + alergiesStr.substring(1, alergiesStr.length()-1);
+        }
+
+        String ailmentsStr = buttonData.getAilments().toString();
+        if(!ailmentsStr.equals("[]")){
+            medMsg += "\nTengo estas enfermedades: " + ailmentsStr.substring(1, ailmentsStr.length() - 1);
+        }
+
+        buttonData.setPhoneNumberMsg(buttonData.getPhoneNumberMsg() + medMsg);
+        buttonData.setProtectorsMsg(buttonData.getProtectorsMsg() + medMsg);
+
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(buttonData.getPhoneNumber(), null, buttonData.getPhoneNumberMsg(), null, null);
 

@@ -21,6 +21,7 @@
     <style name="Widget.SafeAndSound.AppWidget.Container" parent="android:Widget">
         <item name="android:id">@android:id/background</item>
         <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:radius">500sp</item>
     </style>
 
     <style name="Widget.SafeAndSound.AppWidget.InnerView" parent="android:Widget">

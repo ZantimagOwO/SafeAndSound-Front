@@ -68,6 +68,31 @@ public class ButtonData {
 
         button.setProtectorsMsg(btn.getString("protectorsMsg"));
 
+        JSONArray ailmentsJSON = btn.getJSONArray("ailments");
+
+        String ailment;
+        for (int i = 0; i < ailmentsJSON.length(); i++) {
+            ailment = ailmentsJSON.getString(i);
+            button.getAilments().add(ailment);
+        }
+
+        Log.i("Ailments", button.getAilments().toString());
+
+        JSONArray alergiesJSON = btn.getJSONArray("alergies");
+
+        String alergy;
+        for (int i = 0; i < alergiesJSON.length(); i++) {
+            alergy = alergiesJSON.getString(i);
+            button.getAlergies().add(alergy);
+        }
+
+        if(!btn.isNull("diabetes")){
+            button.setDiabetes(btn.getString("diabetes"));
+        } else {
+            button.setDiabetes("");
+        }
+        button.setBloodGroup(btn.getString("bloodGroup"));
+
         return button;
     }
 
@@ -174,5 +199,40 @@ public class ButtonData {
                 ", bloodGroup='" + bloodGroup + '\'' +
                 ", diabetes='" + diabetes + '\'' +
                 '}';
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject json = new JSONObject();
+
+        json.put("phoneNumber", this.phoneNumber);
+        json.put("phoneNumberMsg", this.phoneNumberMsg);
+
+        JSONArray protectoresArray = new JSONArray();
+        for (String protector : this.protectores) {
+            protectoresArray.put(protector);
+        }
+        json.put("protectores", protectoresArray);
+
+        json.put("protectorsMsg", this.protectorsMsg);
+        json.put("text", this.text);
+        json.put("name", this.name);
+        json.put("color", this.color);
+
+        JSONArray ailmentsArray = new JSONArray();
+        for (String ailment : this.ailments) {
+            ailmentsArray.put(ailment);
+        }
+        json.put("ailments", ailmentsArray);
+
+        JSONArray alergiesArray = new JSONArray();
+        for (String alergy : this.alergies) {
+            alergiesArray.put(alergy);
+        }
+        json.put("alergies", alergiesArray);
+
+        json.put("bloodGroup", this.bloodGroup);
+        json.put("diabetes", this.diabetes);
+
+        return json;
     }
 }
