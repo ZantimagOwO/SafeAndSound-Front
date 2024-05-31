@@ -8,6 +8,9 @@ const MainHeader = ({navigation}) => {
     const logout = async () => {
         try {
           await AsyncStorage.removeItem('user');
+          await AsyncStorage.removeItem('userID');
+          await AsyncStorage.removeItem('buttons');
+          await AsyncStorage.removeItem('userPhone');
           navigation.navigate('Login')
         } catch (e) {
           console.error('Error al eliminar el token de login', e);

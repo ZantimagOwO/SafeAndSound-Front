@@ -36,7 +36,12 @@ export default function Login({ navigation }) {
         password: password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log("repsonse: " + JSON.stringify(response))
+        if(response.status == 404){
+          return 0
+        }
+        return response.json()})
       .then((data) => {
         console.log("Success:", data);
         if (data == 0) {
