@@ -146,7 +146,7 @@ public class Widget1 extends AppWidgetProvider {
             }
         }
 
-        Log.i("ButtonData", button.toString());
+        Log.i("ButtonData", button.toJSON().toString());
     }
 
     public static int getResource(String color){
