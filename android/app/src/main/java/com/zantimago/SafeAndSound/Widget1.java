@@ -36,7 +36,7 @@ public class Widget1 extends AppWidgetProvider {
         }
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget1);
-        views.setTextViewText(R.id.appwidget_text, button.getText());
+        views.setTextViewText(R.id.appwidget_text, "S&S");
 
         // Set up the intent that starts the Phone Call
         Intent intent = new Intent(context, Widget1.class);
