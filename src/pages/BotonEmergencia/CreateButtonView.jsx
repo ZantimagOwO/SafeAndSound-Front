@@ -44,12 +44,12 @@ export default function CreateButtonView({
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     })
       .then((res) => res.json())
       .then((res) => {
         console.log("buttons:" + JSON.stringify(res));
-        AsyncStorage.setItem("buttons", JSON.parse(res));
+        AsyncStorage.setItem("buttons", JSON.stringify(res));
       });
   }, []);
 
@@ -73,6 +73,7 @@ export default function CreateButtonView({
       editData.phones.forEach((phone) => {
         initialSelectedProtectores[phone] = true;
       });
+      console.log("initialSelectedProtectores: " + JSON.stringify(initialSelectedProtectores));
       setSelectedProtectores(initialSelectedProtectores);
     }
   }, [editData]);
@@ -99,12 +100,12 @@ export default function CreateButtonView({
     const user = await AsyncStorage.getItem("userID");
     const data = await fetch(`${serverIP}/users/${user}/protectors`);
     let res = await data.text();
-    console.log(res);
+    console.log("fetchProtectores: " + res);
     setProtectores(JSON.parse(res));
   }, []);
 
   const handleEditButton = useCallback(async () => {
-    console.log("selectedProtectores: " + selectedProtectores);
+    console.log("selectedProtectores: " + JSON.stringify(selectedProtectores));
 
     const requestBody = {
       buttonID: editData.id,
@@ -220,6 +221,7 @@ export default function CreateButtonView({
   };
 
   const getSelectedProtectores = () => {
+    console.log("selectedprotectores" + selectedProtectores);
     return Object.keys(selectedProtectores)
       .filter((key) => selectedProtectores[key])
       .map((key) => parseInt(key));
