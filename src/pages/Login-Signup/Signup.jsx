@@ -32,7 +32,7 @@ export default function Signup({ navigation }) {
         setError("El usuario debe tener al menos 5 caracteres");
       }else{
         navigation.navigate('InformacionInicial', {
-          username: username,
+          username: username.trim(),
           password: password,
         });
       }
