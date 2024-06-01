@@ -29,6 +29,7 @@
             <option value="$PROJECT_DIR$/../node_modules/expo-file-system/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-font/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-keep-awake/android" />
+            <option value="$PROJECT_DIR$/../node_modules/expo-location/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-modules-core/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-sms/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-system-ui/android" />
