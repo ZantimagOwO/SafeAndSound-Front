@@ -5,8 +5,8 @@ import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProtectorListCheck({id, phone, onSelect, isSelected: initialIsSelected }) {
-  const [isSelected, setIsSelected] = useState(initialIsSelected || false);
 
+  const [isSelected, setIsSelected] = useState(initialIsSelected || false);
   const [contacts, setContactos] = useState({});
 
   const getContactsAsync = useCallback(async () => {
@@ -18,7 +18,7 @@ export default function ProtectorListCheck({id, phone, onSelect, isSelected: ini
     getContactsAsync();
   }, [getContactsAsync]);
 
-  const name = contacts[phone];
+  const name = contacts[phone] || phone;
 
   const toggleSelection = () => {
     setIsSelected(!isSelected);

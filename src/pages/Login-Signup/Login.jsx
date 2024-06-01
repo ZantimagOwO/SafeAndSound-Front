@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
       );
       console.log("Buttons: " + JSON.stringify(userToken.Buttons));
       const jsonValue = JSON.stringify(userToken);
-      await AsyncStorage.setItem('user', jsonValue);
+      await AsyncStorage.setItem("user", jsonValue);
     } catch (e) {
       console.error("Error al guardar el token de login", e);
     }
@@ -39,13 +39,18 @@ export default function Login({ navigation }) {
         password: password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log("repsonse: " + JSON.stringify(response))
+        if(response.status == 404){
+          return 0
+        }
+        return response.json()})
       .then((data) => {
         console.log("Success:", data);
         if (data == 0) {
           setError("Usuario o contraseña incorrectos");
         } else {
-          console.log(data)
+          console.log(data);
           setError("");
           saveLogin(data);
           navigation.navigate("Main");
