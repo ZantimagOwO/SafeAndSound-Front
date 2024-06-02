@@ -6,7 +6,7 @@ import Button from '../Login-Signup/Button';
 import { serverIP } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function MyButtonView({navigation, setReload, id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData }) {
+export default function MyButtonView({navigation, setReload, id, name, number, numberMessage, protectorMessage, color, phones = [], setEditButtonData, phonesID = [] }) {
 
   console.log("MyButtonView initial: ", phones)
 
@@ -29,7 +29,8 @@ export default function MyButtonView({navigation, setReload, id, name, number, n
       numberMessage,
       protectorMessage,
       color,
-      phones
+      phones,
+      phonesID
     };
     console.log(editData);
     setEditButtonData(editData);
