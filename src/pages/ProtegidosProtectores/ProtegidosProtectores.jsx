@@ -143,23 +143,16 @@ export default function ProtegidosProtectores({ navigation }) {
 
 const styles = StyleSheet.create({
   body: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#fff"
   },
   container: {
-    position: "absolute",
-    top: "15%",
-
+    marginTop: 30,
     width: "100%",
-    height: "100%",
-
+    height: "auto",
     backgroundColor: "#FFF",
-
-    borderWidth: 1,
-    borderColor: StyleConstants.mainColor,
-
     display: "flex",
     flexDirection: "column",
-
     marginBottom: 45,
   },
   list: {

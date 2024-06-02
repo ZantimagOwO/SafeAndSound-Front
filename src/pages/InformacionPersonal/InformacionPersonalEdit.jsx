@@ -244,7 +244,7 @@ const styles=StyleSheet.create({
         width: "100%"
     },
     column: {
-        marginTop: Constants.statusBarHeight+50,
+        marginTop: 30,
         flexDirection: 'column',
         flexWrap: 'wrap',
         justifyContent: 'space-around',

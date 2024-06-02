@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   buttonHeader: {
-    marginTop: Constants.statusBarHeight + 60,
+    marginTop: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
