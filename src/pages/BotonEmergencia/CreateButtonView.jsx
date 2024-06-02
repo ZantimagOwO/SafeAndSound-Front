@@ -85,7 +85,7 @@ export default function CreateButtonView({
     "#A23BCD",
     "#2A80B9",
     "#F1C40E",
-    "#3FCC71",
+    "#68C699",
     "#34AE60",
     "#31A084",
     "#3498DB",

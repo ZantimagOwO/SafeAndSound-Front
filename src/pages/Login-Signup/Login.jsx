@@ -114,11 +114,6 @@ export default function Login({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  espacio: {
-    backgroundColor: "#000000",
-    height: Constants.statusBarHeight,
-    width: "100%",
-  },
   body: {
     backgroundColor: "#fff",
     height: "100%",

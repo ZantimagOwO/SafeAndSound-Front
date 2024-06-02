@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   grid: {
-    marginTop: Constants.statusBarHeight + 50,
+    marginTop: 50,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",

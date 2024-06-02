@@ -126,7 +126,7 @@ const styles=StyleSheet.create({
     height: '100%',
   },
   center: {
-    marginTop: Constants.statusBarHeight+60,
+    marginTop: 30,
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 40,

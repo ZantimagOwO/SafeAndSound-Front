@@ -18,7 +18,7 @@ const MainHeader = ({navigation}) => {
       }
 
     return (
-        <View style={mainHeader.espacio}>
+        <View>
             <View style={mainHeader.mainDiv}>
                 <Image source={require('../../../assets/Header/logo.png')} style={mainHeader.safeAndSoundLogo}/>
                 <TouchableOpacity onPress={()=> logout()} style={mainHeader.imageContainer}>
@@ -31,16 +31,10 @@ const MainHeader = ({navigation}) => {
 };
 
 const mainHeader = StyleSheet.create({
-    espacio: {
-        backgroundColor: '#000000',
-        height: Constants.statusBarHeight,
-        width: '100%',
-    },
     mainDiv: {
         width: '100%',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        marginTop: Constants.statusBarHeight,
         elevation: 10,
         height: 78,
         backgroundColor: '#68C699',
