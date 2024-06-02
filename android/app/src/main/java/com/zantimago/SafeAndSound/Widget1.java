@@ -181,6 +181,8 @@ public class Widget1 extends AppWidgetProvider {
                 return R.drawable.app_widget_background_dark_grey;
             case "#000000":
                 return R.drawable.app_widget_background_black;
+            case "#68C699":
+                return R.drawable.app_widget_background_safe_and_sound;
             default:
                 return R.drawable.app_widget_background; // Default color
         }
