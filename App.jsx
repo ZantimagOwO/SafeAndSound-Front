@@ -20,7 +20,6 @@ import { Linking, NativeModules } from "react-native";
 import * as Contacts from "expo-contacts";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { registerRootComponent } from "expo";
-import Preview from './src/pages/BotonEmergencia/Preview';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,7 +52,6 @@ export default function App() {
           screenOptions={{ headerShown: false }}
           initialRouteName='Main'
         >
-          <Stack.Screen name='Preview' component={Preview} />
           <Stack.Screen name='Login' component={Login} />
           <Stack.Screen name='Signup' component={Signup} />
           <Stack.Screen name='InformacionInicial' component={InformacionInicial}/>

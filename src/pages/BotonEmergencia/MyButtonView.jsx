@@ -79,19 +79,6 @@ export default function MyButtonView({navigation, setReload, id, name, number, n
     );
   };
 
-  const handleViewButton = () => {
-    const buttonData = {
-      id,
-      name,
-      number,
-      numberMessage,
-      protectorMessage,
-      color,
-      phones
-    };
-    navigation.navigate("Preview", { buttonData })
-  };
-
   console.log("Protectores de este boton: " + phones);
 
   return (
@@ -99,14 +86,6 @@ export default function MyButtonView({navigation, setReload, id, name, number, n
       <View style={styles.row}>
         <Text style={styles.green}>Nombre:  </Text>
         <Text style={styles.grey}>{name}</Text>
-        <TouchableOpacity onPress={handleViewButton}>
-          <View>
-            <Image
-              source={require('../../../assets/Main/play.png')}
-              style={styles.playIcon}
-            />
-          </View>
-        </TouchableOpacity>
       </View>
       <View style={styles.row}>
         <Text style={styles.green}>Número:  </Text>
