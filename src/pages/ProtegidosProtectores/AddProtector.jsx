@@ -24,12 +24,7 @@ export default function AddProtector({phone, name, setProtectores, protectores }
 
     console.log(msg)
 
-    Linking.openURL(`sms:666970082?body=${msg}`)
-
-    // const response = await fetch(
-    //   `${serverIP}/users/addProtector/${user}/${phone}`,
-    //   { method: "POST" }
-    // );
+    Linking.openURL(`sms:${phone}?body=${msg}`);
   };
 
   return (

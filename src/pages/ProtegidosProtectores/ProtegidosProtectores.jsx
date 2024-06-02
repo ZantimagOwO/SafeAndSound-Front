@@ -30,8 +30,23 @@ export default function ProtegidosProtectores({ navigation }) {
 
   const getContactsAsync = useCallback(async () => {
     let t = await AsyncStorage.getItem("contacts");
-    setContactos(JSON.parse(t));
-  }, []);
+
+    let con = JSON.parse(t);
+
+    console.log("filtrando por:" + textoBuscadorContactos);
+
+    const filteredContacts = Object.entries(con).reduce(
+      (acc, [phone, name]) => {
+        if (name.includes(textoBuscadorContactos)) {
+          acc[phone] = name;
+        }
+        return acc;
+      },
+      {}
+    );
+
+    setContactos(filteredContacts);
+  }, [textoBuscadorContactos]);
 
   useEffect(() => {
     getContactsAsync();
@@ -48,10 +63,11 @@ export default function ProtegidosProtectores({ navigation }) {
     fetchProtectores();
   }, [fetchProtectores]);
 
-  const handleBuscar = (texto) => {
+  const handleBuscar = async (texto) => {
+    console.log("texto", texto);
     setBuscadorContactos(texto)
-    cargarContactos()
   }
+
 
   return (
     <View style={styles.body}>
@@ -99,7 +115,7 @@ export default function ProtegidosProtectores({ navigation }) {
               resizeMode="contain"
             />
             <TextInput
-              onChangeText={setBuscadorContactos}
+              onChangeText={handleBuscar}
               placeholder="Buscar contactos"
               value={textoBuscadorContactos}
               style={styles.searchText}
