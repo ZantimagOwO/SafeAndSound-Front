@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SafeAndSound.iml" filepath="$PROJECT_DIR$/.idea/modules/SafeAndSound.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SafeAndSound.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.iml" filepath="$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.iml" filepath="$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.main.iml" filepath="$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/586703472/SafeAndSound.expo-asset.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.iml" filepath="$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1950886351/SafeAndSound.expo-constants.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.iml" filepath="$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.main.iml" filepath="$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/520677523/SafeAndSound.expo-contacts.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.iml" filepath="$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1609118496/SafeAndSound.expo-file-system.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.iml" filepath="$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1528088719/SafeAndSound.expo-font.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.iml" filepath="$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1702741885/SafeAndSound.expo-keep-awake.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.iml" filepath="$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.main.iml" filepath="$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/162440693/SafeAndSound.expo-location.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.iml" filepath="$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/825814117/SafeAndSound.expo-modules-core.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.iml" filepath="$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-373603367/SafeAndSound.expo-sms.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.iml" filepath="$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1343117198/SafeAndSound.expo-system-ui.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-146138035/SafeAndSound.expo.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1150580706/SafeAndSound.react-native-async-storage_async-storage.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.iml" filepath="$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-13504594/SafeAndSound.react-native-immersive.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1282256034/SafeAndSound.react-native-safe-area-context.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1880624954/SafeAndSound.react-native-screens.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1864541777/SafeAndSound.react-native-shared-group-preferences.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1576072343/SafeAndSound.react-native-svg.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.iml" filepath="$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.test.iml" filepath="$PROJECT_DIR$/.idea/modules/30518516/react-native-gradle-plugin.test.iml" />
+    </modules>
+  </component>
+</project>
