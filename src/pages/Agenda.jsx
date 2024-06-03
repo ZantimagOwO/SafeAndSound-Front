@@ -8,7 +8,7 @@ export default function Agenda({navigation}) {
 
   const emergencias = [
     ["Emergencias", "112"],
-    ["Policia", "91"],
+    ["Policia", "091"],
     ["Guardia Civil", "062"],
     ["Bomberos", "080"],
     ["Emergencias Médicas", "061"],
@@ -54,7 +54,7 @@ export default function Agenda({navigation}) {
             />
           ))}
         </View>
-        <Text style={styles.title}>EMERGENCIAS:</Text>
+        <Text style={styles.title}>INFORMACIÓN:</Text>
         <View style={styles.list}>
           {informacion.map((emergencia) => (
             <ItemAgenda
@@ -64,7 +64,7 @@ export default function Agenda({navigation}) {
             />
           ))}
         </View>
-        <Text style={styles.title}>EMERGENCIAS:</Text>
+        <Text style={styles.title}>CANCELACIÓN DE TARJETAS DE CRÉDITO:</Text>
         <View style={styles.list}>
           {cancelacion.map((emergencia) => (
             <ItemAgenda

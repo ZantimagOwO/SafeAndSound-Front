@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Main from './src/pages/Main';
