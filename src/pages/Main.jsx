@@ -15,9 +15,6 @@ const Main = ({ navigation }) => {
   useEffect(() => {
     const checkLogin = async () => {
 
-      // AsyncStorage.clear()
-      // console.log("AsyncStorage borradowo")
-
       cargarContactos()
       
       try {
