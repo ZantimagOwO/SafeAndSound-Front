@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import Constants from "expo-constants";
 import React, { useState } from "react";
 import InputLogin from "./InputLogin";
@@ -63,7 +63,7 @@ export default function Login({ navigation }) {
   };
 
   return (
-    <View style={styles.body}>
+    <ScrollView style={styles.body}>
       <View style={styles.espacio}></View>
       <Image
         source={require("../../../assets/login-signup/logoColor.png")}
@@ -109,7 +109,7 @@ export default function Login({ navigation }) {
         </Text>
       </View>
       <Button text="Login" onPress={handleLogin} />
-    </View>
+    </ScrollView>
   );
 }
 

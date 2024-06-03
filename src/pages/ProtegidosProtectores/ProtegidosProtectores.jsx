@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     display: "flex",
     flexDirection: "column",
-    marginBottom: 45,
   },
   list: {
     height: "auto",

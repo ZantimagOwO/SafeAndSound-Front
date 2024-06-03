@@ -69,11 +69,12 @@ export default function CreateButtonView({
       setMensajeEmergenciaNumero(editData.numberMessage);
       setMensajeEmergenciaProtectores(editData.protectorMessage);
       setSelectedColor(editData.color);
+
       const initialSelectedProtectores = {};
-      editData.phones.forEach((phone) => {
+      editData.phonesID.forEach((phone) => {
         initialSelectedProtectores[phone] = true;
       });
-      console.log("initialSelectedProtectores: " + JSON.stringify(initialSelectedProtectores));
+      console.log("initialSelectedProtectores2: " + JSON.stringify(initialSelectedProtectores));
       setSelectedProtectores(initialSelectedProtectores);
     }
   }, [editData]);
@@ -287,7 +288,7 @@ export default function CreateButtonView({
                 id={protector.Phone_ID}
                 name={contacts[protector.Phone] || protector.Phone}
                 onSelect={handleSelectProtector}
-                isSelected={selectedProtectores[protector.Phone] || false}
+                isSelected={selectedProtectores[protector.Phone_ID] || false}
               />
             ))
           ) : (

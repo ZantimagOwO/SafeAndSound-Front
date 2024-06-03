@@ -48,6 +48,7 @@ export default function Boton({ navigation }) {
           protectorMessage={activeView.Protector_Message}
           color={activeView.Color}
           phones={activeView.Phones.map(phone => phone.Phone)}
+          phonesID={activeView.Phones.map(phone => phone.Phone_ID)}
           setEditButtonData={setEditButtonData}
         />
       );
