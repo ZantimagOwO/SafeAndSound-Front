@@ -58,8 +58,9 @@ const Main = ({ navigation }) => {
           text="Información Legal"
         />
         <MainPageButton
-          mode="off"
+          mode="on"
           icon={require("../../assets/Main/agenda.png")}
+          onPress={() => navigation.navigate("Agenda")}
           text="Agenda"
         />
         <MainPageButton
