@@ -1,14 +1,9 @@
 # SafeAndSound Front
 
-npx expo prebuild --clean
+COMPROBAR QUE assets/Sword.png TENGA LA PRIMERA EN MAYÚSCULA
 
-crear assets/index.android.bundle en android/app/src/main
+Para compilar el APK:
 
--- compilar react native
-react-native bundle --platform android --dev false --entry-file App.jsx --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
-
--- generar apk y ejecutarlo
-npx expo run:android
-
-compilar rn y ejecutarlo
 npm run build-android
+
+El APK se genera en android/app/build/outputs/apk/debug
